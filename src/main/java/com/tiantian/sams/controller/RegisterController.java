@@ -1,5 +1,6 @@
 package com.tiantian.sams.controller;
 
+import com.tiantian.sams.dao.StudentInformationDao;
 import com.tiantian.sams.model.Student;
 import com.tiantian.sams.model.StudentInformation;
 import com.tiantian.sams.service.StudentService;
@@ -17,6 +18,9 @@ public class RegisterController {
 
     @Autowired
     StudentService studentService = new StudentServiceImpl();
+
+    @Autowired
+    StudentInformationDao studentInformationDao;
 
     @RequestMapping("/studentRegister")
     public String login(@RequestParam("username") String username,
@@ -36,19 +40,19 @@ public class RegisterController {
                         Model model,
                         HttpSession session) {
         System.out.println("==================用户注册开始==================");
-
         Student registerStudent = new Student(0, username, password);
         int studentId = studentService.insertStudent(registerStudent);
-        StudentInformation studentInformation = new StudentInformation(studentId, college, studentClass,
+        StudentInformation registerStudentInformation = new StudentInformation(studentId, college, studentClass,
                                                                         studentNumber, name, sex, status,
                                                                         telephoneNumber, birthdate, politicalAppearance,
                                                                         martialStatus, idNumber, nativePlace);
-        Student loginStudent = studentService.selectStudentByUsernameAndPassword(username, password);
-        if (loginStudent != null) {
-            // 如果用户存在
-
-            return "index";
-
+        int result = studentInformationDao.insertStudent(registerStudentInformation);
+        if (result > 0) {
+            // 上传成功
+            System.out.println("==================用户注册成功==================");
+            model.addAttribute("username", username);
+            model.addAttribute("password", password);
+            return "page-login";
         } else {
             model.addAttribute("msg","该用户名已经被使用");
             // 写回除用户名密码之外的全部数据
@@ -64,7 +68,8 @@ public class RegisterController {
             model.addAttribute("martialStatus", martialStatus);
             model.addAttribute("idNumber", idNumber);
             model.addAttribute("nativePlace", nativePlace);
-            return "page-login";
+            System.out.println("==================用户注册失败==================");
+            return "page-register";
         }
     }
 

@@ -54,7 +54,7 @@
                 </div>
                 <div class="body">
                     <p class="lead">数据用户实体注册</p>
-                    <form class="form-auth-small m-t-20" action="/dataUserRegister" method="POST">
+                    <form class="form-auth-small m-t-20" th:action="@{/studentRegister}" method="POST">
                         <!--如果msg的消息不为空，则显示这个消息-->
                         <div class="text-center">
                             <p class="form-control text-red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>

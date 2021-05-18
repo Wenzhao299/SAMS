@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8084
 
 #mybatis:
 #  type-aliases-package: com.tiantian.eunomia.mapper
@@ -9,8 +9,8 @@ spring:
   thymeleaf:
     cache: false
   datasource:
-    username: custom
-    password: 2018212194
+    username: root
+    password: root
     #?serverTimezone=UTC解决时区的报错
     url: jdbc:mysql://localhost:3306/cryptographydatabase?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
     driver-class-name: com.mysql.cj.jdbc.Driver

@@ -1,18 +1,19 @@
 server:
-  port: 8084
-
-#mybatis:
-#  type-aliases-package: com.tiantian.eunomia.mapper
-#  mapper-locations: classpath:cryptographydatabase/mapper/*.xml
+  port: 8080
+  servlet:
+    context-path: /sams
 
 spring:
   thymeleaf:
     cache: false
+    suffix: .html
+    encoding: utf-8
+    prefix: classpath:/templates/
   datasource:
-    username: root
-    password: root
+    username: custom
+    password: 2018212194
     #?serverTimezone=UTC解决时区的报错
-    url: jdbc:mysql://localhost:3306/cryptographydatabase?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://101.132.138.214:3306/SAMS?serverTimezone=Asia/Shanghai&useSSL=false&useUnicode=true&characterEncoding=UTF-8
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource # 自定义数据源
     #Spring Boot 默认是不注入这些属性值的，需要自己绑定

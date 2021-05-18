@@ -1,6 +1,7 @@
 package com.tiantian.sams.controller;
 
 import com.tiantian.sams.model.Student;
+import com.tiantian.sams.model.StudentInformation;
 import com.tiantian.sams.service.StudentService;
 import com.tiantian.sams.service.impl.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class RegisterController {
                         @RequestParam("sex")String sex,
                         @RequestParam("status")String status,
                         @RequestParam("telephoneNumber")String telephoneNumber,
-                        @RequestParam("Birthdate")String Birthdate,
+                        @RequestParam("Birthdate")String birthdate,
                         @RequestParam("politicalAppearance")String politicalAppearance,
                         @RequestParam("martialStatus")String martialStatus,
                         @RequestParam("idNumber")String idNumber,
@@ -36,6 +37,12 @@ public class RegisterController {
                         HttpSession session) {
         System.out.println("==================用户注册开始==================");
 
+        Student registerStudent = new Student(0, username, password);
+        int studentId = studentService.insertStudent(registerStudent);
+        StudentInformation studentInformation = new StudentInformation(studentId, college, studentClass,
+                                                                        studentNumber, name, sex, status,
+                                                                        telephoneNumber, birthdate, politicalAppearance,
+                                                                        martialStatus, idNumber, nativePlace);
         Student loginStudent = studentService.selectStudentByUsernameAndPassword(username, password);
         if (loginStudent != null) {
             // 如果用户存在
@@ -52,7 +59,7 @@ public class RegisterController {
             model.addAttribute("sex", sex);
             model.addAttribute("status", status);
             model.addAttribute("telephoneNumber", telephoneNumber);
-            model.addAttribute("Birthdate", Birthdate);
+            model.addAttribute("Birthdate", birthdate);
             model.addAttribute("politicalAppearance", politicalAppearance);
             model.addAttribute("martialStatus", martialStatus);
             model.addAttribute("idNumber", idNumber);

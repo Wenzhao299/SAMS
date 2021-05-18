@@ -22,8 +22,8 @@ public class RegisterController {
 
     @RequestMapping("/adminRegister")
     public String register(@RequestParam("username") String username,
-                        @RequestParam("password")String password,
-                        @RequestParam("DepartmentNumber")String departmentNumber,
+                        @RequestParam("password") String password,
+                        @RequestParam("DepartmentNumber") String departmentNumber,
                         Model model) {
         System.out.println("==================用户注册开始==================");
         // 保存管理员用户名和密码

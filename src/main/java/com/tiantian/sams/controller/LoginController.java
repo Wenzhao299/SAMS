@@ -17,7 +17,7 @@ public class LoginController {
 
     @RequestMapping("/adminLogin")
     public String login(@RequestParam("username") String username,
-                        @RequestParam("password")String password,
+                        @RequestParam("password") String password,
                         Model model) {
         System.out.println("==================用户登录开始==================");
         Admin loginAdmin = adminService.selectAdminByUsernameAndPassword(username, password);

@@ -2,7 +2,6 @@ package com.tiantian.sams.service.impl;
 
 import com.tiantian.sams.dao.AdminDao;
 import com.tiantian.sams.model.Admin;
-import com.tiantian.sams.model.Student;
 import com.tiantian.sams.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

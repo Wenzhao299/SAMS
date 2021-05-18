@@ -1,7 +1,6 @@
 package com.tiantian.sams.controller;
 
 import com.tiantian.sams.model.Admin;
-import com.tiantian.sams.model.Student;
 import com.tiantian.sams.service.AdminService;
 import com.tiantian.sams.service.impl.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {

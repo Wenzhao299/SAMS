@@ -1,7 +1,6 @@
 package com.tiantian.sams.dao;
 
 import com.tiantian.sams.model.Admin;
-import com.tiantian.sams.model.Student;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 

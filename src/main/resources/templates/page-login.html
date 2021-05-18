@@ -37,27 +37,27 @@
                     <a class="navbar-brand" href="javascript:void(0);"><i class="fa fa-cube font-25"></i> Eunomia</a>
                 </div>
                 <div class="body">
-                    <p class="lead">数据用户登录</p>
+                    <p class="lead">管理员登录</p>
 
-                    <form class="form-auth-small m-t-20" th:action="@{/dataUserLogin}" method="post">
+                    <form class="form-auth-small m-t-20" th:action="@{/adminLogin}" method="POST">
                         <div class="form-group">
                             <label for="username" class="control-label sr-only">用户名</label>
-                            <input type="text" class="form-control round" id="username" th:value="${username}" placeholder="username">
+                            <input type="text" class="form-control round" id="username" name="username" th:value="${username}" placeholder="username">
                         </div>
                         <div class="form-group">
                             <label for="password" class="control-label sr-only">密码</label>
-                            <input type="password" class="form-control round" id="password" th:value="${password}" placeholder="password">
+                            <input type="password" class="form-control round" id="password" name="password" th:value="${password}" placeholder="password">
                         </div>
                         <div class="form-group clearfix">
                             <label class="fancy-checkbox element-left">
                                 <input type="checkbox">
-                                <span>Remember me</span>
+                                <span>记住我</span>
                             </label>								
                         </div>
-                        <button type="submit" class="btn btn-primary btn-round btn-block">LOGIN</button>
+                        <button type="submit" class="btn btn-primary btn-round btn-block">登录</button>
                         <div class="bottom">
-                            <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="page-forgot-password.html">Forgot password?</a></span>
-                            <span>Don't have an account? <a href="page-register.html">Register</a></span>
+                            <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="page-forgot-password.html">忘记密码?</a></span>
+                            <span>没有账号? <a href="page-register.html">注册</a></span>
                         </div>
                     </form>
                 </div>

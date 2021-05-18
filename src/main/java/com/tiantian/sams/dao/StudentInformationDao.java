@@ -17,7 +17,7 @@ public interface StudentInformationDao {
     @Select("select * from studentInformation where studentId = #{studentId}")
     public StudentInformation selectUserByStudentId(@Param("studentId")int studentId);
 
-    @Insert({"insert into studentInformation(studentId, college, studentClass, studentNumber, name, sex, status, telephoneNumber, birthdate, politicalAppearance, martialStatus, idNumber, nativePlace) " +
-            "values (#{studentId},#{college},#{studentClass},#{studentNumber},#{name},#{sex},#{status},#{telephoneNumber},#{birthdate},#{politicalAppearance},#{martialStatus},#{idNumber},#{nativePlace})"})
+    @Insert({"insert into studentInformation(studentId, college, type, studentClass, studentNumber, name, sex, status, telephoneNumber, birthdate, politicalAppearance, nationality, martialStatus, idNumber, nativePlace) " +
+            "values (#{studentId},#{college},#{type},#{studentClass},#{studentNumber},#{name},#{sex},#{status},#{telephoneNumber},#{birthdate},#{politicalAppearance},#{nationality},#{martialStatus},#{idNumber},#{nativePlace})"})
     public int insertStudent(StudentInformation studentInformation);
 }

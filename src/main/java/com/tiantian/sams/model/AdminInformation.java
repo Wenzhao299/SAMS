@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Student {
+public class AdminInformation {
 
-    private int studentId;
-    private String username;
-    private String password;
+    private int adminId;                // 管理员id
+    private String departmentNumber;    // 楼号
 }

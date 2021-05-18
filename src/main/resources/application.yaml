@@ -3,10 +3,6 @@ server:
   servlet:
     context-path: /sams
 
-#mybatis:
-#  type-aliases-package: com.tiantian.eunomia.mapper
-#  mapper-locations: classpath:cryptographydatabase/mapper/*.xml
-
 spring:
   thymeleaf:
     cache: false
@@ -40,4 +36,4 @@ spring:
 
 mybatis:
   mapper-locations: classpath:/mapper/*.xml
-  type-aliases-package: com.tiantian.sams.entity
+  type-aliases-package: com.tiantian.sams.model

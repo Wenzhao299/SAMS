@@ -50,11 +50,11 @@
         <div class="auth_div">
             <div class="card">
                 <div class="auth_brand">
-                    <a class="navbar-brand" href="javascript:void(0);"><i class="fa fa-cube font-25"></i> Eunomia</a>
+                    <a class="navbar-brand" href="javascript:void(0);"><i class="fa fa-cube font-25"></i> 管理员注册</a>
                 </div>
                 <div class="body">
                     <p class="lead">数据用户实体注册</p>
-                    <form class="form-auth-small m-t-20" th:action="@{/studentRegister}" method="POST">
+                    <form class="form-auth-small m-t-20" th:action="@{/adminRegister}" method="POST">
                         <!--如果msg的消息不为空，则显示这个消息-->
                         <div class="text-center">
                             <p class="form-control text-red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
@@ -74,89 +74,26 @@
 
                         <!--个人信息部分-->
                         <div class="form-group">
-                            <select class="form-control" id="type" name="type">
-                                <option value="">-- 选择身份 --</option>
-                                <option value="学生">学生</option>
-                                <option value="老师">老师</option>
+                            <select class="form-control" id="DepartmentNumber" name="DepartmentNumber">
+                                <option value="">-- 选择楼号 --</option>
+                                <option value="1号楼">1号楼</option>
+                                <option value="2号楼">2号楼</option>
+                                <option value="3号楼">3号楼</option>
+                                <option value="4号楼">4号楼</option>
+                                <option value="5号楼">5号楼</option>
+                                <option value="6号楼">6号楼</option>
+                                <option value="7号楼">7号楼</option>
+                                <option value="8号楼">8号楼</option>
+                                <option value="9号楼">9号楼</option>
+                                <option value="10号楼">10号楼</option>
+                                <option value="11号楼">11号楼</option>
+                                <option value="12号楼">12号楼</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control round" placeholder="请输入所在学院" th:value="${college}" name="college" id="college">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control round" placeholder="请输入所在班级" th:value="${studentClass}" name="studentClass" id="studentClass">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control round" placeholder="请输入学号" th:value="${studentNumber}" name="studentNumber" id="studentNumber">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control round" placeholder="请输入姓名" th:value="${name}" name="name" id="name">
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" id="sex" name="sex">
-                                <option value="">-- 选择性别 --</option>
-                                <option value="男">男</option>
-                                <option value="女">女</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" id="status" name="status">
-                                <option value="">-- 选择学历 --</option>
-                                <option value="本科">本科</option>
-                                <option value="硕士">硕士</option>
-                                <option value="博士">博士</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" class="form-control round" placeholder="请输入手机号码" th:value="${telephoneNumber}" name="telephoneNumber" id="telephoneNumber">
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="icon-calendar"></i></span>
-                                </div>
-                                <input data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="Birthdate" id="birthdate" name="birthdate">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" id="politicalAppearance" name="politicalAppearance">
-                                <option value="">-- 选择政治面貌 --</option>
-                                <option value="群众">群众</option>
-                                <option value="团员">团员</option>
-                                <option value="预备党员">预备党员</option>
-                                <option value="党员">党员</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" id="nationality" name="nationality">
-                                <option value="">-- 选择民族 --</option>
-                                <option value="汉族">汉族</option>
-                                <option value="蒙古族">蒙古族</option>
-                                <option value="维吾尔族">维吾尔族</option>
-                                <option value="回族">回族</option>
-                                <option value="壮族">壮族</option>
-                                <option value="藏族">藏族</option>
-                                <option value="骆族">骆族</option>
-                                <option value="曹族">曹族</option>
-                                <option value="王族">王族</option>
-                                <option value="天族">天族</option>
-                                <option value="冰族">冰族</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" id="martialStatus" name="martialStatus">
-                                <option value="">-- 选择婚姻状态 --</option>
-                                <option value="未婚">未婚</option>
-                                <option value="已婚">已婚</option>
-                                <option value="离异">离异</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control round" placeholder="请输入身份证号" th:value="${idNumber}" name="idNumber" id="idNumber">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control round" placeholder="请输入籍贯" th:value="${nativePlace}" name="nativePlace" id="nativePlace">
-                        </div>
+<!--                        <div class="form-group">-->
+<!--                            <input type="text" class="form-control round" placeholder="请输入所在学院" th:value="${college}" name="college" id="college">-->
+<!--                        </div>-->
+
                         <button type="submit" class="btn btn-primary btn-round btn-block" id="submit">注册</button>
                     </form>
                 </div>

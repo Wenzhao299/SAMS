@@ -11,6 +11,7 @@ public class StudentInformation {
 
     private int studentId;
     private String college;
+    private String type;
     private String studentClass;
     private String studentNumber;
     private String name;
@@ -19,6 +20,7 @@ public class StudentInformation {
     private String telephoneNumber;
     private String Birthdate;
     private String politicalAppearance;
+    private String nationality;
     private String martialStatus;
     private String idNumber;
     private String nativePlace;

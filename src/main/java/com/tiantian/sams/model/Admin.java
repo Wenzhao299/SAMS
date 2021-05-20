@@ -7,9 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+/**
+ * 管理员表
+ */
 public class Admin {
-
-    private int adminId;
-    private String username;
-    private String password;
+    private String adminId;    //职工号
+    private String password;    //密码
 }

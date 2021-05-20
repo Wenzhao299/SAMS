@@ -13,13 +13,12 @@ public interface AdminDao {
     @Select("select * from admin")
     public List<Admin> selectAdmin();
 
-    @Select("select * from admin where username = #{username} and password = #{password}")
-    public Admin selectAdminByUsernameAndPassword(@Param("username")String username, @Param("password")String password);
+    @Select("select * from admin where adminId = #{adminId} and password = #{password}")
+    public Admin selectAdminByAdminIdAndPassword(@Param("adminId")String adminId, @Param("password")String password);
 
-    @Select("select * from admin where username = #{username}")
-    public Admin selectAdminByUsername(@Param("username")String username);
+    @Select("select * from admin where adminId = #{adminId}")
+    public Admin selectAdminByAdminId(@Param("adminId")String adminId);
 
-    @Insert({"insert into admin(username, password) values (#{username},#{password})"})
-    @Options(useGeneratedKeys = true, keyProperty = "adminId", keyColumn = "adminId")//加入该注解可以保持对象后，查看对象插入id
+    @Insert({"insert into admin(adminId, password) values (#{adminId},#{password})"})
     public int insertAdmin(Admin admin);
 }

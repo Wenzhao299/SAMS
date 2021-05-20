@@ -60,7 +60,7 @@
                             <p class="form-control text-red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="请输入用户名" name="username" id="username">
+                            <input type="text" class="form-control" placeholder="请输入职工号" name="adminId" id="adminId">
                         </div>
                         <div class="form-group">                            
                             <input type="password" class="form-control" placeholder="请输入密码" name="password" id="password" onkeyup="checkPassword()">
@@ -74,25 +74,28 @@
 
                         <!--个人信息部分-->
                         <div class="form-group">
-                            <select class="form-control" id="DepartmentNumber" name="DepartmentNumber">
-                                <option value="">-- 选择楼号 --</option>
-                                <option value="1号楼">1号楼</option>
-                                <option value="2号楼">2号楼</option>
-                                <option value="3号楼">3号楼</option>
-                                <option value="4号楼">4号楼</option>
-                                <option value="5号楼">5号楼</option>
-                                <option value="6号楼">6号楼</option>
-                                <option value="7号楼">7号楼</option>
-                                <option value="8号楼">8号楼</option>
-                                <option value="9号楼">9号楼</option>
-                                <option value="10号楼">10号楼</option>
-                                <option value="11号楼">11号楼</option>
-                                <option value="12号楼">12号楼</option>
+                            <select class="form-control" id="departmentId" name="departmentId">
+                                <option value="">-- 选择公寓ID --</option>
+                                <option th:each="departmentId:${departmentIdList}" th:value="${departmentId}">[[${departmentId}]]</option>
                             </select>
                         </div>
-<!--                        <div class="form-group">-->
-<!--                            <input type="text" class="form-control" placeholder="请输入所在学院" th:value="${college}" name="college" id="college">-->
-<!--                        </div>-->
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="请输入姓名" th:value="${name}" name="name" id="name">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" id="sex" name="sex">
+                                <option value="">-- 选择公寓ID --</option>
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="请输入手机号码" th:value="${telephoneNumber}" name="telephoneNumber" id="telephoneNumber">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="请输入邮箱" th:value="${email}" name="email" id="email">
+                        </div>
 
                         <button type="submit" class="btn btn-primary btn-round btn-block" id="submit">注册</button>
                     </form>

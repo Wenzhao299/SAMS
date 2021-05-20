@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>Eunomia | DataAccessing</title>
@@ -12,11 +12,11 @@
 
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- VENDOR CSS -->
-    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/vendor/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../assets/vendor/animate-css/vivify.min.css">
+    <link rel="stylesheet" th:href="@{vendor/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{vendor/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{vendor/animate-css/vivify.min.css}">
 
-    <link rel="stylesheet" href="../assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" th:href="@{vendor/jquery-datatable/dataTables.bootstrap4.min.css}">
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="assets/css/site.min.css">
 

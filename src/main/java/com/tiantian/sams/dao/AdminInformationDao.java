@@ -19,7 +19,7 @@ public interface AdminInformationDao {
     @Select("select * from adminInformation where adminId = #{adminId}")
     public AdminInformation selectUserByAdminId(@Param("adminId")int adminId);
 
-    @Insert({"insert into adminInformation(adminId, departmentNumber) " +
-            "values(#{adminId},#{departmentNumber})"})
+    @Insert({"insert into adminInformation(adminId, departmentId, name, sex, telephoneNumber, email) " +
+            "values(#{adminId}, #{departmentId}, #{name}, #{sex}, #{telephoneNumber}, #{email})"})
     public int insertAdmin(AdminInformation adminInformation);
 }

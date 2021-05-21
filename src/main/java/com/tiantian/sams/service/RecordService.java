@@ -1,6 +1,7 @@
 package com.tiantian.sams.service;
 
 import com.tiantian.sams.model.Record;
+import com.tiantian.sams.model.RecordView;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,13 @@ public interface RecordService {
      * @return Record实体类列表
      */
     public List<Record> selectRecord();
+
+    /**
+     * 调用视图查询
+     * @author tiantian152
+     * @return RecordView实体类列表
+     */
+    public List<RecordView> selectRecordView();
 
     /**
      * 向record表中插入一条记录

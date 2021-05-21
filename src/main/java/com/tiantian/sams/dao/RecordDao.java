@@ -2,6 +2,7 @@ package com.tiantian.sams.dao;
 
 import com.tiantian.sams.model.Admin;
 import com.tiantian.sams.model.Record;
+import com.tiantian.sams.model.RecordView;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -24,6 +25,14 @@ public interface RecordDao {
      */
     @Select("select * from record")
     public List<Record> selectRecord();
+
+    /**
+     * 调用视图查询
+     * @author tiantian152
+     * @return RecordView实体类列表
+     */
+    @Select("select * from recordView")
+    public List<RecordView> selectRecordView();
 
     /**
      * 向record表中插入一条记录

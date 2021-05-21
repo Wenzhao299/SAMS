@@ -3,6 +3,7 @@ package com.tiantian.sams.controller;
 import com.tiantian.sams.dao.DepartmentDao;
 import com.tiantian.sams.dao.DormitoryDao;
 import com.tiantian.sams.model.Record;
+import com.tiantian.sams.model.RecordView;
 import com.tiantian.sams.service.RecordService;
 import com.tiantian.sams.service.impl.RecordServiceImpl;
 import com.tiantian.sams.utils.DateUtils;
@@ -72,7 +73,11 @@ public class RecordController {
      */
     @GetMapping("/quireRecord")
     public String quireRecord(Model model) {
-        List<Record> records = recordService.selectRecord();
+//        List<Record> records = recordService.selectRecord();
+//        model.addAttribute("records", records);
+//        System.out.println(records);
+
+        List<RecordView> records = recordService.selectRecordView();
         model.addAttribute("records", records);
         System.out.println(records);
         return "quireRecord";

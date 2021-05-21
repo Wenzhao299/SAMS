@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 
 <head>
     <title>SAMS | 日常登记</title>
@@ -135,10 +135,10 @@
                                     </td>
                                     <td><span class="badge badge-warning ml-0 mr-0" th:text="${record.type}"></span></td>
                                     <td><span th:text="${#dates.format(record.inAndOutTime,'yyyy-MM-dd HH:mm:ss')}"></span></td>
+                                    <td><span th:text="${record.name}"></span></td>
                                     <td><span th:text="${record.studentId}"></span></td>
-                                    <td><span th:text="${record.studentId}"></span></td>
-                                    <td><span th:text="${record.departmentId}"></span></td>
-                                    <td><span th:text="${record.dormitoryId}"></span></td>
+                                    <td><span th:text="${record.departmentNumber}"></span></td>
+                                    <td><span th:text="${record.dormitoryNumber}"></span></td>
                                     <td><span th:text="${#dates.format(record.recordTime,'yyyy-MM-dd HH:mm:ss')}"></span></td>
                                     <td><span th:text="${record.remarks}"></span></td>
                                 </tr>
@@ -151,7 +151,6 @@
     </div>
 
 </div>
-
 
     <!-- Javascript -->
     <!-- Latest jQuery -->

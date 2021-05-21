@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>add Emp</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css"
+          href="css/style.css"/>
+</head>
+
+<body>
+<div id="wrap" align="center">
+    <div id="top_content">
+        <div id="header">
+            <div id="topheader">
+                <h1 id="title">
+                    <a href="#">添加页面</a>
+                </h1>
+            </div>
+            <div id="navigation">
+            </div>
+        </div>
+        <div id="content">
+            <p id="whereami">
+            </p>
+            <h1>
+                填写以下信息完成添加
+            </h1>
+            <form th:action="@{/student/addStudent}" method="post">
+                <table cellpadding="0" cellspacing="0" border="0"
+                       class="form_table">
+                    <tr>
+                        <td valign="middle" align="right">
+                            学号:
+                        </td>
+                        <td valign="middle" align="left">
+                            <input type="text" name="studentId">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="right">
+                            姓名:
+                        </td>
+                        <td valign="middle" align="left">
+                            <input type="text" class="inputgri" name="name"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="right">
+                            性别:
+                        </td>
+                        <td valign="middle" align="left">
+                            <input type="text" class="inputgri" name="sex"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="right">
+                            班级:
+                        </td>
+                        <td valign="middle" align="left">
+                            <input type="text" class="inputgri" name="studentClass"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="right">
+                            学院:
+                        </td>
+                        <td valign="middle" align="left">
+                            <input type="text" class="inputgri" name="college"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="right">
+                            寝室id:
+                        </td>
+                        <td valign="middle" align="left">
+                            <input type="text" class="inputgri" name="dormitoryId"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="right">
+                            床位号:
+                        </td>
+                        <td valign="middle" align="left">
+                            <input type="text" class="inputgri" name="bedNumber"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="right">
+                            电话号码:
+                        </td>
+                        <td valign="middle" align="left">
+                            <input type="text" class="inputgri" name="telephoneNumber"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="right">
+                            邮箱:
+                        </td>
+                        <td valign="middle" align="left">
+                            <input type="text" class="inputgri" name="email"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="right">
+                            入住日期:
+                        </td>
+                        <td valign="middle" align="left">
+                            <input type="date" class="inputgri" name="checkInDate"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="right">
+                            学籍状态:
+                        </td>
+                        <td valign="middle" align="left">
+                            <input type="text" class="inputgri" name="status"/>
+                        </td>
+                    </tr>
+                </table>
+                <p>
+                    <input type="submit" class="button" value="确认添加"/>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

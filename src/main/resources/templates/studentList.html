@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Student List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div id="wrap" align="center">
+    <div id="top_content">
+        <div id="header">
+            <div id="topheader">
+                <h1 id="title">
+                    <a href="#">主界面</a>
+                </h1>
+            </div>
+            <div id="navigation">
+            </div>
+        </div>
+        <div id="content">
+            <p id="whereami">
+            </p>
+            <h1>
+<!--                Welcome, <span th:text="${session.user.username}"></span>-->
+            </h1>
+            <a th:href="@{/student/findAll}">查询全部</a>
+            <form th:action="@{/student/findByDepartmentId}" method="get">
+                <input type="text" name="departmentId">
+                <input type="submit" value="按楼查询">
+            </form>
+            <form th:action="@{/student/findByCollege}" method="get">
+                <input type="text" name="college">
+                <input type="submit" value="按学院查询">
+            </form>
+            <form th:action="@{/student/findByStudentClass}" method="get">
+                <input type="text" name="studentClass">
+                <input type="submit" value="按班级查询">
+            </form>
+
+<!--            <a th:href="@{/student/findByCollege(college=${student.studentId})}">按学院查看</a>-->
+<!--            <a th:href="@{/student/findByStudentClass(studentClass=${student.studentId})}">按班级查看</a>-->
+            <table class="table" border="1px" align="center">
+                <tr class="table_header">
+                    <td>学号</td>
+                    <td>姓名</td>
+                    <td>性别</td>
+                    <td>班级</td>
+                    <td>学院</td>
+                    <td>寝室id</td>
+                    <td>床位号</td>
+                    <td>电话号码</td>
+                    <td>邮箱</td>
+                    <td>入住日期</td>
+                    <td>学籍状态</td>
+                    <td>登记时间</td>
+                    <td>操作</td>
+                </tr>
+                <tr th:class="${stuStatus.odd}?'row1':'row2'" th:each="student,stuStatus:${students}">
+                    <td><span th:text="${student.studentId}"></span></td>
+                    <td><span th:text="${student.name}"></span></td>
+                    <td><span th:text="${student.sex}"></span></td>
+                    <td><span th:text="${student.studentClass}"></span></td>
+                    <td><span th:text="${student.college}"></span></td>
+                    <td><span th:text="${student.dormitoryId}"></span></td>
+                    <td><span th:text="${student.bedNumber}"></span></td>
+                    <td><span th:text="${student.telephoneNumber}"></span></td>
+                    <td><span th:text="${student.email}"></span></td>
+                    <td><span th:text="${#dates.format(student.checkInDate,'yyyy-MM-dd')}"></span></td>
+                    <td><span th:text="${student.status}"></span></td>
+                    <td><span th:text="${#dates.format(student.recordTime,'yyyy-MM-dd HH:mm:ss')}"></span></td>
+                    <td>
+                        <a th:href="@{/student/findByStudentId(studentId=${student.studentId})}">修改</a>
+                    </td>
+                </tr>
+            </table>
+            <p>
+                <a th:href="@{/student/toAddStudent}">添加学生</a>
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

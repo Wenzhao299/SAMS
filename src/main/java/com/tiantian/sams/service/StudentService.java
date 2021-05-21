@@ -8,14 +8,23 @@ import java.util.List;
 
 public interface StudentService {
     //按楼查看
-    Student findByDepartmentId(Integer departmentId);
+    List<Student> findByDepartmentId(Integer departmentId);
 
     //按学院查看
-    Student findByCollege(String college);
+    List<Student> findByCollege(String college);
 
     //按班级查看
-    Student findByStudentClass(String studentClass);
+    List<Student> findByStudentClass(String studentClass);
 
     //查询全部
     List<Student> findAll();
+
+    //按学号查看
+    Student findByStudentId(String studentId);
+
+    //更新学生信息
+    void update(Student student);
+
+    //添加学生
+    void addStudent(Student student);
 }

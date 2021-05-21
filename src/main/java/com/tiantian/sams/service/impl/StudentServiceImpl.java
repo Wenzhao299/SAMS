@@ -1,5 +1,6 @@
 package com.tiantian.sams.service.impl;
 
+import com.tiantian.sams.dao.StudentDao;
 import com.tiantian.sams.model.Student;
 import com.tiantian.sams.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,25 +13,40 @@ import java.util.List;
 @Transactional
 public class StudentServiceImpl implements StudentService {
     @Autowired
-    private StudentService studentService;
+    private StudentDao studentDao;
 
     @Override
-    public Student findByDepartmentId(Integer departmentId) {
-        return studentService.findByDepartmentId(departmentId);
+    public List<Student> findByDepartmentId(Integer departmentId) {
+        return studentDao.findByDepartmentId(departmentId);
     }
 
     @Override
-    public Student findByCollege(String college) {
-        return studentService.findByCollege(college);
+    public List<Student> findByCollege(String college) {
+        return studentDao.findByCollege(college);
     }
 
     @Override
-    public Student findByStudentClass(String studentClass) {
-        return studentService.findByStudentClass(studentClass);
+    public List<Student> findByStudentClass(String studentClass) {
+        return studentDao.findByStudentClass(studentClass);
     }
 
     @Override
     public List<Student> findAll() {
-        return studentService.findAll();
+        return studentDao.findAll();
+    }
+
+    @Override
+    public Student findByStudentId(String studentId) {
+        return studentDao.findByStudentId(studentId);
+    }
+
+    @Override
+    public void update(Student student) {
+        studentDao.update(student);
+    }
+
+    @Override
+    public void addStudent(Student student) {
+        studentDao.addStudent(student);
     }
 }

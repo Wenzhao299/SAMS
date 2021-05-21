@@ -73,10 +73,6 @@ public class RecordController {
      */
     @GetMapping("/quireRecord")
     public String quireRecord(Model model) {
-//        List<Record> records = recordService.selectRecord();
-//        model.addAttribute("records", records);
-//        System.out.println(records);
-
         List<RecordView> records = recordService.selectRecordView();
         model.addAttribute("records", records);
         System.out.println(records);

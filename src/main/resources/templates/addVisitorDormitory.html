@@ -2,7 +2,7 @@
 <html xmlns:th="https://www.thymeleaf.org">
 
 <head>
-    <title>SAMS | 日常登记</title>
+    <title>SAMS | 访问学生</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -69,18 +69,18 @@
                         <ul class="metismenu">
                             <li><a th:href="@{/index.html}"><i class="icon-speedometer"></i><span>主面板</span></a></li>
                             <li class="header">用户功能</li>
-                            <li class="active">
+                            <li>
                                 <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>日常登记</span></a>
                                 <ul>
-                                    <li class="active"><a th:href="@{/record/loadAddRecordPage}"><i class="icon-paper-plane"></i><span>日常登记</span></a></li>
+                                    <li><a th:href="@{/record/loadAddRecordPage}"><i class="icon-paper-plane"></i><span>日常登记</span></a></li>
                                     <li><a th:href="@{/record/quireRecord}"><i class="icon-paper-plane"></i><span>日常登记查询</span></a></li>
                                 </ul>
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>访客登记</span></a>
                                 <ul>
                                     <li><a th:href="@{/addVisitorStudent.html}"><i class="icon-paper-plane"></i><span>访问学生</span></a></li>
-                                    <li><a th:href="@{/addVisitorDormitory.html}"><i class="icon-paper-plane"></i><span>访问寝室</span></a></li>
+                                    <li class="active"><a th:href="@{/addVisitorDormitory.html}"><i class="icon-paper-plane"></i><span>访问寝室</span></a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -97,12 +97,12 @@
             <div class="row clearfix">
                 <!-- 页面导航说明 -->
                 <div class="col-md-6 col-sm-12">
-                    <h2>日常登记查询</h2>
+                    <h2>访问学生登记</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#"><i class="fa fa-cube"></i></a></li>
                             <li class="breadcrumb-item"><a th:href="@{index.html}">SAMS</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">日常登记查询</li>
+                            <li class="breadcrumb-item active" aria-current="page">访问学生登记</li>
                         </ol>
                     </nav>
                 </div>
@@ -118,7 +118,7 @@
                     <div class="card">
 
                         <div class="header">
-                            <h2>日常登记 <small>记录晚出/晚归</small></h2>
+                            <h2>访问学生 <small>记录被访问学生的信息</small></h2>
                             <ul class="header-dropdown dropdown">                                
                                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
                             </ul>

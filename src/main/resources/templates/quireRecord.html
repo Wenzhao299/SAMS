@@ -45,7 +45,7 @@
             <div class="navbar-left">
                 <div class="navbar-brand">
                     <a class="small_menu_btn" href="javascript:void(0);"><i class="fa fa-align-left"></i></a>
-                    <a href="index.html"><span>SAMS</span></a>
+                    <a th:href="@{index.html}"><span>SAMS</span></a>
                 </div>
             </div>
 
@@ -55,7 +55,6 @@
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
                         <li><a href="page-login.html" class="icon-menu"><i class="fa fa-power-off"></i></a></li>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -69,10 +68,15 @@
                 <div class="tab-pane active" id="Home-icon">
                     <nav class="sidebar-nav sidebar-scroll">
                         <ul class="metismenu">
-                            <li><a th:href="@{index.html}"><i class="icon-speedometer"></i><span>主面板</span></a></li>
+                            <li><a th:href="@{/index.html}"><i class="icon-speedometer"></i><span>主面板</span></a></li>
                             <li class="header">用户功能</li>
-                            <li><a th:href="@{/record/loadAddRecordPage}"><i class="icon-paper-plane"></i><span>日常登记</span></a></li>
-                            <li class="active"><a th:href="@{/record/quireRecord}"><i class="icon-paper-plane"></i><span>日常登记查询</span></a></li>
+                            <li class="active">
+                                <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>日常登记</span></a>
+                                <ul>
+                                    <li><a th:href="@{/record/loadAddRecordPage}"><i class="icon-paper-plane"></i><span>日常登记</span></a></li>
+                                    <li class="active"><a th:href="@{/record/quireRecord}"><i class="icon-paper-plane"></i><span>日常登记查询</span></a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -91,7 +95,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#"><i class="fa fa-cube"></i></a></li>
-                            <li class="breadcrumb-item"><a href="index.html">SAMS</a></li>
+                            <li class="breadcrumb-item"><a th:href="@{index.html}">SAMS</a></li>
                             <li class="breadcrumb-item active" aria-current="page">日常登记查询</li>
                         </ol>
                     </nav>

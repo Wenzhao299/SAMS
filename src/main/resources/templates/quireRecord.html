@@ -125,45 +125,19 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr data-status="晚归">
-                                <td>
-                                    <span>01</span>
-                                </td>
-                                <td><span class="badge badge-warning ml-0 mr-0">晚归</span></td>
-                                <td><span>2021年5月20日 5:20</span></td>
-                                <td><span>王昊</span></td>
-                                <td><span>2018212168</span></td>
-                                <td><span>7号楼</span></td>
-                                <td><span>7S#624</span></td>
-                                <td><span>2021年5月20日 5:20</span></td>
-                                <td><span>无</span></td>
-                            </tr>
-                            <tr data-status="晚归">
-                                <td>
-                                    <span>01</span>
-                                </td>
-                                <td><span class="badge badge-warning ml-0 mr-0">晚归</span></td>
-                                <td><span>2021年5月20日 5:20</span></td>
-                                <td><span>王昊</span></td>
-                                <td><span>2018212168</span></td>
-                                <td><span>7号楼</span></td>
-                                <td><span>7S#624</span></td>
-                                <td><span>2021年5月20日 5:20</span></td>
-                                <td><span>无</span></td>
-                            </tr>
-                            <tr data-status="晚出">
-                                <td>
-                                    <span>01</span>
-                                </td>
-                                <td><span class="badge badge-warning ml-0 mr-0">晚出</span></td>
-                                <td><span>2021年5月20日 5:20</span></td>
-                                <td><span>王昊</span></td>
-                                <td><span>2018212168</span></td>
-                                <td><span>7号楼</span></td>
-                                <td><span>7S#624</span></td>
-                                <td><span>2021年5月20日 5:20</span></td>
-                                <td><span>无</span></td>
-                            </tr>
+                                <tr th:each="record:${records}" th:data-status="${record.type}" >
+                                    <td>
+                                        <span th:value="${record.recordId}"></span>
+                                    </td>
+                                    <td><span class="badge badge-warning ml-0 mr-0" th:value="${record.type}"></span></td>
+                                    <td><span th:value="${record.inAndOutTime}"></span></td>
+                                    <td><span th:value="${record.studentId}"></span></td>
+                                    <td><span th:value="${record.studentId}"></span></td>
+                                    <td><span th:value="${record.departmentId}"></span></td>
+                                    <td><span th:value="${record.dormitoryId}"></span></td>
+                                    <td><span th:value="${record.recordTime}"></span></td>
+                                    <td><span th:value="${record.remarks}"></span></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

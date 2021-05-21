@@ -4,6 +4,8 @@ import com.tiantian.sams.dao.DepartmentDao;
 import com.tiantian.sams.dao.DormitoryDao;
 import com.tiantian.sams.dao.RecordDao;
 import com.tiantian.sams.model.Record;
+import com.tiantian.sams.service.RecordService;
+import com.tiantian.sams.service.impl.RecordServiceImpl;
 import com.tiantian.sams.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +28,7 @@ import java.util.List;
 public class RecordController {
 
     @Autowired
-    private RecordDao recordDao;
+    private RecordService recordService = new RecordServiceImpl();
 
     @Autowired
     private DepartmentDao departmentDao;
@@ -62,7 +64,7 @@ public class RecordController {
     public String addRecord(Record record,
                             Model model) {
         record.setRecordTime(new Date());
-        int result = recordDao.insertRecord(record);
+        int result = recordService.insertRecord(record);
         if (result == 1)
             System.out.println("登记记录插入成功");
         return "index";
@@ -72,17 +74,10 @@ public class RecordController {
      * @author tiantian152
      */
     @GetMapping("/quireRecord")
-    public String quireRecord(@RequestParam("type") String type,
-                            @RequestParam("inAndOutTime")String inAndOutTime,
-                            @RequestParam("studentId")String studentId,
-                            @RequestParam("departmentId")int departmentId,
-                            @RequestParam("dormitoryId")int dormitoryId,
-                            @RequestParam("recordTime")String recordTime,
-                            @RequestParam("remarks")String remarks,
-                            Model model) {
-
-        List<Record> recordList = recordDao.selectRecord();
-        model.addAttribute("recordList", recordList);
-        return "index";
+    public String quireRecord(Model model) {
+        List<Record> records = recordService.selectRecord();
+        model.addAttribute("records", records);
+        System.out.println(records);
+        return "quireRecord";
     }
 }

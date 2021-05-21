@@ -8,12 +8,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.sql.Timestamp;
 import java.util.Date;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 /**
  * 学生表
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Student {
     private String studentId;       //学号
     private String name;            //姓名

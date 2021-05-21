@@ -1,0 +1,195 @@
+<!doctype html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>SAMS | 日常登记</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+        content="Qubes Bootstrap 4x admin is super flexible, powerful, clean &amp; modern responsive admin dashboard with unlimited possibilities.">
+    <meta name="author" content="GetBootstrap, design by: puffintheme.com">
+
+    <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
+    <!-- VENDOR CSS -->
+    <link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/vendor/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/vendor/animate-css/vivify.min.css}">
+
+    <link rel="stylesheet" th:href="@{/vendor/jquery-datatable/dataTables.bootstrap4.min.css}">
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" th:href="@{/css/site.min.css}">
+
+</head>
+
+
+<body class="theme-blue"></body>
+
+<!-- Page Loader -->
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="m-t-30"><i class="fa fa-cube font-25"></i></div>
+        <p>正在加载, 请稍等...</p>
+    </div>
+</div>
+
+<!-- Overlay For Sidebars -->
+<div class="overlay"></div>
+
+<div id="wrapper">
+    <!-- 顶部栏 -->
+    <nav class="navbar navbar-fixed-top">
+        <!-- 顶部栏容器 -->
+        <div class="container-fluid">
+            <!-- 左顶部栏 -->
+            <div class="navbar-left">
+                <div class="navbar-brand">
+                    <a class="small_menu_btn" href="javascript:void(0);"><i class="fa fa-align-left"></i></a>
+                    <a href="index.html"><span>SAMS</span></a>
+                </div>
+            </div>
+
+            <!-- 右顶部栏 -->
+            <div class="navbar-right">
+                <div id="navbar-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                        <li><a href="page-login.html" class="icon-menu"><i class="fa fa-power-off"></i></a></li>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 左边栏 -->
+    <div id="left-sidebar" class="sidebar">
+        <div class="sidebar_list">
+            <div class="tab-content" id="main-menu">
+                <div class="tab-pane active" id="Home-icon">
+                    <nav class="sidebar-nav sidebar-scroll">
+                        <ul class="metismenu">
+                            <li><a href="index.html"><i class="icon-speedometer"></i><span>主面板</span></a></li>
+                            <li class="header">用户功能</li>
+                            <li><a href="addRecord.html"><i class="icon-paper-plane"></i><span>日常登记</span></a></li>
+                            <li class="active"><a href="quireRecord.html"><i class="icon-paper-plane"></i><span>日常登记查询</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主页面部分 -->
+    <div id="main-content">
+        <!-- 主页面顶部 -->
+        <div class="block-header">
+            <div class="row clearfix">
+                <!-- 页面导航说明 -->
+                <div class="col-md-6 col-sm-12">
+                    <h2>日常登记查询</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-cube"></i></a></li>
+                            <li class="breadcrumb-item"><a href="index.html">SAMS</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">日常登记查询</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主页面主体部分 -->
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-lg-12">
+                    <div class="table-responsive invoice_list mb-4">
+                        <!-- 表格过滤器 -->
+                        <div class="text-left">
+                            <button type="button" class="btn btn-sm mb-1 btn-filter bg-default" data-target="all">All</button>
+                            <button type="button" class="btn btn-sm mb-1 btn-filter bg-green" data-target="晚出">晚出</button>
+                            <button type="button" class="btn btn-sm mb-1 btn-filter bg-orange" data-target="晚归">晚归</button>
+                        </div>
+                        <table class="table table-hover js-basic-example dataTable table-custom spacing8">
+                            <thead>
+                            <tr data-status="all">
+                                <th style="width: 20px;">#</th>
+                                <th style="width: 30px;">登记类型</th>
+                                <th style="width: 50px;">晚出或晚归时间</th>
+                                <th style="width: 30px;">姓名</th>
+                                <th style="width: 50px;">学号</th>
+                                <th style="width: 50px;">公寓楼号</th>
+                                <th style="width: 50px;">寝室号</th>
+                                <th style="width: 100px;">登记时间</th>
+                                <th style="width: 110px;">备注</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr data-status="晚归">
+                                <td>
+                                    <span>01</span>
+                                </td>
+                                <td><span class="badge badge-warning ml-0 mr-0">晚归</span></td>
+                                <td><span>2021年5月20日 5:20</span></td>
+                                <td><span>王昊</span></td>
+                                <td><span>2018212168</span></td>
+                                <td><span>7号楼</span></td>
+                                <td><span>7S#624</span></td>
+                                <td><span>2021年5月20日 5:20</span></td>
+                                <td><span>无</span></td>
+                            </tr>
+                            <tr data-status="晚归">
+                                <td>
+                                    <span>01</span>
+                                </td>
+                                <td><span class="badge badge-warning ml-0 mr-0">晚归</span></td>
+                                <td><span>2021年5月20日 5:20</span></td>
+                                <td><span>王昊</span></td>
+                                <td><span>2018212168</span></td>
+                                <td><span>7号楼</span></td>
+                                <td><span>7S#624</span></td>
+                                <td><span>2021年5月20日 5:20</span></td>
+                                <td><span>无</span></td>
+                            </tr>
+                            <tr data-status="晚出">
+                                <td>
+                                    <span>01</span>
+                                </td>
+                                <td><span class="badge badge-warning ml-0 mr-0">晚出</span></td>
+                                <td><span>2021年5月20日 5:20</span></td>
+                                <td><span>王昊</span></td>
+                                <td><span>2018212168</span></td>
+                                <td><span>7号楼</span></td>
+                                <td><span>7S#624</span></td>
+                                <td><span>2021年5月20日 5:20</span></td>
+                                <td><span>无</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+    <!-- Javascript -->
+    <!-- Latest jQuery -->
+    <script th:src="@{/vendor/jquery/jquery-3.3.1.min.js}"></script>
+
+    <!-- Bootstrap 4x JS  -->
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+    <script th:src="@{/bundles/vendorscripts.bundle.js}"></script>
+
+    <script th:src="@{/bundles/datatablescripts.bundle.js}"></script>
+
+    <script th:src="@{/js/common.js}"></script>
+    <script th:src="@{/js/pages/tables/invoice.js}"></script>
+    <script th:src="@{/js/pages/tables/table-filter.js}"></script>
+
+</body>
+
+</html>

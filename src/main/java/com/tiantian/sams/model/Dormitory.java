@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
  * 寝室表
  */
 public class Dormitory {
+
     private Integer dormitoryId;        //寝室id
     private Integer departmentId;       //公寓id
     private String dormitoryNumber;     //寝室号

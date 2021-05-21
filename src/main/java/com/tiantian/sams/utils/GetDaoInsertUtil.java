@@ -1,7 +1,6 @@
 package com.tiantian.sams.utils;
 
 import java.lang.reflect.Field;
-import java.util.Arrays;
 
 /**
  * 由于有的时候写Dao的语句很麻烦，干脆写个工具类

@@ -18,7 +18,7 @@ public interface DepartmentDao {
     /**
      * 查询所有的 Department 中 departmentId（公寓楼号） 信息
      * @author tiantian152
-     * @return Visitor实体类列表
+     * @return departmentIdList
      */
     @Select("select departmentId from department")
     public List<Integer> selectDepartmentId();

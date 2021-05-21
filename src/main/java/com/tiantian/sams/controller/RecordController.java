@@ -2,7 +2,6 @@ package com.tiantian.sams.controller;
 
 import com.tiantian.sams.dao.DepartmentDao;
 import com.tiantian.sams.dao.DormitoryDao;
-import com.tiantian.sams.dao.RecordDao;
 import com.tiantian.sams.model.Record;
 import com.tiantian.sams.service.RecordService;
 import com.tiantian.sams.service.impl.RecordServiceImpl;
@@ -12,9 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -67,7 +64,7 @@ public class RecordController {
         int result = recordService.insertRecord(record);
         if (result == 1)
             System.out.println("登记记录插入成功");
-        return "index";
+        return "redirect:quireRecord";
     }
 
     /**

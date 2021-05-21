@@ -68,10 +68,10 @@
                 <div class="tab-pane active" id="Home-icon">
                     <nav class="sidebar-nav sidebar-scroll">
                         <ul class="metismenu">
-                            <li><a href="index.html"><i class="icon-speedometer"></i><span>主面板</span></a></li>
+                            <li><a th:href="@{index.html}"><i class="icon-speedometer"></i><span>主面板</span></a></li>
                             <li class="header">用户功能</li>
-                            <li class="active"><a href="addRecord.html"><i class="icon-paper-plane"></i><span>日常登记</span></a></li>
-                            <!-- <li class="active"><a href="DataAccessingDetail.html"><i class="icon-paper-plane"></i><span>数据检索</span></a></li> -->
+                            <li class="active"><a th:href="@{/record/loadAddRecordPage}"><i class="icon-paper-plane"></i><span>日常登记</span></a></li>
+                            <li><a th:href="@{/record/quireRecord}"><i class="icon-paper-plane"></i><span>日常登记查询</span></a></li>
                         </ul>
                     </nav>
                 </div>

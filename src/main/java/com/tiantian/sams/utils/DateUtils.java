@@ -49,4 +49,15 @@ public class DateUtils {
         SimpleDateFormat df = new SimpleDateFormat("HH:mm");//设置日期格式
         return df.format(date);
     }
+
+    public static Date stringToDate(String s) {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");//设置日期格式
+        Date result = null;
+        try {
+            result = df.parse(s);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 }

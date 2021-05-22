@@ -29,4 +29,9 @@ public class VisitorServiceImpl implements VisitorService {
     public int insertVisitor(Visitor visitor) {
         return visitorDao.insertVisitor(visitor);
     }
+
+    @Override
+    public int updateVisitorEndTime(Visitor visitor) {
+        return visitorDao.updateVisitorEndTime(visitor);
+    }
 }

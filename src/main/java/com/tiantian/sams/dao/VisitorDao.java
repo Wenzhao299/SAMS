@@ -4,6 +4,7 @@ import com.tiantian.sams.model.Visitor;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -32,5 +33,13 @@ public interface VisitorDao {
     @Insert({"insert into visitor(visitorName, visitorTelephoneNumber, visitedStudentId, departmentId, dormitoryId, remarks, status, visitStartTime, visitEndTime, recordTime) " +
             "values(#{visitorName}, #{visitorTelephoneNumber}, #{visitedStudentId}, #{departmentId}, #{dormitoryId}, #{remarks}, #{status}, #{visitStartTime}, #{visitEndTime}, #{recordTime})"})
     public int insertVisitor(Visitor visitor);
+
+    /**
+     * 插入 访问结束时间
+     * @author tiantian152
+     * @return 插入结果
+     */
+    @Update("update visitor set status=#{status},visitEndTime=#{visitEndTime} where visitorId = #{visitorId}")
+    public int updateVisitorEndTime(Visitor visitor);
 
 }

@@ -1,6 +1,7 @@
 package com.tiantian.sams.service;
 
 import com.tiantian.sams.model.Visitor;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -23,4 +24,12 @@ public interface VisitorService {
      * @return 插入结果
      */
     public int insertVisitor(Visitor visitor);
+
+    /**
+     * 插入 访问结束时间
+     * @author tiantian152
+     * @return 插入结果
+     */
+    public int updateVisitorEndTime(Visitor visitor);
+
 }

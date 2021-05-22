@@ -101,12 +101,12 @@
             <div class="row clearfix">
                 <!-- 页面导航说明 -->
                 <div class="col-md-6 col-sm-12">
-                    <h2>访问学生登记</h2>
+                    <h2>访问学生结束</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#"><i class="fa fa-cube"></i></a></li>
                             <li class="breadcrumb-item"><a th:href="@{index.html}">SAMS</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">访问学生登记</li>
+                            <li class="breadcrumb-item active" aria-current="page">访问学生结束</li>
                         </ol>
                     </nav>
                 </div>
@@ -122,77 +122,44 @@
                     <div class="card">
 
                         <div class="header">
-                            <h2>访问学生 <small>记录被访问学生的信息</small></h2>
+                            <h2>访问学生结束 <small>更新访问学生状态</small></h2>
                             <ul class="header-dropdown dropdown">                                
                                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
                             </ul>
                         </div>
 
                         <div class="body">
-                            <form th:action="@{/record/addRecord}" method="post">
-                            <div class="demo-masked-input">
-                                <div class="row clearfix">
-                                        <!-- 登记类型（晚出、晚归） -->
+                            <form th:action="@{/visitor/updateVisitorEndTime}" method="post">
+                                <div class="demo-masked-input">
+                                    <div class="row clearfix">
+                                        <!-- 访问者姓名 -->
                                         <div class="col-lg-4 col-md-6">
-                                            <b>登记类型</b>
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="icon-flag"></i></span>
-                                                <select class="form-control" id="type" name="type">
-                                                    <option value="">-- 登记类型 --</option>
-                                                    <option value="晚出">晚出</option>
-                                                    <option value="晚归">晚归</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <!-- 晚出或晚归时间 -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <b>晚出或晚归时间</b>
-                                            <div class="input-group mb-3">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="icon-clock"></i></span>
-                                                </div>
-                                                <input type="datetime-local" class="form-control" placeholder="Ex: 2020-05-20 13:14:00" id="inAndOutTime" name="inAndOutTime">
-                                            </div>
-                                        </div>
-                                        <!-- 学号 -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <b>学号</b>
+                                            <b>访问学生事件ID</b>
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="icon-user"></i></span>
                                                 </div>
-                                                <input type="text" class="form-control" placeholder="Ex: 2018212168" id="studentId" name="studentId">
+                                                <input type="text" class="form-control" placeholder="Ex: 2" id="visitorId" name="visitorId">
                                             </div>
                                         </div>
-                                        <!-- 填写公寓楼号，获取公寓id -->
+                                        <!-- 访问者学号/员工号 -->
                                         <div class="col-lg-4 col-md-6">
-                                            <b>公寓楼号</b>
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fa fa-building-o"></i></span>
-                                                <select class="form-control" id="departmentId" name="departmentId">
-                                                    <option value="">-- 公寓楼号 --</option>
-                                                    <option value="3">翡翠湖校区3号楼</option>
-                                                    <option value="7">翡翠湖校区7号楼</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <!-- 填写寝室号，获取寝室id -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <b>寝室号</b>
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="icon-home"></i></span>
-                                                <select class="form-control" id="dormitoryId" name="dormitoryId">
-                                                    <option value="">-- 寝室号 --</option>
-                                                    <option value="3">3N#312</option>
-                                                    <option value="7">7S#624</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <!-- 备注 -->
-                                        <div class="col-lg-10 col-md-6">
-                                            <b>备注</b>
+                                            <b>访问者学号/员工号</b>
                                             <div class="input-group mb-3">
-                                                <input type="text" class="form-control" id="remarks" name="remarks" value="无">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="icon-user"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control" placeholder="Ex: 2018212168" id="visitorUserId" name="visitorUserId">
+                                            </div>
+                                        </div>
+                                        <!-- 来访结束时间 -->
+                                        <div class="col-lg-4 col-md-6">
+                                            <b>来访结束时间</b>
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="icon-clock"></i></span>
+                                                </div>
+                                                <input type="datetime-local" class="form-control" placeholder="Ex: 2020-05-20 13:14:00" id="visitEndTime" name="visitEndTime">
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-round btn-block">提交</button>

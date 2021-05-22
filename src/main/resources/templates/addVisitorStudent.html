@@ -80,7 +80,11 @@
                                 <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>访客登记</span></a>
                                 <ul>
                                     <li class="active"><a th:href="@{/addVisitorStudent.html}"><i class="icon-paper-plane"></i><span>访问学生</span></a></li>
+                                    <li><a th:href="@{/updateVisitorStudentEndTimeAndStatus.html}"><i class="icon-paper-plane"></i><span>访问学生结束</span></a></li>
                                     <li><a th:href="@{/addVisitorDormitory.html}"><i class="icon-paper-plane"></i><span>访问寝室</span></a></li>
+                                    <li><a th:href="@{/updateVisitorDormitoryEndTimeAndStatus.html}"><i class="icon-paper-plane"></i><span>访问寝室结束</span></a></li>
+                                    <li><a th:href="@{/#}"><i class="icon-paper-plane"></i><span>访问学生记录查询</span></a></li>
+                                    <li><a th:href="@{/#}"><i class="icon-paper-plane"></i><span>访问寝室记录查询</span></a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -170,25 +174,6 @@
                                         </div>
                                         <!-- 公寓Id -->
                                         <!-- 寝室Id -->
-                                        <!-- 备注 -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <b>备注</b>
-                                            <div class="input-group mb-3">
-                                                <input type="text" class="form-control" id="remarks" name="remarks" value="无">
-                                            </div>
-                                        </div>
-                                        <!-- 状态 (访问中、访问结束) -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <b>状态</b>
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fa fa-building-o"></i></span>
-                                                <select class="form-control" id="status" name="status">
-                                                    <option value="">-- 状态 --</option>
-                                                    <option value="访问中">访问中</option>
-                                                    <option value="访问结束">访问结束</option>
-                                                </select>
-                                            </div>
-                                        </div>
                                         <!-- 来访开始时间 -->
                                         <div class="col-lg-4 col-md-6">
                                             <b>来访开始时间</b>
@@ -199,26 +184,45 @@
                                                 <input type="datetime-local" class="form-control" placeholder="Ex: 2020-05-20 13:14:00" id="visitStartTime" name="visitStartTime">
                                             </div>
                                         </div>
+                                        <!-- 备注 -->
+                                        <div class="col-lg-4 col-md-6">
+                                            <b>备注</b>
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" id="remarks" name="remarks" value="无">
+                                            </div>
+                                        </div>
+                                        <!-- 状态 (访问中、访问结束) -->
+<!--                                        <div class="col-lg-4 col-md-6">-->
+<!--                                            <b>状态</b>-->
+<!--                                            <div class="input-group-prepend">-->
+<!--                                                <span class="input-group-text"><i class="fa fa-building-o"></i></span>-->
+<!--                                                <select class="form-control" id="status" name="status">-->
+<!--                                                    <option value="">&#45;&#45; 状态 &#45;&#45;</option>-->
+<!--                                                    <option value="访问中">访问中</option>-->
+<!--                                                    <option value="访问结束">访问结束</option>-->
+<!--                                                </select>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
                                         <!-- 来访结束时间 -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <b>来访结束时间</b>
-                                            <div class="input-group mb-3">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="icon-clock"></i></span>
-                                                </div>
-                                                <input type="datetime-local" class="form-control" placeholder="Ex: 2020-05-20 13:14:00" id="visitEndTime" name="visitEndTime">
-                                            </div>
-                                        </div>
+<!--                                        <div class="col-lg-4 col-md-6">-->
+<!--                                            <b>来访结束时间</b>-->
+<!--                                            <div class="input-group mb-3">-->
+<!--                                                <div class="input-group-prepend">-->
+<!--                                                    <span class="input-group-text"><i class="icon-clock"></i></span>-->
+<!--                                                </div>-->
+<!--                                                <input type="datetime-local" class="form-control" placeholder="Ex: 2020-05-20 13:14:00" id="visitEndTime" name="visitEndTime">-->
+<!--                                            </div>-->
+<!--                                        </div>-->
                                         <!-- 登记时间 -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <b>登记时间</b>
-                                            <div class="input-group mb-3">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="icon-clock"></i></span>
-                                                </div>
-                                                <input type="datetime-local" class="form-control" placeholder="Ex: 2020-05-20 13:14:00" id="recordTime" name="recordTime">
-                                            </div>
-                                        </div>
+<!--                                        <div class="col-lg-4 col-md-6">-->
+<!--                                            <b>登记时间</b>-->
+<!--                                            <div class="input-group mb-3">-->
+<!--                                                <div class="input-group-prepend">-->
+<!--                                                    <span class="input-group-text"><i class="icon-clock"></i></span>-->
+<!--                                                </div>-->
+<!--                                                <input type="datetime-local" class="form-control" placeholder="Ex: 2020-05-20 13:14:00" id="recordTime" name="recordTime">-->
+<!--                                            </div>-->
+<!--                                        </div>-->
                                         <button type="submit" class="btn btn-primary btn-round btn-block">提交</button>
                                     </div>
                                 </div>

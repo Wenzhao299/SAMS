@@ -24,13 +24,8 @@ public class DormitoryServiceImpl implements DormitoryService {
     private StudentDao studentDao;
 
     @Override
-    public void dormitoryCheckin(DormitoryCheckInAndOut checkin) {
-        dormitoryDao.dormitoryCheckin(checkin);
-    }
-
-    @Override
-    public void dormitoryCheckout(DormitoryCheckInAndOut checkout) {
-        dormitoryDao.dormitoryCheckout(checkout);
+    public void dormitoryCheckInAndOut(DormitoryCheckInAndOut check) {
+        dormitoryDao.dormitoryCheckInAndOut(check);
     }
 
     @Override
@@ -46,6 +41,11 @@ public class DormitoryServiceImpl implements DormitoryService {
     @Override
     public void dormitoryUpdate(Dormitory dormitory) {
         dormitoryDao.dormitoryUpdate(dormitory);
+    }
+
+    @Override
+    public Dormitory findByDorId(Integer dormitoryId) {
+        return dormitoryDao.findByDorId(dormitoryId);
     }
 
     @Override

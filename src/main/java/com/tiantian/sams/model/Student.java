@@ -22,9 +22,9 @@ public class Student {
     private String college;             //学院
     private String campus;              //校区，来自stuDorInfoView视图
     private Integer departmentId;       //公寓id，来自stuDorInfoView视图
-    private Integer departmentNumber;   //公寓号，来自stuDorInfoView视图
+    private String departmentNumber;   //公寓号，来自stuDorInfoView视图
     private Integer dormitoryId;        //寝室id
-    private Integer dormitoryNumber;    //寝室号，来自stuDorInfoView视图
+    private String dormitoryNumber;    //寝室号，来自stuDorInfoView视图
     private Integer bedNumber;          //床位号
     private String telephoneNumber;     //电话号码
     private String email;               //邮箱

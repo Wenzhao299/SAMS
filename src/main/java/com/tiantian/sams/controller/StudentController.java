@@ -2,6 +2,7 @@ package com.tiantian.sams.controller;
 
 import com.tiantian.sams.dao.StudentDao;
 import com.tiantian.sams.model.Dormitory;
+import com.tiantian.sams.model.DormitoryChange;
 import com.tiantian.sams.model.DormitoryCheckInAndOut;
 import com.tiantian.sams.model.Student;
 import com.tiantian.sams.service.DormitoryService;
@@ -31,6 +32,9 @@ public class StudentController {
     @Autowired
     private DormitoryService dormitoryService;
 
+    private Student stu;
+    private Dormitory dor;
+
     @GetMapping("/findAll")
     public String findAll(Model model){
         //List<Student> students = studentService.findAll();
@@ -43,6 +47,8 @@ public class StudentController {
     @GetMapping("findByStudentId")
     public String findByStudentId(String studentId, Model model){
         Student student = studentService.findByStudentId(studentId);
+        stu = student;
+        dor = dormitoryService.findByDorId(stu.getDormitoryId());
         student.setDepartmentId(dormitoryService.findViewByStudentId(studentId).getDepartmentId());
         model.addAttribute("student",student);
         return "updateStudent";
@@ -70,32 +76,59 @@ public class StudentController {
     }
 
     @PostMapping("/update")
-    public String update(Student student, DormitoryCheckInAndOut dormitoryCheckInAndOut){
-        if(student.getBedStatus()==0) {
-            dormitoryCheckInAndOut.setOperateName("退宿");
-            dormitoryCheckInAndOut.setDormitoryId(student.getDormitoryId());
-            dormitoryCheckInAndOut.setRecordTime(new Date());
-            dormitoryCheckInAndOut.setInAndOutDate(new Date());
-            dormitoryService.dormitoryCheckout(dormitoryCheckInAndOut);
+    public String update(Student student, DormitoryCheckInAndOut check, DormitoryChange change){
+        //更新dormitoryCheckInAndOut
+        if (student.getBedStatus()!=stu.getBedStatus() && student.getBedStatus()==0) {
+            check.setOperateName("退宿");
+            check.setDormitoryId(student.getDormitoryId());
+            check.setRecordTime(new Date());
+            check.setInAndOutDate(new Date());
+            dormitoryService.dormitoryCheckInAndOut(check);
+        }else if (student.getBedStatus()!=stu.getBedStatus() && student.getBedStatus()==1) {
+            check.setOperateName("入住");
+            check.setDormitoryId(student.getDormitoryId());
+            check.setRecordTime(new Date());
+            check.setInAndOutDate(new Date());
+            dormitoryService.dormitoryCheckInAndOut(check);
+        }
+        //更新dormitoryChange
+        if (student.getDepartmentId()!=stu.getDepartmentId() || student.getDormitoryId()!=stu.getDormitoryId() || student.getBedNumber()!=stu.getBedNumber()) {
+            switch (stu.getBedNumber()) {
+                case 1:dor.setBedStatus1(0);break;
+                case 2:dor.setBedStatus2(0);break;
+                case 3:dor.setBedStatus3(0);break;
+                case 4:dor.setBedStatus4(0);break;
+            }
+            dormitoryService.dormitoryUpdate(dor);
+            change.setChangeDate(new Date());
+            change.setRecordTime(new Date());
+            dormitoryService.dormitoryChange(change);
         }
         studentService.update(student);
         return "redirect:/student/findAll";
     }
 
     @PostMapping("/addStudent")
-    public String addStudent(Student student, DormitoryCheckInAndOut dormitoryCheckInAndOut) throws ParseException {
+    public String addStudent(Student student, DormitoryCheckInAndOut check) {
         student.setRecordTime(new Date());
         studentService.addStudent(student);
 
-        dormitoryCheckInAndOut.setOperateName("入住");
-        dormitoryCheckInAndOut.setRecordTime(new Date());
-        dormitoryCheckInAndOut.setInAndOutDate(student.getCheckInDate());
-        dormitoryService.dormitoryCheckin(dormitoryCheckInAndOut);
+        check.setOperateName("入住");
+        check.setDormitoryId(student.getDormitoryId());
+        check.setRecordTime(new Date());
+        check.setInAndOutDate(new Date());
+        dormitoryService.dormitoryCheckInAndOut(check);
+
         return "redirect:/student/findAll";
     }
 
     @GetMapping("/toAddStudent")
     public String toAddStudent(){
         return "/addStudent";
+    }
+
+    @GetMapping("/toDormitoryExchange")
+    public String toDormitoryExchange(){
+        return "/exchangeStudent";
     }
 }

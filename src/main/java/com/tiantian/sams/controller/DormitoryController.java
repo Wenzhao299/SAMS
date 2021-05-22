@@ -28,7 +28,7 @@ public class DormitoryController {
     public String dormitoryCheckin(DormitoryCheckInAndOut checkin) {
         checkin.setOperateName("入住");
         checkin.setRecordTime(new Date());
-        dormitoryService.dormitoryCheckin(checkin);
+        dormitoryService.dormitoryCheckInAndOut(checkin);
         return "redirect:/student/findAll";
     }
 
@@ -36,12 +36,13 @@ public class DormitoryController {
     public String dormitoryCheckout(DormitoryCheckInAndOut checkout) {
         checkout.setOperateName("退宿");
         checkout.setRecordTime(new Date());
-        dormitoryService.dormitoryCheckout(checkout);
+        dormitoryService.dormitoryCheckInAndOut(checkout);
         return "redirect:/student/findAll";
     }
 
     @PostMapping("/dormitoryChange")
     public String dormitoryChange(DormitoryChange change) {
+        change.setChangeDate(new Date());
         change.setRecordTime(new Date());
         dormitoryService.dormitoryChange(change);
         return "redirect:/student/findAll";
@@ -49,6 +50,7 @@ public class DormitoryController {
 
     @GetMapping("/dormitoryExchange")
     public String dormitoryExchange(DormitoryExchange exchange) {
+        exchange.setExchangeDate(new Date());
         exchange.setRecordTime(new Date());
         dormitoryService.dormitoryExchange(exchange);
         return "redirect:/student/findAll";

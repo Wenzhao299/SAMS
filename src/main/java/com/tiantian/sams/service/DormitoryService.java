@@ -12,11 +12,8 @@ import java.util.List;
  * Date: 2021/5/21
  */
 public interface DormitoryService {
-    //入住
-    void dormitoryCheckin(DormitoryCheckInAndOut checkin);
-
-    //退宿
-    void dormitoryCheckout(DormitoryCheckInAndOut checkout);
+    //入住、退宿
+    void dormitoryCheckInAndOut(DormitoryCheckInAndOut checkout);
 
     //调宿change
     void dormitoryChange(DormitoryChange change);
@@ -24,8 +21,11 @@ public interface DormitoryService {
     //换宿exchange
     void dormitoryExchange(DormitoryExchange exchange);
 
-    //更新寝室表的已入住数、入住状态
+    //更新寝室表的入住状态
     void dormitoryUpdate(Dormitory dormitory);
+
+    //通过寝室id查询寝室表
+    Dormitory findByDorId(Integer dormitoryId);
 
     //根据学号查询视图
     Student findViewByStudentId(String studentId);

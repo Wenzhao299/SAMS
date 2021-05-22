@@ -16,6 +16,6 @@ public class Department {
     private int departmentId;               // 公寓id
     private String departmentNumber;        // 公寓楼号
     private String campus;                  // 公寓校区
-    private String floorNumber;             // 公寓楼层数
-    private String dormitoryNumber;         // 公寓寝室数
+    private Integer floorNumber;            // 公寓楼层数
+    private Integer dormitoryNumber;        // 公寓寝室数
 }

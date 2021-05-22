@@ -3,8 +3,7 @@
 <head>
     <title>add Emp</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" type="text/css"
-          href="css/style.css"/>
+<!--    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>-->
 </head>
 
 <body>
@@ -70,6 +69,14 @@
                     </tr>
                     <tr>
                         <td valign="middle" align="right">
+                            公寓id:
+                        </td>
+                        <td valign="middle" align="left">
+                            <input type="text" class="inputgri" name="departmentId"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="right">
                             寝室id:
                         </td>
                         <td valign="middle" align="left">
@@ -105,7 +112,15 @@
                             入住日期:
                         </td>
                         <td valign="middle" align="left">
-                            <input type="date" class="inputgri" name="checkInDate"/>
+                            <input type="date" class="inputgri" id="checkInDate" name="checkInDate"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="right">
+                            入住状态:
+                        </td>
+                        <td valign="middle" align="left">
+                            <input type="text" class="inputgri" name="bedStatus"/>
                         </td>
                     </tr>
                     <tr>
@@ -113,16 +128,29 @@
                             学籍状态:
                         </td>
                         <td valign="middle" align="left">
-                            <input type="text" class="inputgri" name="status"/>
+                            <input type="text" class="inputgri" name="stuStatus"/>
                         </td>
                     </tr>
+<!--                    <tr>-->
+<!--                        <td valign="middle" align="right">-->
+<!--                            入住或退宿日期:-->
+<!--                        </td>-->
+<!--                        <td valign="middle" align="left">-->
+<!--                            <input type="hidden" class="inputgri" id="inAndOutDate" name="inAndOutDate"/>-->
+<!--                        </td>-->
+<!--                    </tr>-->
                 </table>
                 <p>
-                    <input type="submit" class="button" value="确认添加"/>
+                    <input type="submit" class="button" value="确认添加" onclick="inAndOutDate()"/>
                 </p>
             </form>
         </div>
     </div>
 </div>
+<!--<script>-->
+<!--    function inAndOutDate(){-->
+<!--        document.getElementById("inAndOutDate").value = document.getElementById("checkInDate").value;-->
+<!--    }-->
+<!--</script>-->
 </body>
 </html>

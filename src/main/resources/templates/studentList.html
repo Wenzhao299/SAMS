@@ -3,7 +3,7 @@
 <head>
     <title>Student List</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+<!--    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>-->
 </head>
 <body>
 <div id="wrap" align="center">
@@ -46,27 +46,33 @@
                     <td>性别</td>
                     <td>班级</td>
                     <td>学院</td>
-                    <td>寝室id</td>
+                    <td>校区</td>
+                    <td>公寓楼号</td>
+                    <td>寝室号</td>
                     <td>床位号</td>
                     <td>电话号码</td>
                     <td>邮箱</td>
                     <td>入住日期</td>
+                    <td>入住状态</td>
                     <td>学籍状态</td>
                     <td>登记时间</td>
                     <td>操作</td>
                 </tr>
-                <tr th:class="${stuStatus.odd}?'row1':'row2'" th:each="student,stuStatus:${students}">
+                <tr th:class="${stuStatus.odd}?'row1':'row2'" th:each="student,stuStatus:${studentsView}">
                     <td><span th:text="${student.studentId}"></span></td>
                     <td><span th:text="${student.name}"></span></td>
                     <td><span th:text="${student.sex}"></span></td>
                     <td><span th:text="${student.studentClass}"></span></td>
                     <td><span th:text="${student.college}"></span></td>
-                    <td><span th:text="${student.dormitoryId}"></span></td>
+                    <td><span th:text="${student.campus}"></span></td>
+                    <td><span th:text="${student.departmentNumber}"></span></td>
+                    <td><span th:text="${student.dormitoryNumber}"></span></td>
                     <td><span th:text="${student.bedNumber}"></span></td>
                     <td><span th:text="${student.telephoneNumber}"></span></td>
                     <td><span th:text="${student.email}"></span></td>
                     <td><span th:text="${#dates.format(student.checkInDate,'yyyy-MM-dd')}"></span></td>
-                    <td><span th:text="${student.status}"></span></td>
+                    <td><span th:text="${student.bedStatus}"></span></td>
+                    <td><span th:text="${student.stuStatus}"></span></td>
                     <td><span th:text="${#dates.format(student.recordTime,'yyyy-MM-dd HH:mm:ss')}"></span></td>
                     <td>
                         <a th:href="@{/student/findByStudentId(studentId=${student.studentId})}">修改</a>

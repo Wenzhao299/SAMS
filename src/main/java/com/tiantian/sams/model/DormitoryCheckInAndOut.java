@@ -15,10 +15,12 @@ public class DormitoryCheckInAndOut {
     private Integer operateId;      //操作id
     private String operateName;     //操作名称（入住、退宿）
     private String studentId;       //学号
+    private Integer departmentId;   //公寓id
     private Integer dormitoryId;    //寝室id
+    private Integer bedNumber;      //床位号
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date inAndOutDate;      //入住或退宿日期
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date inAndOutTime; //入住或退宿时间
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date recordTime;   //登记时间
+    private Date recordTime;        //登记时间
     private String remarks;         //备注
 }

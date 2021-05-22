@@ -3,7 +3,7 @@
 <head>
     <title>Update Student</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+<!--    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>-->
 </head>
 
 <body>
@@ -71,10 +71,26 @@
                     </tr>
                     <tr>
                         <td valign="middle" align="right">
-                            寝室id:
+                            校区:
                         </td>
                         <td valign="middle" align="left">
-                            <input type="text" class="inputgri" name="dormitoryId" th:value="${student.dormitoryId}"/>
+                            <input type="text" class="inputgri" name="campus" th:value="${student.campus}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="right">
+                            公寓号:
+                        </td>
+                        <td valign="middle" align="left">
+                            <input type="text" class="inputgri" name="departmentNumber" th:value="${student.departmentNumber}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="right">
+                            寝室号:
+                        </td>
+                        <td valign="middle" align="left">
+                            <input type="text" class="inputgri" name="dormitoryNumber" th:value="${student.dormitoryId}"/>
                         </td>
                     </tr>
                     <tr>
@@ -111,10 +127,18 @@
                     </tr>
                     <tr>
                         <td valign="middle" align="right">
+                            入住状态:
+                        </td>
+                        <td valign="middle" align="left">
+                            <input type="text" class="inputgri" name="bedStatus" th:value="${student.bedStatus}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="right">
                             学籍状态:
                         </td>
                         <td valign="middle" align="left">
-                            <input type="text" class="inputgri" name="status" th:value="${student.status}"/>
+                            <input type="text" class="inputgri" name="stuStatus" th:value="${student.stuStatus}"/>
                         </td>
                     </tr>
                     <tr>

@@ -24,9 +24,6 @@ public class DormitoryController {
     @Autowired
     private DormitoryService dormitoryService;
 
-    @Autowired
-    private StudentService studentService;
-
     @PostMapping("/dormitoryCheckin")
     public String dormitoryCheckin(DormitoryCheckInAndOut checkin) {
         checkin.setOperateName("入住");
@@ -44,11 +41,9 @@ public class DormitoryController {
     }
 
     @PostMapping("/dormitoryChange")
-    public String dormitoryChange(DormitoryChange change, Student student) {
+    public String dormitoryChange(DormitoryChange change) {
         change.setRecordTime(new Date());
         dormitoryService.dormitoryChange(change);
-//        student
-        studentService.update(student);
         return "redirect:/student/findAll";
     }
 

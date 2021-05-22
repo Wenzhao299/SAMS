@@ -26,16 +26,17 @@ public interface StudentDao {
     List<Student> findAll();
 
     //按学号查看
-    @Select("select * from student where studentId = #{studentId}")
+    @Select("select * from stuDorInfoView where studentId = #{studentId}")
     Student findByStudentId(String studentId);
 
     //更新学生信息
-    @Update("update student set name=#{name},sex=#{sex},studentClass=#{studentClass},college=#{college},dormitoryId=#{dormitoryId},bedNumber=#{bedNumber}," +
-            "telephoneNumber=#{telephoneNumber},email=#{email},checkInDate=#{checkInDate},status=#{status},recordTime=#{recordTime} where studentId = #{studentId}")
+    @Update("update student set name=#{name},sex=#{sex},studentClass=#{studentClass},college=#{college}," +
+            "dormitoryId=#{dormitoryId},bedNumber=#{bedNumber},telephoneNumber=#{telephoneNumber},email=#{email}," +
+            "checkInDate=#{checkInDate},bedStatus=#{bedStatus},stuStatus=#{stuStatus},recordTime=#{recordTime} where studentId = #{studentId}")
     void update(Student student);
 
     //增加学生
     @Insert("insert into student values(#{studentId},#{name},#{sex},#{studentClass},#{college}," +
-            "#{dormitoryId},#{bedNumber},#{telephoneNumber},#{email},#{checkInDate},#{status},#{recordTime})")
+            "#{dormitoryId},#{bedNumber},#{telephoneNumber},#{email},#{checkInDate},#{bedStatus},#{stuStatus},#{recordTime})")
     void addStudent(Student student);
 }

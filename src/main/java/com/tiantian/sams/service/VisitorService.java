@@ -1,6 +1,8 @@
 package com.tiantian.sams.service;
 
 import com.tiantian.sams.model.Visitor;
+import com.tiantian.sams.model.VisitorStudentView;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
@@ -17,6 +19,13 @@ public interface VisitorService {
      * @return Visitor实体类列表
      */
     public List<Visitor> selectVisitor();
+
+    /**
+     * 查询所有的 visitorView 信息
+     * @author tiantian152
+     * @return VisitorView实体类列表
+     */
+    public List<VisitorStudentView> selectVisitorStudentView();
 
     /**
      * 插入 visitor 信息

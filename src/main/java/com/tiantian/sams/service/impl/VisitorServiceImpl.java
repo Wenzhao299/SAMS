@@ -2,6 +2,7 @@ package com.tiantian.sams.service.impl;
 
 import com.tiantian.sams.dao.VisitorDao;
 import com.tiantian.sams.model.Visitor;
+import com.tiantian.sams.model.VisitorStudentView;
 import com.tiantian.sams.service.VisitorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,11 @@ public class VisitorServiceImpl implements VisitorService {
     @Override
     public List<Visitor> selectVisitor() {
         return visitorDao.selectVisitor();
+    }
+
+    @Override
+    public List<VisitorStudentView> selectVisitorStudentView() {
+        return visitorDao.selectVisitorStudentView();
     }
 
     @Override

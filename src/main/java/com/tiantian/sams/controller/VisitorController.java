@@ -1,7 +1,9 @@
 package com.tiantian.sams.controller;
 
 import com.tiantian.sams.dao.VisitorDao;
+import com.tiantian.sams.model.RecordView;
 import com.tiantian.sams.model.Visitor;
+import com.tiantian.sams.model.VisitorStudentView;
 import com.tiantian.sams.service.VisitorService;
 import com.tiantian.sams.service.impl.VisitorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * VisitorController
@@ -35,10 +38,11 @@ public class VisitorController {
         visitor.setVisitEndTime(new Date(0));
         visitor.setDepartmentId(3);
         visitor.setDormitoryId(3);
+        visitor.setStatus("访问中");
         int result = visitorService.insertVisitor(visitor);
         if (result == 1)
             System.out.println("插入成功");
-        return "redirect:quireRecord";
+        return "redirect:loadVisitorStudent";
     }
 
     /**
@@ -53,7 +57,20 @@ public class VisitorController {
         int result = visitorService.updateVisitorEndTime(visitor);
         if (result == 1)
             System.out.println("插入成功");
-        return "redirect:quireRecord";
+        return "redirect:loadVisitorStudent";
     }
+
+    /**
+     * 加载 访问学生记录查询 页面
+     * @author tiantian152
+     */
+    @RequestMapping("/loadVisitorStudent")
+    public String loadVisitorStudent(Model model) {
+        List<VisitorStudentView> visitors = visitorService.selectVisitorStudentView();
+        model.addAttribute("visitors", visitors);
+        System.out.println(visitors);
+        return "quireVisitorStudent";
+    }
+
 
 }

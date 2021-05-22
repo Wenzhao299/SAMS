@@ -1,6 +1,7 @@
 package com.tiantian.sams.dao;
 
 import com.tiantian.sams.model.Visitor;
+import com.tiantian.sams.model.VisitorStudentView;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -26,6 +27,14 @@ public interface VisitorDao {
     public List<Visitor> selectVisitor();
 
     /**
+     * 查询所有的 visitorView 信息
+     * @author tiantian152
+     * @return VisitorView实体类列表
+     */
+    @Select("select * from visitorStudentView")
+    public List<VisitorStudentView> selectVisitorStudentView();
+
+    /**
      * 插入 visitor 信息
      * @author tiantian152
      * @return 插入结果
@@ -41,5 +50,4 @@ public interface VisitorDao {
      */
     @Update("update visitor set status=#{status},visitEndTime=#{visitEndTime} where visitorId = #{visitorId}")
     public int updateVisitorEndTime(Visitor visitor);
-
 }

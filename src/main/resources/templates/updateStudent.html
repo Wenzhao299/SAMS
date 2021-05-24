@@ -77,10 +77,10 @@
                                     <li><a th:href="@{/studentList.html}"><i class="icon-paper-plane"></i><span>按班级查看</span></a></li>
                                 </ul>
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>日常调换宿</span></a>
                                 <ul>
-                                    <li><a th:href="@{/updateStudent.html}"><i class="icon-paper-plane"></i><span>入住</span></a></li>
+                                    <li class="active"><a th:href="@{/updateStudent.html}"><i class="icon-paper-plane"></i><span>入住</span></a></li>
                                     <li><a th:href="@{/updateStudent.html}"><i class="icon-paper-plane"></i><span>调宿</span></a></li>
                                     <li><a th:href="@{/exchangeStudent.html}"><i class="icon-paper-plane"></i><span>换宿</span></a></li>
                                     <li><a th:href="@{/studentList.html}"><i class="icon-paper-plane"></i><span>退宿</span></a></li>
@@ -116,11 +116,11 @@
                                     <li><a th:href="@{/#}"><i class="icon-paper-plane"></i><span>访问寝室记录查询</span></a></li>
                                 </ul>
                             </li>
-                            <li class="active">
+                            <li>
                                 <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>宿舍维修</span></a>
                                 <ul>
                                     <li><a th:href="@{/addRepair.html}"><i class="icon-paper-plane"></i><span>添加维修请求</span></a></li>
-                                    <li class="active"><a th:href="@{/updateRepairStartTime.html}"><i class="icon-paper-plane"></i><span>维修开始登记</span></a></li>
+                                    <li><a th:href="@{/updateRepairStartTime.html}"><i class="icon-paper-plane"></i><span>维修开始登记</span></a></li>
                                     <li><a th:href="@{/updateRepairEndTime.html}"><i class="icon-paper-plane"></i><span>维修结束登记</span></a></li>
                                     <li><a th:href="@{/repair/loadRepair}"><i class="icon-paper-plane"></i><span>维修记录查询</span></a></li>
                                 </ul>
@@ -153,301 +153,112 @@
 
         <!-- 主页面主体部分 -->
         <div class="container-fluid">
-
-            <!-- Color Pickers -->
             <div class="row clearfix">
+
                 <!-- 输入学号查询学生信息 -->
                 <div class="card">
-                    <div class="col-lg-12">
-                        <div class="body">
-                            <form th:action="@{/student/findByStudentId}" method="get">
-                                <div class="input-group">
-                                    <input class="custom-control-input" id="studentId" name="studentId">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="submit">查询</button>
-                                    </div>
-                                </div>
-                            </form>
+                    <div class="header">
+                        <h2>学生信息查询</h2>
+                    </div>
+                    <div class="body">
+                        <form id="basic-form" method="get" th:action="@{/student/findByStudentId}" novalidate>
+                            <div class="form-group">
+                                <label>学号</label>
+                                <input type="text" class="form-control" id="studentId" name="studentId" required>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-primary">查询</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <!-- 展示学生详细信息的表格 -->
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-custom spacing5 mb-3">
+                                    <thead>
+                                    <tr>
+                                        <th class="hidden-sm-down text-center" style="width: 120px;">条目</th>
+                                        <th class="hidden-sm-down text-center" style="width: 120px;">数据</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">学号</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.studentId}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">姓名</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.name}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">性别</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.sex}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">班级</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.studentClass}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">学院</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.college}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">校区</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.campus}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">公寓楼号</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.departmentNumber}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">寝室号</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.dormitoryNumber}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">床位号</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.bedNumber}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">电话号码</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.telephoneNumber}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">邮箱</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.email}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">入住日期</td>
+                                        <td class="hidden-sm-down text-center" th:text="${#dates.format(student.checkInDate,'yyyy-MM-dd')}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">入住状态</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.bedStatus}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">学籍状态</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.stuStatus}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">登记时间</td>
+                                        <td class="hidden-sm-down text-center" th:text="${#dates.format(student.recordTime,'yyyy-MM-dd HH:mm:ss')}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">操作</td>
+                                        <td class="hidden-sm-down text-center">
+                                            <a th:href="@{/student/findByStudentId(studentId=${student.studentId})}">办理入住</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- 展示学生详细信息的表格 -->
-                <div class="row clearfix">
-                    <div class="col-md-12">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-custom spacing5 mb-3">
-                                <thead>
-                                <tr>
-                                    <th class="hidden-sm-down text-center" style="width: 120px;">条目</th>
-                                    <th class="hidden-sm-down text-center" style="width: 120px;">数据</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="hidden-sm-down text-center">学号</td>
-                                    <td class="hidden-sm-down text-center" th:value="${student.studentId}"></td>
-                                </tr>
-                                <tr>
-                                    <td class="hidden-sm-down text-center">姓名</td>
-                                    <td class="hidden-sm-down text-center" th:value="${student.name}"></td>
-                                </tr>
-                                <tr>
-                                    <td class="hidden-sm-down text-center">性别</td>
-                                    <td class="hidden-sm-down text-center" th:value="${student.sex}"></td>
-                                </tr>
-                                <tr>
-                                    <td class="hidden-sm-down text-center">班级</td>
-                                    <td class="hidden-sm-down text-center" th:value="${student.studentClass}"></td>
-                                </tr>
-                                <tr>
-                                    <td class="hidden-sm-down text-center">学院</td>
-                                    <td class="hidden-sm-down text-center" th:value="${student.college}"></td>
-                                </tr>
-                                <tr>
-                                    <td class="hidden-sm-down text-center">校区</td>
-                                    <td class="hidden-sm-down text-center" th:value="${student.campus}"></td>
-                                </tr>
-                                <tr>
-                                    <td class="hidden-sm-down text-center">公寓楼号</td>
-                                    <td class="hidden-sm-down text-center" th:value="${student.departmentNumber}"></td>
-                                </tr>
-                                <tr>
-                                    <td class="hidden-sm-down text-center">寝室号</td>
-                                    <td class="hidden-sm-down text-center" th:value="${student.dormitoryNumber}"></td>
-                                </tr>
-                                <tr>
-                                    <td class="hidden-sm-down text-center">床位号</td>
-                                    <td class="hidden-sm-down text-center" th:value="${student.bedNumber}"></td>
-                                </tr>
-                                <tr>
-                                    <td class="hidden-sm-down text-center">电话号码</td>
-                                    <td class="hidden-sm-down text-center" th:value="${student.telephoneNumber}"></td>
-                                </tr>
-                                <tr>
-                                    <td class="hidden-sm-down text-center">邮箱</td>
-                                    <td class="hidden-sm-down text-center" th:value="${student.email}"></td>
-                                </tr>
-                                <tr>
-                                    <td class="hidden-sm-down text-center">入住日期</td>
-                                    <td class="hidden-sm-down text-center" th:value="${#dates.format(student.checkInDate,'yyyy-MM-dd')}"></td>
-                                </tr>
-                                <tr>
-                                    <td class="hidden-sm-down text-center">入住状态</td>
-                                    <td class="hidden-sm-down text-center" th:value="${student.bedStatus}"></td>
-                                </tr>
-                                <tr>
-                                    <td class="hidden-sm-down text-center">学籍状态</td>
-                                    <td class="hidden-sm-down text-center" th:value="${student.stuStatus}"></td>
-                                </tr>
-                                <tr>
-                                    <td class="hidden-sm-down text-center">登记时间</td>
-                                    <td class="hidden-sm-down text-center" th:value="${#dates.format(student.recordTime,'yyyy-MM-dd HH:mm:ss')}"></td>
-                                </tr>
-                                <tr>
-                                    <td class="hidden-sm-down text-center">操作</td>
-                                    <a th:href="@{/student/findByStudentId(studentId=${student.studentId})}">修改</a>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
-    </div>
-
-    <div id="wrap" align="center">
-        <div id="top_content">
-            <div id="header">
-                <div id="rightheader">
-                    <div id="topheader">
-                        <h1 id="title">
-                            <a href="#">学生修改</a>
-                        </h1>
-                    </div>
-                </div>
-            </div>
-            <div id="content">
-                <p id="whereami">
-                </p>
-                <h1>
-                    请修改学生信息:
-                </h1>
-                <form th:action="@{/student/update}" method="post">
-                    <table cellpadding="0" cellspacing="0" border="0"
-                           class="form_table">
-                        <tr>
-                            <td valign="middle" align="right">
-                                学号:
-                            </td>
-                            <td valign="middle" align="left">
-                                <span th:text="${student.studentId}"></span>
-                                <input type="hidden" th:value="${student.studentId}" name="studentId">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td valign="middle" align="right">
-                                姓名:
-                            </td>
-                            <td valign="middle" align="left">
-                                <input type="text" class="inputgri" name="name" th:value="${student.name}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td valign="middle" align="right">
-                                性别:
-                            </td>
-                            <td valign="middle" align="left">
-                                <input type="text" class="inputgri" name="sex" th:value="${student.sex}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td valign="middle" align="right">
-                                班级:
-                            </td>
-                            <td valign="middle" align="left">
-                                <input type="text" class="inputgri" name="studentClass" th:value="${student.studentClass}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td valign="middle" align="right">
-                                学院:
-                            </td>
-                            <td valign="middle" align="left">
-                                <input type="text" class="inputgri" name="college" th:value="${student.college}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td valign="middle" align="right">
-                                校区:
-                            </td>
-                            <td valign="middle" align="left">
-                                <input type="text" class="inputgri" name="campus" th:value="${student.campus}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td valign="middle" align="right">
-                                公寓号:
-                            </td>
-                            <td valign="middle" align="left">
-                                <!--                            <input type="text" class="inputgri" name="departmentNumber" th:value="${student.departmentNumber}"/>-->
-                                <select name="departmentId">
-                                    <option value="">-- 公寓号 --</option>
-                                    <option th:selected="${student.departmentId==3}" value=3>3号楼</option>
-                                    <option th:selected="${student.departmentId==7}" value=7>7号楼</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td valign="middle" align="right">
-                                寝室号:
-                            </td>
-                            <td valign="middle" align="left">
-                                <!--                            <input type="text" class="inputgri" name="dormitoryNumber" th:value="${student.dormitoryId}"/>-->
-                                <select name="dormitoryId">
-                                    <option value="">-- 寝室号 --</option>
-                                    <option th:selected="${student.dormitoryId==1}" value=1>3号楼123</option>
-                                    <option th:selected="${student.dormitoryId==2}" value=2>3号楼317</option>
-                                    <option th:selected="${student.dormitoryId==3}" value=3>3号楼318</option>
-                                    <option th:selected="${student.dormitoryId==4}" value=4>3号楼319</option>
-                                    <option th:selected="${student.dormitoryId==5}" value=5>3号楼320</option>
-                                    <option th:selected="${student.dormitoryId==6}" value=6>7号楼320</option>
-                                    <option th:selected="${student.dormitoryId==7}" value=7>7号楼321</option>
-                                    <option th:selected="${student.dormitoryId==8}" value=8>7号楼422</option>
-                                    <option th:selected="${student.dormitoryId==9}" value=9>7号楼622</option>
-                                    <option th:selected="${student.dormitoryId==10}" value=10>7号楼623</option>
-                                    <option th:selected="${student.dormitoryId==11}" value=11>7号楼624</option>
-                                    <option th:selected="${student.dormitoryId==12}" value=12>7号楼625</option>
-                                    <option th:selected="${student.dormitoryId==13}" value=13>7号楼626</option>
-                                    <option th:selected="${student.dormitoryId==14}" value=14>7号楼627</option>
-                                    <option th:selected="${student.dormitoryId==15}" value=15>7号楼628</option>
-                                    <option th:selected="${student.dormitoryId==16}" value=16>7号楼629</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td valign="middle" align="right">
-                                床位号:
-                            </td>
-                            <td valign="middle" align="left">
-                                <!--                            <input type="text" class="inputgri" name="bedNumber" th:value="${student.bedNumber}"/>-->
-                                <select name="bedNumber">
-                                    <option value="">-- 床位号 --</option>
-                                    <option th:selected="${student.bedNumber==1}" value=1>1号床</option>
-                                    <option th:selected="${student.bedNumber==2}" value=2>2号床</option>
-                                    <option th:selected="${student.bedNumber==3}" value=3>3号床</option>
-                                    <option th:selected="${student.bedNumber==4}" value=4>4号床</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td valign="middle" align="right">
-                                电话号码:
-                            </td>
-                            <td valign="middle" align="left">
-                                <input type="text" class="inputgri" name="telephoneNumber" th:value="${student.telephoneNumber}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td valign="middle" align="right">
-                                邮箱:
-                            </td>
-                            <td valign="middle" align="left">
-                                <input type="text" class="inputgri" name="email" th:value="${student.email}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td valign="middle" align="right">
-                                入住日期:
-                            </td>
-                            <td valign="middle" align="left">
-                                <input type="text" class="inputgri" name="checkInDate" th:value="${#dates.format(student.checkInDate,'yyyy-MM-dd')}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td valign="middle" align="right">
-                                入住状态:
-                            </td>
-                            <td valign="middle" align="left">
-                                <!--                            <input type="text" class="inputgri" name="bedStatus" th:value="${student.bedStatus}"/>-->
-                                <select name="bedStatus">
-                                    <option value="">-- 入住状态 --</option>
-                                    <option th:selected="${student.bedStatus==0}" value=0>退宿</option>
-                                    <option th:selected="${student.bedStatus==1}" value=1>入住</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td valign="middle" align="right">
-                                学籍状态:
-                            </td>
-                            <td valign="middle" align="left">
-                                <!--                            <input type="text" class="inputgri" name="stuStatus" th:value="${student.stuStatus}"/>-->
-                                <select name="stuStatus">
-                                    <option value="">-- 学籍状态 --</option>
-                                    <option th:selected="${student.stuStatus==0}" value=0>不在籍</option>
-                                    <option th:selected="${student.stuStatus==1}" value=1>在籍</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td valign="middle" align="right">
-                                登记时间:
-                            </td>
-                            <td valign="middle" align="left">
-                                <input type="text" class="inputgri" name="recordTime" th:value="${#dates.format(student.recordTime,'yyyy-MM-dd HH:mm:ss')}"/>
-                            </td>
-                        </tr>
-                    </table>
-                    <p>
-                        <input type="submit" class="button" value="提交"/>
-                    </p>
-                </form>
-            </div>
-        </div>
-
     </div>
 
 </div>

@@ -21,6 +21,6 @@ public class DormitoryExchange {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date exchangeDate;              //换宿日期
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date recordTime;           //登记时间
+    private Date recordTime;                //登记时间
     private String remarks;                 //备注
 }

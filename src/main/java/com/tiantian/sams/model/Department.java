@@ -13,13 +13,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Department {
 
-    private Integer dormitoryId;        //寝室id
-    private Integer departmentId;       //公寓id
-    private String dormitoryNumber;     //寝室号
-    private Integer liveInNumber;        //可入住数
-    private Integer actualLiveInNumber;  //已入住数
-    private Integer bedStatus1;           //1号床入住状态
-    private Integer bedStatus2;           //2号床入住状态
-    private Integer bedStatus3;           //3号床入住状态
-    private Integer bedStatus4;           //4号床入住状态
+    private Integer departmentId;               // 公寓id
+    private String departmentNumber;        // 公寓楼号
+    private String campus;                  // 公寓校区
+    private Integer floorNumber;            // 公寓楼层数
+    private Integer dormitoryNumber;        // 公寓寝室数
 }

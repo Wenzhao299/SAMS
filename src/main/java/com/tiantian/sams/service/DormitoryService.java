@@ -32,4 +32,16 @@ public interface DormitoryService {
 
     //查询stuDorInfoView视图
     List<Student> findAllView();
+
+    //根据寝室id查询1号床状态，判断能否调宿
+    Integer findBed1ByDormitoryId(Integer dormitoryId);
+
+    //根据寝室id查询2号床状态，判断能否调宿
+    Integer findBed2ByDormitoryId(Integer dormitoryId);
+
+    //根据寝室id查询3号床状态，判断能否调宿
+    Integer findBed3ByDormitoryId(Integer dormitoryId);
+
+    //根据寝室id查询4号床状态，判断能否调宿
+    Integer findBed4ByDormitoryId(Integer dormitoryId);
 }

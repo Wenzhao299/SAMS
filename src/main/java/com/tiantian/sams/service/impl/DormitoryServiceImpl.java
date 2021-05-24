@@ -57,4 +57,24 @@ public class DormitoryServiceImpl implements DormitoryService {
     public List<Student> findAllView() {
         return dormitoryDao.findAllView();
     }
+
+    @Override
+    public Integer findBed1ByDormitoryId(Integer dormitoryId) {
+        return dormitoryDao.findBed1ByDormitoryId(dormitoryId);
+    }
+
+    @Override
+    public Integer findBed2ByDormitoryId(Integer dormitoryId) {
+        return dormitoryDao.findBed2ByDormitoryId(dormitoryId);
+    }
+
+    @Override
+    public Integer findBed3ByDormitoryId(Integer dormitoryId) {
+        return dormitoryDao.findBed3ByDormitoryId(dormitoryId);
+    }
+
+    @Override
+    public Integer findBed4ByDormitoryId(Integer dormitoryId) {
+        return dormitoryDao.findBed4ByDormitoryId(dormitoryId);
+    }
 }

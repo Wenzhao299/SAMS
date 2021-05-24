@@ -8,6 +8,7 @@ import com.tiantian.sams.service.DormitoryService;
 import com.tiantian.sams.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,10 +50,11 @@ public class DormitoryController {
     }
 
     @GetMapping("/dormitoryExchange")
-    public String dormitoryExchange(DormitoryExchange exchange) {
+    public String dormitoryExchange(DormitoryExchange exchange, Model model) {
         exchange.setExchangeDate(new Date());
         exchange.setRecordTime(new Date());
         dormitoryService.dormitoryExchange(exchange);
-        return "redirect:/student/findAll";
+        model.addAttribute("message","换宿成功！");
+        return "updateStudentExchange";
     }
 }

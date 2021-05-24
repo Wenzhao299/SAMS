@@ -52,4 +52,20 @@ public interface DormitoryDao {
     //查询stuDorInfoView视图
     @Select("select * from stuDorInfoView")
     List<Student> findAllView();
+
+    //根据寝室id查询1号床状态，判断能否调宿
+    @Select("select bedStatus1 from dormitory where dormitoryId=#{dormitoryId}")
+    Integer findBed1ByDormitoryId(Integer dormitoryId);
+
+    //根据寝室id查询2号床状态，判断能否调宿
+    @Select("select bedStatus2 from dormitory where dormitoryId=#{dormitoryId}")
+    Integer findBed2ByDormitoryId(Integer dormitoryId);
+
+    //根据寝室id查询3号床状态，判断能否调宿
+    @Select("select bedStatus3 from dormitory where dormitoryId=#{dormitoryId}")
+    Integer findBed3ByDormitoryId(Integer dormitoryId);
+
+    //根据寝室id查询4号床状态，判断能否调宿
+    @Select("select bedStatus4 from dormitory where dormitoryId=#{dormitoryId}")
+    Integer findBed4ByDormitoryId(Integer dormitoryId);
 }

@@ -83,7 +83,7 @@
                                 <ul>
                                     <li><a th:href="@{/updateStudentCheckInQuire.html}"><i class="icon-paper-plane"></i><span>入住</span></a></li>
                                     <li><a th:href="@{/updateStudent.html}"><i class="icon-paper-plane"></i><span>调宿</span></a></li>
-                                    <li><a th:href="@{/exchangeStudent.html}"><i class="icon-paper-plane"></i><span>换宿</span></a></li>
+                                    <li><a th:href="@{/templates/updateStudentExchange.html}"><i class="icon-paper-plane"></i><span>换宿</span></a></li>
                                     <li class="active"><a th:href="@{/updateStudentCheckOutQuire.html}"><i class="icon-paper-plane"></i><span>退宿</span></a></li>
                                 </ul>
                             </li>
@@ -166,6 +166,7 @@
                             <div class="form-group">
                                 <label>学号</label>
                                 <input type="text" class="form-control" id="studentId" name="studentId" required>
+                                <input type="hidden" class="form-control" id="quireType" name="quireType" value="checkOut" required>
                             </div>
                             <br>
                             <button type="submit" class="btn btn-primary">查询</button>
@@ -281,6 +282,13 @@
 
 <script th:src="@{/js/common.js}"></script>
 <script th:src="@{/js/pages/tables/invoice.js}"></script>
+
+<script>
+    window.onload = function () {
+        alert(model);
+    }
+</script>
+
 </body>
 
 </html>

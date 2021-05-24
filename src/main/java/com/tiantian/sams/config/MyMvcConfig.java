@@ -34,7 +34,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/addStudent.html").setViewName("addStudent");
         registry.addViewController("/studentList.html").setViewName("studentList");
         registry.addViewController("/updateStudent.html").setViewName("updateStudent");
-        registry.addViewController("/exchangeStudent.html").setViewName("exchangeStudent");
+        registry.addViewController("/updateStudentExchange.html").setViewName("updateStudentExchange");
         registry.addViewController("/quireStudentAll.html").setViewName("quireStudentAll");
         registry.addViewController("/quireStudentByCollege.html").setViewName("quireStudentByCollege");
         registry.addViewController("/quireStudentByDepartmentId.html").setViewName("quireStudentByDepartmentId");
@@ -44,6 +44,8 @@ public class MyMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/updateStudentCheckInQuire.html").setViewName("updateStudentCheckInQuire");
         registry.addViewController("/updateStudentCheckOut.html").setViewName("updateStudentCheckOut");
         registry.addViewController("/updateStudentCheckOutQuire.html").setViewName("updateStudentCheckOutQuire");
+        registry.addViewController("/updateStudentChange.html").setViewName("updateStudentChange");
+        registry.addViewController("/updateStudentChangeQuire.html").setViewName("updateStudentChangeQuire");
     }
 
     @Bean

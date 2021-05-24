@@ -86,28 +86,67 @@ public class StudentController {
         studentService.update(student);
     }
     @GetMapping("/updateInAndOut")
-    public String updateInAndOut(String studentId, DormitoryCheckInAndOut check, String operateType){
+    public String updateInAndOut(String studentId, DormitoryCheckInAndOut check, String operateType, Model model){
         Student student = studentService.findByStudentId(studentId);
         //更新dormitoryCheckInAndOut
         if (operateType.equals("checkIn") && student.getBedStatus()!=1) {
             check.setOperateName("入住");
             student.setBedStatus(1);
             fun_updateInAndOut(student, check);
+            model.addAttribute("message","入住成功！");
+            return "updateStudentCheckInQuire";
         }else if (operateType.equals("checkOut") && student.getBedStatus()!=0) {
             check.setOperateName("退宿");
             student.setBedStatus(0);
             fun_updateInAndOut(student, check);
+            model.addAttribute("message","退宿成功！");
+            return "updateStudentCheckOutQuire";
+        }
+        model.addAttribute("message","操作失败，不可重复操作！");
+        return "page-404";
+    }
+
+    @PostMapping("/updateChange")
+    public String updateChange(Student student, DormitoryChange change, Model model) {
+        switch (student.getBedNumber()) {
+            case 1:
+                if (dormitoryService.findBed1ByDormitoryId(student.getDormitoryId())==1){
+                    model.addAttribute("message","当前床位有人，调宿失败！");
+                    System.out.println("当前床位有人，调宿失败！");
+                } return "updateStudentChangeQuire";
+            case 2:
+                if (dormitoryService.findBed2ByDormitoryId(student.getDormitoryId())==1){
+                    model.addAttribute("message","当前床位有人，调宿失败！");
+                    System.out.println("当前床位有人，调宿失败！");
+                } return "updateStudentChangeQuire";
+            case 3:
+                if (dormitoryService.findBed3ByDormitoryId(student.getDormitoryId())==1){
+                    model.addAttribute("message","当前床位有人，调宿失败！");
+                    System.out.println("当前床位有人，调宿失败！");
+                } return "updateStudentChangeQuire";
+            case 4:
+                if (dormitoryService.findBed4ByDormitoryId(student.getDormitoryId())==1){
+                    model.addAttribute("message","当前床位有人，调宿失败！");
+                    System.out.println("当前床位有人，调宿失败！");
+                } return "updateStudentChangeQuire";
         }
 
-        if (operateType.equals("checkIn")) {
-            String url = "?studentId="+student.getStudentId()+"&quireType=checkIn";
-            return "redirect:/student/findByStudentId"+url;
-        }else if (operateType.equals("checkOut")) {
-            String url = "?studentId="+student.getStudentId()+"&quireType=checkOut";
-            return "redirect:/student/findByStudentId"+url;
-        }else {
-            return "page-404";
+        //更新dormitoryChange
+        if (student.getDepartmentId()!=stu.getDepartmentId() || student.getDormitoryId()!=stu.getDormitoryId() || student.getBedNumber()!=stu.getBedNumber()) {
+            switch (stu.getBedNumber()) {
+                case 1:dor.setBedStatus1(0);break;
+                case 2:dor.setBedStatus2(0);break;
+                case 3:dor.setBedStatus3(0);break;
+                case 4:dor.setBedStatus4(0);break;
+            }
+            dormitoryService.dormitoryUpdate(dor);
+            change.setChangeDate(new Date());
+            change.setRecordTime(new Date());
+            dormitoryService.dormitoryChange(change);
+            studentService.update(student);
         }
+        model.addAttribute("message","调宿成功！");
+        return "updateStudentChangeQuire";
     }
 
     @PostMapping("/addStudent")
@@ -131,6 +170,6 @@ public class StudentController {
 
     @GetMapping("/toDormitoryExchange")
     public String toDormitoryExchange(){
-        return "/exchangeStudent";
+        return "updateStudentExchange";
     }
 }

@@ -93,17 +93,20 @@ public class StudentController {
             check.setOperateName("入住");
             student.setBedStatus(1);
             fun_updateInAndOut(student, check);
+            System.out.println("入住成功！");
             model.addAttribute("message","入住成功！");
             return "updateStudentCheckInQuire";
         }else if (operateType.equals("checkOut") && student.getBedStatus()!=0) {
             check.setOperateName("退宿");
             student.setBedStatus(0);
             fun_updateInAndOut(student, check);
+            System.out.println("退宿成功！");
             model.addAttribute("message","退宿成功！");
             return "updateStudentCheckOutQuire";
         }
+        System.out.println("操作失败，不可重复操作！");
         model.addAttribute("message","操作失败，不可重复操作！");
-        return "page-404";
+        return "updateStudentCheckInQuire";
     }
 
     @PostMapping("/updateChange")

@@ -283,9 +283,12 @@
 <script th:src="@{/js/common.js}"></script>
 <script th:src="@{/js/pages/tables/invoice.js}"></script>
 
-<script>
-    window.onload = function () {
-        alert(model);
+<script th:inline="javascript">
+    var message = [[${message}]];
+    if (message != null) {
+        window.onload = function () {
+            alert(message);
+        }
     }
 </script>
 

@@ -129,7 +129,7 @@
                         </div>
 
                         <div class="body">
-                            <form th:action="@{/visitor/addVisitor}" method="post">
+                            <form th:action="@{/student/addStudent}" method="post">
                                 <div class="demo-masked-input">
                                     <div class="row clearfix">
                                         <!-- 学号 -->
@@ -184,24 +184,48 @@
                                                 <input type="text" class="form-control" placeholder="Ex: 计算机与信息学院" id="college" name="college">
                                             </div>
                                         </div>
-                                        <!-- 公寓id -->
+                                        <!-- 公寓号 -->
                                         <div class="col-lg-4 col-md-6">
-                                            <b>公寓id</b>
+                                            <b>公寓号</b>
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="icon-user"></i></span>
                                                 </div>
-                                                <input type="text" class="form-control" placeholder="Ex: 7" id="departmentId" name="departmentId">
+<!--                                                <input type="text" class="form-control" placeholder="Ex: 7" id="departmentId" name="departmentId">-->
+                                                <select name="departmentId">
+                                                    <option value="">-- 公寓号 --</option>
+                                                    <option value=3>3号楼</option>
+                                                    <option value=7>7号楼</option>
+                                                </select>
                                             </div>
                                         </div>
-                                        <!-- 寝室id -->
+                                        <!-- 寝室号 -->
                                         <div class="col-lg-4 col-md-6">
-                                            <b>寝室id</b>
+                                            <b>寝室号</b>
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="icon-user"></i></span>
                                                 </div>
-                                                <input type="text" class="form-control" placeholder="Ex: 624" id="dormitoryId" name="dormitoryId">
+<!--                                                <input type="text" class="form-control" placeholder="Ex: 624" id="dormitoryId" name="dormitoryId">-->
+                                                <select name="dormitoryId">
+                                                    <option value="">-- 寝室号 --</option>
+                                                    <option value=1>3号楼123</option>
+                                                    <option value=2>3号楼317</option>
+                                                    <option value=3>3号楼318</option>
+                                                    <option value=4>3号楼319</option>
+                                                    <option value=5>3号楼320</option>
+                                                    <option value=6>7号楼320</option>
+                                                    <option value=7>7号楼321</option>
+                                                    <option value=8>7号楼422</option>
+                                                    <option value=9>7号楼622</option>
+                                                    <option value=10>7号楼623</option>
+                                                    <option value=11>7号楼624</option>
+                                                    <option value=12>7号楼625</option>
+                                                    <option value=13>7号楼626</option>
+                                                    <option value=14>7号楼627</option>
+                                                    <option value=15>7号楼628</option>
+                                                    <option value=16>7号楼629</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <!-- 床位号 -->
@@ -211,7 +235,14 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="icon-user"></i></span>
                                                 </div>
-                                                <input type="text" class="form-control" placeholder="Ex: 1" id="bedNumber" name="bedNumber">
+<!--                                                <input type="text" class="form-control" placeholder="Ex: 1" id="bedNumber" name="bedNumber">-->
+                                                <select name="bedNumber">
+                                                    <option value="">-- 床位号 --</option>
+                                                    <option value=1>1号床</option>
+                                                    <option value=2>2号床</option>
+                                                    <option value=3>3号床</option>
+                                                    <option value=4>4号床</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <!-- 电话号码 -->
@@ -248,14 +279,24 @@
                                         <div class="col-lg-4 col-md-6">
                                             <b>入住状态</b>
                                             <div class="input-group mb-3">
-                                                <input type="text" class="form-control" placeholder="Ex: 1" id="bedStatus" name="bedStatus">
+<!--                                                <input type="text" class="form-control" placeholder="Ex: 1" id="bedStatus" name="bedStatus">-->
+                                                <select name="bedStatus">
+                                                    <option value="">-- 入住状态 --</option>
+                                                    <option value=0>退宿</option>
+                                                    <option value=1>入住</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <!-- 学籍状态 -->
                                         <div class="col-lg-4 col-md-6">
                                             <b>学籍状态</b>
                                             <div class="input-group mb-3">
-                                                <input type="text" class="form-control" placeholder="Ex: 1" id="stuStatus" name="stuStatus">
+<!--                                                <input type="text" class="form-control" placeholder="Ex: 1" id="stuStatus" name="stuStatus">-->
+                                                <select name="stuStatus">
+                                                    <option value="">-- 学籍状态 --</option>
+                                                    <option value=0>不在籍</option>
+                                                    <option value=1>在籍</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-round btn-block">提交</button>
@@ -284,6 +325,16 @@
 
 <script th:src="@{/js/common.js}"></script>
 <script th:src="@{/js/pages/tables/invoice.js}"></script>
+
+<script th:inline="javascript">
+    var message = [[${message}]];
+    if (message != null) {
+        window.onload = function () {
+            alert(message);
+        }
+    }
+</script>
+
 </body>
 
 </html>

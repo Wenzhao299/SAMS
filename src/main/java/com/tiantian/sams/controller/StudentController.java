@@ -153,7 +153,34 @@ public class StudentController {
     }
 
     @PostMapping("/addStudent")
-    public String addStudent(Student student, DormitoryCheckInAndOut check) {
+    public String addStudent(Student student, DormitoryCheckInAndOut check, Model model) {
+        Student studentDB = studentService.findByStudentId(student.getStudentId());
+        if(studentDB!=null) {
+            model.addAttribute("message","学号已被占用！");
+            return "addStudent";
+        }
+        switch (student.getBedNumber()) {
+            case 1:
+                if (dormitoryService.findBed1ByDormitoryId(student.getDormitoryId())==1){
+                    model.addAttribute("message","当前床位有人，入住失败！");
+                    System.out.println("当前床位有人，入住失败！");
+                } return "addStudent";
+            case 2:
+                if (dormitoryService.findBed2ByDormitoryId(student.getDormitoryId())==1){
+                    model.addAttribute("message","当前床位有人，入住失败！");
+                    System.out.println("当前床位有人，入住失败！");
+                } return "addStudent";
+            case 3:
+                if (dormitoryService.findBed3ByDormitoryId(student.getDormitoryId())==1){
+                    model.addAttribute("message","当前床位有人，入住失败！");
+                    System.out.println("当前床位有人，入住失败！");
+                } return "addStudent";
+            case 4:
+                if (dormitoryService.findBed4ByDormitoryId(student.getDormitoryId())==1){
+                    model.addAttribute("message","当前床位有人，入住失败！");
+                    System.out.println("当前床位有人，入住失败！");
+                } return "addStudent";
+        }
         student.setRecordTime(new Date());
         studentService.addStudent(student);
 
@@ -163,7 +190,7 @@ public class StudentController {
         check.setInAndOutDate(new Date());
         dormitoryService.dormitoryCheckInAndOut(check);
 
-        return "redirect:/student/findAll";
+        return "addStudent";
     }
 
     @GetMapping("/toAddStudent")

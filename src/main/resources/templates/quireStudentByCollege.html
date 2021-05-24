@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 
 <head>
-    <title>SAMS | 按楼查看</title>
+    <title>SAMS | 按学院查看</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -73,8 +73,8 @@
                             <li class="active">
                                 <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>综合查询</span></a>
                                 <ul>
-                                    <li class="active"><a th:href="@{/student/findByDepartmentId}"><i class="icon-paper-plane"></i><span>按楼查看</span></a></li>
-                                    <li><a th:href="@{/student/findByCollege}"><i class="icon-paper-plane"></i><span>按学院查看</span></a></li>
+                                    <li><a th:href="@{/student/findByDepartmentId}"><i class="icon-paper-plane"></i><span>按楼查看</span></a></li>
+                                    <li class="active"><a th:href="@{/student/findByCollege}"><i class="icon-paper-plane"></i><span>按学院查看</span></a></li>
                                     <li><a th:href="@{/student/findByStudentClass}"><i class="icon-paper-plane"></i><span>按班级查看</span></a></li>
                                 </ul>
                             </li>
@@ -119,12 +119,12 @@
             <div class="row clearfix">
                 <!-- 页面导航说明 -->
                 <div class="col-md-6 col-sm-12">
-                    <h2>按楼查看</h2>
+                    <h2>按学院查看</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#"><i class="fa fa-cube"></i></a></li>
                             <li class="breadcrumb-item"><a th:href="@{index.html}">SAMS</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">按楼查看</li>
+                            <li class="breadcrumb-item active" aria-current="page">按学院查看</li>
                         </ol>
                     </nav>
                 </div>
@@ -137,12 +137,11 @@
             <div class="row clearfix">
                 <div class="col-lg-12">
                     <div class="body">
-                        <form th:action="@{/student/findByDepartmentId}" method="get">
+                        <form th:action="@{/student/findByCollege}" method="get">
                             <div class="input-group">
-                                <select class="custom-select" id="departmentId" name="departmentId">
+                                <select class="custom-select" id="college" name="college">
                                     <option selected>选择...</option>
-                                    <option value="3">3号楼</option>
-                                    <option value="7">7号楼</option>
+                                    <option value="计算机与信息学院">计算机与信息学院</option>
                                 </select>
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary" type="submit">查询</button>

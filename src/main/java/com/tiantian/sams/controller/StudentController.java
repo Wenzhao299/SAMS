@@ -56,16 +56,16 @@ public class StudentController {
 
     @GetMapping("/findByCollege")
     public String findByCollege(String college, Model model) {
-        List<Student> students = studentService.findByCollege(college);
-        model.addAttribute("students",students);
-        return "studentList";
+        List<Student> studentsView = studentService.findByCollege(college);
+        model.addAttribute("studentsView",studentsView);
+        return "quireStudentByCollege";
     }
 
     @GetMapping("/findByStudentClass")
     public String findByStudentClass(String studentClass, Model model) {
-        List<Student> students = studentService.findByStudentClass(studentClass);
-        model.addAttribute("students",students);
-        return "studentList";
+        List<Student> studentsView = studentService.findByStudentClass(studentClass);
+        model.addAttribute("studentsView",studentsView);
+        return "quireStudentByStudentClass";
     }
 
     @PostMapping("/update")

@@ -34,17 +34,25 @@ public class StudentController {
         List<Student> studentsView = dormitoryService.findAllView();
         //model.addAttribute("students",students);
         model.addAttribute("studentsView",studentsView);
-        return "studentList";
+        return "quireStudentAll";
     }
 
     @GetMapping("findByStudentId")
-    public String findByStudentId(String studentId, Model model){
+    public String findByStudentId(String studentId, String quireType, Model model){
         Student student = studentService.findByStudentId(studentId);
         stu = student;
         dor = dormitoryService.findByDorId(stu.getDormitoryId());
         student.setDepartmentId(dormitoryService.findViewByStudentId(studentId).getDepartmentId());
         model.addAttribute("student",student);
-        return "updateStudent";
+        if(quireType.equals("checkIn")) {
+            return "updateStudentCheckIn";
+        }else if(quireType.equals("checkOut")) {
+            return "updateStudentCheckOut";
+        }else if(quireType.equals("change")) {
+            return "updateStudentChange";
+        }else {
+            return "page-404";
+        }
     }
 
     @GetMapping("/findByDepartmentId")
@@ -68,37 +76,38 @@ public class StudentController {
         return "quireStudentByStudentClass";
     }
 
-    @PostMapping("/update")
-    public String update(Student student, DormitoryCheckInAndOut check, DormitoryChange change){
-        //更新dormitoryCheckInAndOut
-        if (student.getBedStatus()!=stu.getBedStatus() && student.getBedStatus()==0) {
-            check.setOperateName("退宿");
-            check.setDormitoryId(student.getDormitoryId());
-            check.setRecordTime(new Date());
-            check.setInAndOutDate(new Date());
-            dormitoryService.dormitoryCheckInAndOut(check);
-        }else if (student.getBedStatus()!=stu.getBedStatus() && student.getBedStatus()==1) {
-            check.setOperateName("入住");
-            check.setDormitoryId(student.getDormitoryId());
-            check.setRecordTime(new Date());
-            check.setInAndOutDate(new Date());
-            dormitoryService.dormitoryCheckInAndOut(check);
-        }
-        //更新dormitoryChange
-        if (student.getDepartmentId()!=stu.getDepartmentId() || student.getDormitoryId()!=stu.getDormitoryId() || student.getBedNumber()!=stu.getBedNumber()) {
-            switch (stu.getBedNumber()) {
-                case 1:dor.setBedStatus1(0);break;
-                case 2:dor.setBedStatus2(0);break;
-                case 3:dor.setBedStatus3(0);break;
-                case 4:dor.setBedStatus4(0);break;
-            }
-            dormitoryService.dormitoryUpdate(dor);
-            change.setChangeDate(new Date());
-            change.setRecordTime(new Date());
-            dormitoryService.dormitoryChange(change);
-        }
+    private void fun_updateInAndOut(Student student, DormitoryCheckInAndOut check) {
+        check.setDepartmentId(student.getDepartmentId());
+        check.setDormitoryId(student.getDormitoryId());
+        check.setBedNumber(student.getBedNumber());
+        check.setRecordTime(new Date());
+        check.setInAndOutDate(new Date());
+        dormitoryService.dormitoryCheckInAndOut(check);
         studentService.update(student);
-        return "redirect:/student/findAll";
+    }
+    @GetMapping("/updateInAndOut")
+    public String updateInAndOut(String studentId, DormitoryCheckInAndOut check, String operateType){
+        Student student = studentService.findByStudentId(studentId);
+        //更新dormitoryCheckInAndOut
+        if (operateType.equals("checkIn") && student.getBedStatus()!=1) {
+            check.setOperateName("入住");
+            student.setBedStatus(1);
+            fun_updateInAndOut(student, check);
+        }else if (operateType.equals("checkOut") && student.getBedStatus()!=0) {
+            check.setOperateName("退宿");
+            student.setBedStatus(0);
+            fun_updateInAndOut(student, check);
+        }
+
+        if (operateType.equals("checkIn")) {
+            String url = "?studentId="+student.getStudentId()+"&quireType=checkIn";
+            return "redirect:/student/findByStudentId"+url;
+        }else if (operateType.equals("checkOut")) {
+            String url = "?studentId="+student.getStudentId()+"&quireType=checkOut";
+            return "redirect:/student/findByStudentId"+url;
+        }else {
+            return "page-404";
+        }
     }
 
     @PostMapping("/addStudent")

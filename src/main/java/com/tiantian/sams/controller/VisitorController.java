@@ -3,6 +3,7 @@ package com.tiantian.sams.controller;
 import com.tiantian.sams.dao.VisitorDao;
 import com.tiantian.sams.model.RecordView;
 import com.tiantian.sams.model.Visitor;
+import com.tiantian.sams.model.VisitorDormitory;
 import com.tiantian.sams.model.VisitorStudentView;
 import com.tiantian.sams.service.VisitorService;
 import com.tiantian.sams.service.impl.VisitorServiceImpl;
@@ -46,6 +47,24 @@ public class VisitorController {
     }
 
     /**
+     * 添加寝室访问
+     * @author tiantian152
+     */
+    @RequestMapping("/addDormitoryVisitor")
+    public String addDormitoryVisitor(VisitorDormitory visitorDormitory,
+                                      Model model) {
+        visitorDormitory.setRecordTime(new Date());
+        visitorDormitory.setVisitEndTime(new Date(0));
+        visitorDormitory.setDepartmentId(3);
+        visitorDormitory.setDormitoryId(3);
+        visitorDormitory.setStatus("访问中");
+        int result = visitorService.insertVisitorDormitory(visitorDormitory);
+        if (result == 1)
+            System.out.println("插入成功");
+        return "redirect:loadVisitor";
+    }
+
+    /**
      * 添加学生访问结束时间
      * @author tiantian152
      */
@@ -71,6 +90,8 @@ public class VisitorController {
         System.out.println(visitors);
         return "quireVisitorStudent";
     }
+
+
 
 
 }

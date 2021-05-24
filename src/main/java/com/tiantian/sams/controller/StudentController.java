@@ -1,13 +1,11 @@
 package com.tiantian.sams.controller;
 
-import com.tiantian.sams.dao.StudentDao;
 import com.tiantian.sams.model.Dormitory;
 import com.tiantian.sams.model.DormitoryChange;
 import com.tiantian.sams.model.DormitoryCheckInAndOut;
 import com.tiantian.sams.model.Student;
 import com.tiantian.sams.service.DormitoryService;
 import com.tiantian.sams.service.StudentService;
-import com.tiantian.sams.service.impl.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,13 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/student")
@@ -56,9 +49,9 @@ public class StudentController {
 
     @GetMapping("/findByDepartmentId")
     public String findByDepartmentId(Integer departmentId, Model model) {
-        List<Student> students = studentService.findByDepartmentId(departmentId);
-        model.addAttribute("students",students);
-        return "studentList";
+        List<Student> studentsView = studentService.findViewByDepartmentId(departmentId);
+        model.addAttribute("studentsView",studentsView);
+        return "quireStudentByDepartmentId";
     }
 
     @GetMapping("/findByCollege")

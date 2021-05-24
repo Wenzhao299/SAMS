@@ -21,6 +21,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public List<Student> findViewByDepartmentId(Integer departmentId) {
+        return studentDao.findViewByDepartmentId(departmentId);
+    }
+
+    @Override
     public List<Student> findByCollege(String college) {
         return studentDao.findByCollege(college);
     }

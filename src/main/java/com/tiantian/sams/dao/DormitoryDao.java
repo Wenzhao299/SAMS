@@ -17,6 +17,14 @@ import java.util.List;
 @Component
 public interface DormitoryDao {
 
+    /**
+     * 查询所有的 Dormitory 中 dormitoryId（寝室id） 信息
+     * @author tiantian152
+     * @return dormitoryIdList
+     */
+    @Select("select dormitoryId from dormitory")
+    public List<Integer> selectDormitoryId();
+
     //入住、退宿
     @Insert("insert into dormitoryCheckInAndOut values(#{operateId},#{operateName},#{studentId},#{departmentId},#{dormitoryId},#{bedNumber},#{inAndOutDate},#{recordTime},#{remarks})")
     void dormitoryCheckInAndOut(DormitoryCheckInAndOut check);

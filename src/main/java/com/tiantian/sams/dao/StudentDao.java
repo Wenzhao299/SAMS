@@ -13,6 +13,10 @@ public interface StudentDao {
     @Select("select * from student where dormitoryId in (select dormitoryId from dormitory where departmentId=#{departmentId})")
     List<Student> findByDepartmentId(@Param("departmentId") Integer departmentId);
 
+    //按楼查看
+    @Select("select * from stuDorInfoView where dormitoryId in (select dormitoryId from dormitory where departmentId=#{departmentId})")
+    List<Student> findViewByDepartmentId(@Param("departmentId") Integer departmentId);
+
     //按学院查看
     @Select("select * from student where college = #{college}")
     List<Student> findByCollege(@Param("college") String college);

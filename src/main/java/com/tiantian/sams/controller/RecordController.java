@@ -26,7 +26,7 @@ import java.util.List;
 public class RecordController {
 
     @Autowired
-    private RecordService recordService = new RecordServiceImpl();
+    private final RecordService recordService = new RecordServiceImpl();
 
     @Autowired
     private DepartmentDao departmentDao;

@@ -1,16 +1,16 @@
 <!doctype html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 
 <head>
-    <title>SAMS | 首页</title>
+    <title>SAMS | 按楼查看</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description"
-          content="Qubes Bootstrap 4x admin is super flexible, powerful, clean &amp; modern responsive admin dashboard with unlimited possibilities.">
+        content="Qubes Bootstrap 4x admin is super flexible, powerful, clean &amp; modern responsive admin dashboard with unlimited possibilities.">
     <meta name="author" content="GetBootstrap, design by: puffintheme.com">
 
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
     <!-- VENDOR CSS -->
     <link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/vendor/font-awesome/css/font-awesome.min.css}">
@@ -21,6 +21,7 @@
     <link rel="stylesheet" th:href="@{/css/site.min.css}">
 
 </head>
+
 
 <body class="theme-blue"></body>
 
@@ -67,12 +68,12 @@
                 <div class="tab-pane active" id="Home-icon">
                     <nav class="sidebar-nav sidebar-scroll">
                         <ul class="metismenu">
-                            <li class="active"><a th:href="@{index.html}"><i class="icon-speedometer"></i><span>主面板</span></a></li>
+                            <li><a th:href="@{/index.html}"><i class="icon-speedometer"></i><span>主面板</span></a></li>
                             <li class="header">用户功能</li>
-                            <li>
+                            <li class="active">
                                 <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>综合查询</span></a>
                                 <ul>
-                                    <li><a th:href="@{/quireStudentByDepartmentId.html}"><i class="icon-paper-plane"></i><span>按楼查看</span></a></li>
+                                    <li class="active"><a th:href="@{/student/findByDepartmentId}"><i class="icon-paper-plane"></i><span>按楼查看</span></a></li>
                                     <li><a th:href="@{/studentList.html}"><i class="icon-paper-plane"></i><span>按学院查看</span></a></li>
                                     <li><a th:href="@{/studentList.html}"><i class="icon-paper-plane"></i><span>按班级查看</span></a></li>
                                 </ul>
@@ -84,18 +85,6 @@
                                     <li><a th:href="@{/updateStudent.html}"><i class="icon-paper-plane"></i><span>调宿</span></a></li>
                                     <li><a th:href="@{/exchangeStudent.html}"><i class="icon-paper-plane"></i><span>换宿</span></a></li>
                                     <li><a th:href="@{/studentList.html}"><i class="icon-paper-plane"></i><span>退宿</span></a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>毕业退宿管理</span></a>
-                                <ul>
-                                    <li><a th:href="@{/updateStudent.html}"><i class="icon-paper-plane"></i><span>毕业退宿</span></a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>新生入住管理</span></a>
-                                <ul>
-                                    <li><a th:href="@{/addStudent.html}"><i class="icon-paper-plane"></i><span>新生入住</span></a></li>
                                 </ul>
                             </li>
                             <li>
@@ -116,15 +105,6 @@
                                     <li><a th:href="@{/#}"><i class="icon-paper-plane"></i><span>访问寝室记录查询</span></a></li>
                                 </ul>
                             </li>
-                            <li>
-                                <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>宿舍维修</span></a>
-                                <ul>
-                                    <li><a th:href="@{/addRepair.html}"><i class="icon-paper-plane"></i><span>添加维修请求</span></a></li>
-                                    <li><a th:href="@{/updateRepairStartTime.html}"><i class="icon-paper-plane"></i><span>维修开始登记</span></a></li>
-                                    <li><a th:href="@{/updateRepairEndTime.html}"><i class="icon-paper-plane"></i><span>维修结束登记</span></a></li>
-                                    <li><a th:href="@{/repair/loadRepair}"><i class="icon-paper-plane"></i><span>维修记录查询</span></a></li>
-                                </ul>
-                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -139,11 +119,12 @@
             <div class="row clearfix">
                 <!-- 页面导航说明 -->
                 <div class="col-md-6 col-sm-12">
-                    <h2>首页</h2>
+                    <h2>按楼查看</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a th:href="@{#}"><i class="fa fa-cube"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-cube"></i></a></li>
                             <li class="breadcrumb-item"><a th:href="@{index.html}">SAMS</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">按楼查看</li>
                         </ol>
                     </nav>
                 </div>
@@ -153,8 +134,84 @@
         <!-- 主页面主体部分 -->
         <div class="container-fluid">
 
+            <div class="row clearfix">
+                <div class="col-lg-12">
+                    <div class="body">
+                        <form th:action="@{/student/findByDepartmentId}" method="get">
+                            <div class="input-group">
+                                <select class="custom-select" id="departmentId" name="departmentId">
+                                    <option selected>选择...</option>
+                                    <option value="3">3号楼</option>
+                                    <option value="7">7号楼</option>
+                                </select>
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="submit">查询</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-lg-12">
+                    <div class="table-responsive invoice_list mb-4">
+                        <!-- 表格过滤器 -->
+                        <div class="text-left">
+                            <button type="button" class="btn btn-sm mb-1 btn-filter bg-default" data-target="all">All</button>
+                            <button type="button" class="btn btn-sm mb-1 btn-filter bg-green" data-target="1">已入住</button>
+                            <button type="button" class="btn btn-sm mb-1 btn-filter bg-orange" data-target="0">未入住</button>
+                        </div>
+                        <table class="table table-hover js-basic-example dataTable table-custom spacing8">
+                            <thead>
+                                <tr data-status="all">
+                                    <th style="width: 30px;">学号</th>
+                                    <th style="width: 50px;">姓名</th>
+                                    <th style="width: 30px;">性别</th>
+                                    <th style="width: 50px;">班级</th>
+                                    <th style="width: 50px;">学院</th>
+                                    <th style="width: 50px;">校区</th>
+                                    <th style="width: 100px;">公寓楼号</th>
+                                    <th style="width: 100px;">寝室号</th>
+                                    <th style="width: 100px;">床位号</th>
+                                    <th style="width: 100px;">电话号码</th>
+                                    <th style="width: 100px;">邮箱</th>
+                                    <th style="width: 100px;">入住日期</th>
+                                    <th style="width: 100px;">入住状态</th>
+                                    <th style="width: 100px;">学籍状态</th>
+                                    <th style="width: 100px;">登记时间</th>
+                                    <th style="width: 110px;">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="student:${studentsView}" th:data-status="${student.stuStatus}" >
+                                    <td><span th:text="${student.studentId}"></span></td>
+                                    <td><span th:text="${student.name}"></span></td>
+                                    <td><span th:text="${student.sex}"></span></td>
+                                    <td><span th:text="${student.studentClass}"></span></td>
+                                    <td><span th:text="${student.college}"></span></td>
+                                    <td><span th:text="${student.campus}"></span></td>
+                                    <td><span th:text="${student.departmentNumber}"></span></td>
+                                    <td><span th:text="${student.dormitoryNumber}"></span></td>
+                                    <td><span th:text="${student.bedNumber}"></span></td>
+                                    <td><span th:text="${student.telephoneNumber}"></span></td>
+                                    <td><span th:text="${student.email}"></span></td>
+                                    <td><span th:text="${#dates.format(student.checkInDate,'yyyy-MM-dd')}"></span></td>
+                                    <td><span th:text="${student.bedStatus}"></span></td>
+                                    <td><span th:text="${student.stuStatus}"></span></td>
+                                    <td><span th:text="${#dates.format(student.recordTime,'yyyy-MM-dd HH:mm:ss')}"></span></td>
+                                    <td>
+                                        <a th:href="@{/student/findByStudentId(studentId=${student.studentId})}">修改</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
 </div>
 
     <!-- Javascript -->
@@ -170,6 +227,8 @@
 
     <script th:src="@{/js/common.js}"></script>
     <script th:src="@{/js/pages/tables/invoice.js}"></script>
-    </body>
+    <script th:src="@{/js/pages/tables/table-filter.js}"></script>
+
+</body>
 
 </html>

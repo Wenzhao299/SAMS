@@ -2,13 +2,15 @@ package com.tiantian.sams.service;
 
 import com.tiantian.sams.model.Student;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
 public interface StudentService {
     //按楼查看
     List<Student> findByDepartmentId(Integer departmentId);
+
+    //按楼查看
+    List<Student> findViewByDepartmentId(@Param("departmentId") Integer departmentId);
 
     //按学院查看
     List<Student> findByCollege(String college);

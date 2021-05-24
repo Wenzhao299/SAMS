@@ -30,12 +30,16 @@ public class MyMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/quireRepair.html").setViewName("quireRepair");
         registry.addViewController("/updateRepairStartTime.html").setViewName("updateRepairStartTime");
         registry.addViewController("/updateRepairEndTime.html").setViewName("updateRepairEndTime");
+
+        registry.addViewController("/addStudent.html").setViewName("addStudent");
+        registry.addViewController("/studentList.html").setViewName("studentList");
+        registry.addViewController("/updateStudent.html").setViewName("updateStudent");
+        registry.addViewController("/exchangeStudent.html").setViewName("exchangeStudent");
+        registry.addViewController("/quireStudentByDepartmentId.html").setViewName("quireStudentByDepartmentId");
     }
 
     @Bean
     public LocaleResolver localeResolver(){
         return new MyLocaleResolver();
     }
-
-
 }

@@ -28,6 +28,11 @@ public class RepairServiceImpl implements RepairService {
     }
 
     @Override
+    public Repair selectRepairByRepairId(int repairId) {
+        return repairDao.selectRepairByRepairId(repairId);
+    }
+
+    @Override
     public List<RepairView> selectRepairView() {
         return repairDao.selectRepairView();
     }
@@ -38,7 +43,24 @@ public class RepairServiceImpl implements RepairService {
     }
 
     @Override
+    public int updateStartTime(Repair repair) {
+        return repairDao.updateStartTime(repair);
+    }
+
+    @Override
     public int updateEndTime(Repair repair) {
         return repairDao.updateEndTime(repair);
+    }
+
+    @Override
+    public boolean judgeStatusForStart(int repairId) {
+        String status = repairDao.selectRepairByRepairId(repairId).getStatus();
+        return status.equals("等待维修");
+    }
+
+    @Override
+    public boolean judgeStatusForEnd(int repairId) {
+        String status = repairDao.selectRepairByRepairId(repairId).getStatus();
+        return status.equals("维修中");
     }
 }

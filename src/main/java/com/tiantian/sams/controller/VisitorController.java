@@ -77,7 +77,7 @@ public class VisitorController {
     }
 
     /**
-     * 添加学生访问结束时间
+     * 添加寝室访问结束时间
      * @author tiantian152
      */
     @RequestMapping("/updateVisitorDormitoryEndTime")

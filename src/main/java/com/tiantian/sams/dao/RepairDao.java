@@ -29,6 +29,14 @@ public interface RepairDao {
     public List<Repair> selectRepair();
 
     /**
+     * 根据 repairId 查询的 repair 信息
+     * @author tiantian152
+     * @return Repair实体类列表
+     */
+    @Select("select * from repair where repairId = #{repairId}")
+    public Repair selectRepairByRepairId(int repairId);
+
+    /**
      * 查询所有的 repairView 信息
      * @author tiantian152
      * @return RepairView实体类列表
@@ -47,11 +55,18 @@ public interface RepairDao {
     public int insertRepair(Repair repair);
 
     /**
-     * 更新维修状态和时间
+     * 更新维修状态和时间 为：维修中
+     * @author tiantian152
+     * @return 更新结果
+     */
+    @Update("update repair set status=#{status},startTime=#{startTime} where repairId = #{repairId}")
+    public int updateStartTime(Repair repair);
+
+    /**
+     * 更新维修状态和时间 为：维修结束
      * @author tiantian152
      * @return 更新结果
      */
     @Update("update repair set status=#{status},endTime=#{endTime} where repairId = #{repairId}")
     public int updateEndTime(Repair repair);
-
 }

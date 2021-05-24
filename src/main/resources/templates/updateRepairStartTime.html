@@ -69,10 +69,10 @@
                         <ul class="metismenu">
                             <li><a th:href="@{/index.html}"><i class="icon-speedometer"></i><span>主面板</span></a></li>
                             <li class="header">用户功能</li>
-                            <li class="active">
+                            <li>
                                 <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>日常登记</span></a>
                                 <ul>
-                                    <li class="active"><a th:href="@{/record/loadAddRecordPage}"><i class="icon-paper-plane"></i><span>日常登记</span></a></li>
+                                    <li><a th:href="@{/record/loadAddRecordPage}"><i class="icon-paper-plane"></i><span>日常登记</span></a></li>
                                     <li><a th:href="@{/record/quireRecord}"><i class="icon-paper-plane"></i><span>日常登记查询</span></a></li>
                                 </ul>
                             </li>
@@ -85,6 +85,15 @@
                                     <li><a th:href="@{/updateVisitorDormitoryEndTimeAndStatus.html}"><i class="icon-paper-plane"></i><span>访问寝室结束</span></a></li>
                                     <li><a th:href="@{/visitor/loadVisitorStudent}"><i class="icon-paper-plane"></i><span>访问学生记录查询</span></a></li>
                                     <li><a th:href="@{/#}"><i class="icon-paper-plane"></i><span>访问寝室记录查询</span></a></li>
+                                </ul>
+                            </li>
+                            <li class="active">
+                                <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>宿舍维修</span></a>
+                                <ul>
+                                    <li><a th:href="@{/addRepair.html}"><i class="icon-paper-plane"></i><span>添加维修请求</span></a></li>
+                                    <li class="active"><a th:href="@{/updateRepairStartTime.html}"><i class="icon-paper-plane"></i><span>维修开始登记</span></a></li>
+                                    <li><a th:href="@{/updateRepairEndTime.html}"><i class="icon-paper-plane"></i><span>维修结束登记</span></a></li>
+                                    <li><a th:href="@{/repair/loadRepair}"><i class="icon-paper-plane"></i><span>维修记录查询</span></a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -101,12 +110,12 @@
             <div class="row clearfix">
                 <!-- 页面导航说明 -->
                 <div class="col-md-6 col-sm-12">
-                    <h2>日常登记查询</h2>
+                    <h2>维修开始登记</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#"><i class="fa fa-cube"></i></a></li>
                             <li class="breadcrumb-item"><a th:href="@{index.html}">SAMS</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">日常登记查询</li>
+                            <li class="breadcrumb-item active" aria-current="page">维修开始登记</li>
                         </ol>
                     </nav>
                 </div>
@@ -120,81 +129,48 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="card">
-
                         <div class="header">
-                            <h2>日常登记 <small>记录晚出/晚归</small></h2>
+                            <h2>维修开始登记 </h2>
                             <ul class="header-dropdown dropdown">                                
                                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
                             </ul>
                         </div>
 
                         <div class="body">
-                            <form th:action="@{/record/addRecord}" method="post">
+                            <form th:action="@{/repair/updateRepairStartTime}" method="post">
                             <div class="demo-masked-input">
                                 <div class="row clearfix">
-                                        <!-- 登记类型（晚出、晚归） -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <b>登记类型</b>
+                                    <!-- 维修Id -->
+                                    <div class="col-lg-4 col-md-6">
+                                        <b>维修Id</b>
+                                        <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="icon-flag"></i></span>
-                                                <select class="form-control" id="type" name="type">
-                                                    <option value="">-- 登记类型 --</option>
-                                                    <option value="晚出">晚出</option>
-                                                    <option value="晚归">晚归</option>
-                                                </select>
+                                                <span class="input-group-text"><i class="icon-user"></i></span>
                                             </div>
+                                            <input type="text" class="form-control" placeholder="Ex: 2" id="repairId" name="repairId">
                                         </div>
-                                        <!-- 晚出或晚归时间 -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <b>晚出或晚归时间</b>
-                                            <div class="input-group mb-3">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="icon-clock"></i></span>
-                                                </div>
-                                                <input type="datetime-local" class="form-control" placeholder="Ex: 2020-05-20 13:14:00" id="inAndOutTime" name="inAndOutTime">
-                                            </div>
-                                        </div>
-                                        <!-- 学号 -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <b>学号</b>
-                                            <div class="input-group mb-3">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="icon-user"></i></span>
-                                                </div>
-                                                <input type="text" class="form-control" placeholder="Ex: 2018212168" id="studentId" name="studentId">
-                                            </div>
-                                        </div>
-                                        <!-- 填写公寓楼号，获取公寓id -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <b>公寓楼号</b>
+                                    </div>
+                                    <!-- 维修人员工号 -->
+                                    <div class="col-lg-4 col-md-6">
+                                        <b>维修人员工号</b>
+                                        <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fa fa-building-o"></i></span>
-                                                <select class="form-control" id="departmentId" name="departmentId">
-                                                    <option value="">-- 公寓楼号 --</option>
-                                                    <option value="3">翡翠湖校区3号楼</option>
-                                                    <option value="7">翡翠湖校区7号楼</option>
-                                                </select>
+                                                <span class="input-group-text"><i class="icon-user"></i></span>
                                             </div>
+                                            <input type="text" class="form-control" placeholder="Ex: 2018212168" id="repairName" name="repairName">
                                         </div>
-                                        <!-- 填写寝室号，获取寝室id -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <b>寝室号</b>
+                                    </div>
+                                    <!-- 维修开始时间 -->
+                                    <div class="col-lg-4 col-md-6">
+                                        <b>维修开始时间</b>
+                                        <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="icon-home"></i></span>
-                                                <select class="form-control" id="dormitoryId" name="dormitoryId">
-                                                    <option value="">-- 寝室号 --</option>
-                                                    <option value="3">3N#312</option>
-                                                    <option value="7">7S#624</option>
-                                                </select>
+                                                <span class="input-group-text"><i class="icon-clock"></i></span>
                                             </div>
+                                            <input type="datetime-local" class="form-control" placeholder="Ex: 2020-05-20 13:14:00" id="startTime" name="startTime">
                                         </div>
-                                        <!-- 备注 -->
-                                        <div class="col-lg-10 col-md-6">
-                                            <b>备注</b>
-                                            <div class="input-group mb-3">
-                                                <input type="text" class="form-control" id="remarks" name="remarks" value="无">
-                                            </div>
-                                        </div>
+                                    </div>
+
                                         <button type="submit" class="btn btn-primary btn-round btn-block">提交</button>
                                     </div>
                                 </div>

@@ -24,6 +24,12 @@
 
 <body class="theme-blue"></body>
 
+<script>
+
+    
+</script>
+
+
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
     <div class="loader">
@@ -91,7 +97,7 @@
                                 <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>宿舍维修</span></a>
                                 <ul>
                                     <li class="active"><a th:href="@{/addRepair.html}"><i class="icon-paper-plane"></i><span>添加维修请求</span></a></li>
-                                    <li><a th:href="@{/templates/updateRepairStartTime.html}"><i class="icon-paper-plane"></i><span>维修开始登记</span></a></li>
+                                    <li><a th:href="@{/updateRepairStartTime.html}"><i class="icon-paper-plane"></i><span>维修开始登记</span></a></li>
                                     <li><a th:href="@{/updateRepairEndTime.html}"><i class="icon-paper-plane"></i><span>维修结束登记</span></a></li>
                                     <li><a th:href="@{/repair/loadRepair}"><i class="icon-paper-plane"></i><span>维修记录查询</span></a></li>
                                 </ul>
@@ -121,7 +127,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- 主页面主体部分 -->
         <div class="container-fluid">
@@ -153,6 +158,8 @@
                                                 </select>
                                             </div>
                                         </div>
+
+
                                         <!-- 填写寝室号，获取寝室id -->
                                         <div class="col-lg-4 col-md-6">
                                             <b>寝室号</b>

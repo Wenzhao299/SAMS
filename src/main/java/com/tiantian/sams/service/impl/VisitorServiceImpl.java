@@ -4,6 +4,7 @@ import com.tiantian.sams.dao.VisitorDao;
 import com.tiantian.sams.dao.VisitorDormitoryDao;
 import com.tiantian.sams.model.Visitor;
 import com.tiantian.sams.model.VisitorDormitory;
+import com.tiantian.sams.model.VisitorDormitoryView;
 import com.tiantian.sams.model.VisitorStudentView;
 import com.tiantian.sams.service.VisitorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,7 @@ public class VisitorServiceImpl implements VisitorService {
     }
 
     @Override
-    public List<VisitorStudentView> selectVisitorDormitoryView() {
+    public List<VisitorDormitoryView> selectVisitorDormitoryView() {
         return visitorDormitoryDao.selectVisitorDormitoryView();
     }
 
@@ -62,7 +63,7 @@ public class VisitorServiceImpl implements VisitorService {
     }
 
     @Override
-    public int updateVisitorDormitoryEndTime(Visitor visitor) {
-        return visitorDormitoryDao.updateVisitorDormitoryEndTime(visitor);
+    public int updateVisitorDormitoryEndTime(VisitorDormitory visitorDormitory) {
+        return visitorDormitoryDao.updateVisitorDormitoryEndTime(visitorDormitory);
     }
 }

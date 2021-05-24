@@ -84,7 +84,7 @@
                                     <li class="active"><a th:href="@{/addVisitorDormitory.html}"><i class="icon-paper-plane"></i><span>访问寝室</span></a></li>
                                     <li><a th:href="@{/updateVisitorDormitoryEndTimeAndStatus.html}"><i class="icon-paper-plane"></i><span>访问寝室结束</span></a></li>
                                     <li><a th:href="@{/visitor/loadVisitorStudent}"><i class="icon-paper-plane"></i><span>访问学生记录查询</span></a></li>
-                                    <li><a th:href="@{/#}"><i class="icon-paper-plane"></i><span>访问寝室记录查询</span></a></li>
+                                    <li><a th:href="@{/visitor/loadVisitorDormitory}"><i class="icon-paper-plane"></i><span>访问寝室记录查询</span></a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -128,7 +128,7 @@
                         </div>
 
                         <div class="body">
-                            <form th:action="@{/visitor/addRecord}" method="post">
+                            <form th:action="@{/visitor/addVisitorDormitory}" method="post">
                             <div class="demo-masked-input">
                                 <div class="row clearfix">
                                     <!-- 访问者姓名 -->
@@ -168,7 +168,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="icon-user"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Ex: 7S#624" id="departmentId" name="departmentId">
+                                            <input type="text" class="form-control" placeholder="Ex: 7" id="departmentId" name="departmentId">
                                         </div>
                                     </div>
                                     <!-- 被访问寝室号 -->
@@ -178,7 +178,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="icon-user"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Ex: 7S#624" id="dormitoryId" name="dormitoryId">
+                                            <input type="text" class="form-control" placeholder="Ex: 624" id="dormitoryId" name="dormitoryId">
                                         </div>
                                     </div>
                                     <!-- 来访开始时间 -->

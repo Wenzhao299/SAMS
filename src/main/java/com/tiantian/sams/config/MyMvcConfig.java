@@ -24,6 +24,12 @@ public class MyMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/addVisitorDormitory.html").setViewName("addVisitorDormitory");
         registry.addViewController("/updateVisitorDormitoryEndTimeAndStatus.html").setViewName("updateVisitorDormitoryEndTimeAndStatus");
         registry.addViewController("/updateVisitorStudentEndTimeAndStatus.html").setViewName("updateVisitorStudentEndTimeAndStatus");
+        registry.addViewController("/quireVisitorDormitory.html").setViewName("quireVisitorDormitory");
+        registry.addViewController("/quireVisitorStudent.html").setViewName("quireVisitorStudent");
+        registry.addViewController("/addRepair.html").setViewName("addRepair");
+        registry.addViewController("/quireRepair.html").setViewName("quireRepair");
+        registry.addViewController("/updateRepairStartTime.html").setViewName("updateRepairStartTime");
+        registry.addViewController("/updateRepairEndTime.html").setViewName("updateRepairEndTime");
     }
 
     @Bean

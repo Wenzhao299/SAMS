@@ -1,8 +1,8 @@
 <!doctype html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 
 <head>
-    <title>SAMS | 访问学生</title>
+    <title>SAMS | 访问学生记录查询</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,13 +22,14 @@
 
 </head>
 
+
 <body class="theme-blue"></body>
 
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
     <div class="loader">
         <div class="m-t-30"><i class="fa fa-cube font-25"></i></div>
-        <p>正在加载, 请稍等...</p>        
+        <p>正在加载, 请稍等...</p>
     </div>
 </div>
 
@@ -53,7 +54,7 @@
                 <div id="navbar-menu">
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <li><a href="page-login.html" class="icon-menu"><i class="fa fa-power-off"></i></a></li>
+                        <li><a href="page-login.html" class="icon-menu"><i class="fa fa-power-off"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -73,18 +74,18 @@
                                 <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>日常登记</span></a>
                                 <ul>
                                     <li><a th:href="@{/record/loadAddRecordPage}"><i class="icon-paper-plane"></i><span>日常登记</span></a></li>
-                                    <li><a th:href="@{/record/quireRecord}"><i class="icon-paper-plane"></i><span>日常登记查询</span></a></li>
+                                    <li class="active"><a th:href="@{/record/quireRecord}"><i class="icon-paper-plane"></i><span>日常登记查询</span></a></li>
                                 </ul>
                             </li>
                             <li class="active">
                                 <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>访客登记</span></a>
                                 <ul>
                                     <li><a th:href="@{/addVisitorStudent.html}"><i class="icon-paper-plane"></i><span>访问学生</span></a></li>
-                                    <li class="active"><a th:href="@{/updateVisitorStudentEndTimeAndStatus.html}"><i class="icon-paper-plane"></i><span>访问学生结束</span></a></li>
+                                    <li><a th:href="@{/updateVisitorStudentEndTimeAndStatus.html}"><i class="icon-paper-plane"></i><span>访问学生结束</span></a></li>
                                     <li><a th:href="@{/addVisitorDormitory.html}"><i class="icon-paper-plane"></i><span>访问寝室</span></a></li>
                                     <li><a th:href="@{/updateVisitorDormitoryEndTimeAndStatus.html}"><i class="icon-paper-plane"></i><span>访问寝室结束</span></a></li>
                                     <li><a th:href="@{/visitor/loadVisitorStudent}"><i class="icon-paper-plane"></i><span>访问学生记录查询</span></a></li>
-                                    <li><a th:href="@{/visitor/loadVisitorDormitory}"><i class="icon-paper-plane"></i><span>访问寝室记录查询</span></a></li>
+                                    <li class="active"><a th:href="@{/visitor/loadVisitorDormitory}"><i class="icon-paper-plane"></i><span>访问寝室记录查询</span></a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -101,72 +102,59 @@
             <div class="row clearfix">
                 <!-- 页面导航说明 -->
                 <div class="col-md-6 col-sm-12">
-                    <h2>访问学生结束</h2>
+                    <h2>访问学生记录查询</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#"><i class="fa fa-cube"></i></a></li>
                             <li class="breadcrumb-item"><a th:href="@{index.html}">SAMS</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">访问学生结束</li>
+                            <li class="breadcrumb-item active" aria-current="page">访问学生记录查询</li>
                         </ol>
                     </nav>
                 </div>
             </div>
         </div>
 
-
         <!-- 主页面主体部分 -->
         <div class="container-fluid">
-            <!-- Color Pickers -->
             <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="card">
-
-                        <div class="header">
-                            <h2>访问学生结束 <small>更新访问学生状态</small></h2>
-                            <ul class="header-dropdown dropdown">                                
-                                <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                            </ul>
+                <div class="col-lg-12">
+                    <div class="table-responsive invoice_list mb-4">
+                        <!-- 表格过滤器 -->
+                        <div class="text-left">
+                            <button type="button" class="btn btn-sm mb-1 btn-filter bg-default" data-target="all">All</button>
+                            <button type="button" class="btn btn-sm mb-1 btn-filter bg-green" data-target="访问中"> 访问中 </button>
+                            <button type="button" class="btn btn-sm mb-1 btn-filter bg-orange" data-target="访问结束"> 访问结束 </button>
                         </div>
-
-                        <div class="body">
-                            <form th:action="@{/visitor/updateVisitorEndTime}" method="post">
-                                <div class="demo-masked-input">
-                                    <div class="row clearfix">
-                                        <!-- 访问者姓名 -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <b>访问学生事件ID</b>
-                                            <div class="input-group mb-3">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="icon-user"></i></span>
-                                                </div>
-                                                <input type="text" class="form-control" placeholder="Ex: 2" id="visitorId" name="visitorId">
-                                            </div>
-                                        </div>
-                                        <!-- 访问者学号/员工号 -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <b>访问者学号/员工号</b>
-                                            <div class="input-group mb-3">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="icon-user"></i></span>
-                                                </div>
-                                                <input type="text" class="form-control" placeholder="Ex: 2018212168" id="visitorUserId" name="visitorUserId">
-                                            </div>
-                                        </div>
-                                        <!-- 来访结束时间 -->
-                                        <div class="col-lg-4 col-md-6">
-                                            <b>来访结束时间</b>
-                                            <div class="input-group mb-3">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="icon-clock"></i></span>
-                                                </div>
-                                                <input type="datetime-local" class="form-control" placeholder="Ex: 2020-05-20 13:14:00" id="visitEndTime" name="visitEndTime">
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary btn-round btn-block">提交</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                        <table class="table table-hover js-basic-example dataTable table-custom spacing8">
+                            <thead>
+                            <tr data-status="all">
+                                <th style="width: 20px;">ID</th>
+                                <th style="width: 30px;">访问者姓名</th>
+                                <th style="width: 50px;">访问者电话</th>
+                                <th style="width: 30px;">被访寝室公寓号</th>
+                                <th style="width: 30px;">被访寝室寝室号</th>
+                                <th style="width: 50px;">状态</th>
+                                <th style="width: 50px;">来访开始时间</th>
+                                <th style="width: 50px;">来访结束时间</th>
+                                <th style="width: 100px;">登记时间</th>
+                                <th style="width: 110px;">备注</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="visitor:${visitors}" th:data-status="${visitor.status}">
+                                    <td><span th:text="${visitor.visitorId}"></span>
+                                    <td><span th:text="${visitor.visitorName}"></span></td>
+                                    <td><span th:text="${visitor.visitorTelephoneNumber}"></span></td>
+                                    <td><span th:text="${visitor.departmentNumber}"></span></td>
+                                    <td><span th:text="${visitor.dormitoryNumber}"></span></td>
+                                    <td><span class="badge badge-warning ml-0 mr-0" th:text="${visitor.status}"></span></td>
+                                    <td><span th:text="${#dates.format(visitor.visitStartTime,'yyyy-MM-dd HH:mm:ss')}"></span></td>
+                                    <td><span th:text="${#dates.format(visitor.visitEndTime,'yyyy-MM-dd HH:mm:ss')}"></span></td>
+                                    <td><span th:text="${#dates.format(visitor.recordTime,'yyyy-MM-dd HH:mm:ss')}"></span></td>
+                                    <td><span th:text="${visitor.remarks}"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -174,7 +162,6 @@
     </div>
 
 </div>
-
 
     <!-- Javascript -->
     <!-- Latest jQuery -->
@@ -189,6 +176,8 @@
 
     <script th:src="@{/js/common.js}"></script>
     <script th:src="@{/js/pages/tables/invoice.js}"></script>
+    <script th:src="@{/js/pages/tables/table-filter.js}"></script>
+
 </body>
 
 </html>

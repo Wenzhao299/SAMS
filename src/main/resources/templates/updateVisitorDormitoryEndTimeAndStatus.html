@@ -84,7 +84,7 @@
                                     <li><a th:href="@{/addVisitorDormitory.html}"><i class="icon-paper-plane"></i><span>访问寝室</span></a></li>
                                     <li class="active"><a th:href="@{/updateVisitorDormitoryEndTimeAndStatus.html}"><i class="icon-paper-plane"></i><span>访问寝室结束</span></a></li>
                                     <li><a th:href="@{/visitor/loadVisitorStudent}"><i class="icon-paper-plane"></i><span>访问学生记录查询</span></a></li>
-                                    <li><a th:href="@{/#}"><i class="icon-paper-plane"></i><span>访问寝室记录查询</span></a></li>
+                                    <li><a th:href="@{/visitor/loadVisitorDormitory}"><i class="icon-paper-plane"></i><span>访问寝室记录查询</span></a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -127,12 +127,12 @@
                             </ul>
                         </div>
                         <div class="body">
-                            <form th:action="@{/visitor/updateVisitorEndTime}" method="post">
+                            <form th:action="@{/visitor/updateVisitorDormitoryEndTime}" method="post">
                                 <div class="demo-masked-input">
                                     <div class="row clearfix">
                                         <!-- 访问者姓名 -->
                                         <div class="col-lg-4 col-md-6">
-                                            <b>访问学生事件ID</b>
+                                            <b>访问寝室事件ID</b>
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="icon-user"></i></span>

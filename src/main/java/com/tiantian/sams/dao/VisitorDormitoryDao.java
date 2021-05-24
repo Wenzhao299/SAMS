@@ -2,6 +2,7 @@ package com.tiantian.sams.dao;
 
 import com.tiantian.sams.model.Visitor;
 import com.tiantian.sams.model.VisitorDormitory;
+import com.tiantian.sams.model.VisitorDormitoryView;
 import com.tiantian.sams.model.VisitorStudentView;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -33,7 +34,7 @@ public interface VisitorDormitoryDao {
      * @return VisitorView实体类列表
      */
     @Select("select * from visitorDormitoryView")
-    public List<VisitorStudentView> selectVisitorDormitoryView();
+    public List<VisitorDormitoryView> selectVisitorDormitoryView();
 
     /**
      * 插入 visitorDormitory 信息
@@ -50,5 +51,5 @@ public interface VisitorDormitoryDao {
      * @return 插入结果
      */
     @Update("update visitorDormitory set status=#{status},visitEndTime=#{visitEndTime} where visitorId = #{visitorId}")
-    public int updateVisitorDormitoryEndTime(Visitor visitor);
+    public int updateVisitorDormitoryEndTime(VisitorDormitory visitorDormitory);
 }

@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Update Student</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>-->
+</head>
+
+<body>
+<div id="wrap" align="center">
+    <div id="top_content">
+        <div id="header">
+            <div id="rightheader">
+                <div id="topheader">
+                    <h1 id="title">
+                        <a href="#">学生换宿</a>
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            <p id="whereami">
+            </p>
+            <h1>
+                请换宿:
+            </h1>
+            <form th:action="@{/dormitory/dormitoryExchange}" method="get">
+                <table cellpadding="0" cellspacing="0" class="form_table" border="1px" align="center">
+                    <tr>
+                        <td valign="middle" align="right">
+                            学生A学号:
+                        </td>
+                        <td valign="middle" align="left">
+                            <input type="text" name="studentAId">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="right">
+                            学生B学号:
+                        </td>
+                        <td valign="middle" align="left">
+                            <input type="text" name="studentBId">
+                        </td>
+                    </tr>
+
+                </table>
+                <p>
+                    <input type="submit" class="button" value="提交"/>
+                </p>
+            </form>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,56 +1,200 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!doctype html>
 <html xmlns:th="https://www.thymeleaf.org">
+
 <head>
-    <title>Update Student</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!--    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>-->
+    <title>SAMS | 学生换宿</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+          content="Qubes Bootstrap 4x admin is super flexible, powerful, clean &amp; modern responsive admin dashboard with unlimited possibilities.">
+    <meta name="author" content="GetBootstrap, design by: puffintheme.com">
+
+    <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
+    <!-- VENDOR CSS -->
+    <link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/vendor/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/vendor/animate-css/vivify.min.css}">
+
+    <link rel="stylesheet" th:href="@{/vendor/jquery-datatable/dataTables.bootstrap4.min.css}">
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" th:href="@{/css/site.min.css}">
+
 </head>
 
-<body>
-<div id="wrap" align="center">
-    <div id="top_content">
-        <div id="header">
-            <div id="rightheader">
-                <div id="topheader">
-                    <h1 id="title">
-                        <a href="#">学生换宿</a>
-                    </h1>
+<body class="theme-blue"></body>
+
+<!-- Page Loader -->
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="m-t-30"><i class="fa fa-cube font-25"></i></div>
+        <p>正在加载, 请稍等...</p>
+    </div>
+</div>
+
+<!-- Overlay For Sidebars -->
+<div class="overlay"></div>
+
+<div id="wrapper">
+    <!-- 顶部栏 -->
+    <nav class="navbar navbar-fixed-top">
+        <!-- 顶部栏容器 -->
+        <div class="container-fluid">
+            <!-- 左顶部栏 -->
+            <div class="navbar-left">
+                <div class="navbar-brand">
+                    <a class="small_menu_btn" href="javascript:void(0);"><i class="fa fa-align-left"></i></a>
+                    <a th:href="@{index.html}"><span>SAMS</span></a>
+                </div>
+            </div>
+
+            <!-- 右顶部栏 -->
+            <div class="navbar-right">
+                <div id="navbar-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                        <li><a href="page-login.html" class="icon-menu"><i class="fa fa-power-off"></i></a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div id="content">
-            <p id="whereami">
-            </p>
-            <h1>
-                请换宿:
-            </h1>
-            <form th:action="@{/dormitory/dormitoryExchange}" method="get">
-                <table cellpadding="0" cellspacing="0" class="form_table" border="1px" align="center">
-                    <tr>
-                        <td valign="middle" align="right">
-                            学生A学号:
-                        </td>
-                        <td valign="middle" align="left">
-                            <input type="text" name="studentAId">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td valign="middle" align="right">
-                            学生B学号:
-                        </td>
-                        <td valign="middle" align="left">
-                            <input type="text" name="studentBId">
-                        </td>
-                    </tr>
+    </nav>
 
-                </table>
-                <p>
-                    <input type="submit" class="button" value="提交"/>
-                </p>
-            </form>
+    <!-- 左边栏 -->
+    <div id="left-sidebar" class="sidebar">
+        <div class="sidebar_list">
+            <div class="tab-content" id="main-menu">
+                <div class="tab-pane active" id="Home-icon">
+                    <nav class="sidebar-nav sidebar-scroll">
+                        <ul class="metismenu">
+                            <li><a th:href="@{/index.html}"><i class="icon-speedometer"></i><span>主面板</span></a></li>
+                            <li class="header">用户功能</li>
+                            <li>
+                                <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>综合查询</span></a>
+                                <ul>
+                                    <li><a th:href="@{/quireStudentByDepartmentId.html}"><i class="icon-paper-plane"></i><span>按楼查看</span></a></li>
+                                    <li><a th:href="@{/studentList.html}"><i class="icon-paper-plane"></i><span>按学院查看</span></a></li>
+                                    <li><a th:href="@{/studentList.html}"><i class="icon-paper-plane"></i><span>按班级查看</span></a></li>
+                                </ul>
+                            </li>
+                            <li class="active">
+                                <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>日常调换宿</span></a>
+                                <ul>
+                                    <li><a th:href="@{/updateStudent.html}"><i class="icon-paper-plane"></i><span>入住</span></a></li>
+                                    <li><a th:href="@{/updateStudent.html}"><i class="icon-paper-plane"></i><span>调宿</span></a></li>
+                                    <li class="active"><a th:href="@{/exchangeStudent.html}"><i class="icon-paper-plane"></i><span>换宿</span></a></li>
+                                    <li><a th:href="@{/studentList.html}"><i class="icon-paper-plane"></i><span>退宿</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>毕业退宿管理</span></a>
+                                <ul>
+                                    <li><a th:href="@{/updateStudent.html}"><i class="icon-paper-plane"></i><span>毕业退宿</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>新生入住管理</span></a>
+                                <ul>
+                                    <li><a th:href="@{/addStudent.html}"><i class="icon-paper-plane"></i><span>新生入住</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>日常登记</span></a>
+                                <ul>
+                                    <li><a th:href="@{/record/loadAddRecordPage}"><i class="icon-paper-plane"></i><span>日常登记</span></a></li>
+                                    <li><a th:href="@{/record/quireRecord}"><i class="icon-paper-plane"></i><span>日常登记查询</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>访客登记</span></a>
+                                <ul>
+                                    <li><a th:href="@{/addVisitorStudent.html}"><i class="icon-paper-plane"></i><span>访问学生</span></a></li>
+                                    <li><a th:href="@{/updateVisitorStudentEndTimeAndStatus.html}"><i class="icon-paper-plane"></i><span>访问学生结束</span></a></li>
+                                    <li><a th:href="@{/addVisitorDormitory.html}"><i class="icon-paper-plane"></i><span>访问寝室</span></a></li>
+                                    <li><a th:href="@{/updateVisitorDormitoryEndTimeAndStatus.html}"><i class="icon-paper-plane"></i><span>访问寝室结束</span></a></li>
+                                    <li><a th:href="@{/visitor/loadVisitorStudent}"><i class="icon-paper-plane"></i><span>访问学生记录查询</span></a></li>
+                                    <li><a th:href="@{/#}"><i class="icon-paper-plane"></i><span>访问寝室记录查询</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>宿舍维修</span></a>
+                                <ul>
+                                    <li><a th:href="@{/addRepair.html}"><i class="icon-paper-plane"></i><span>添加维修请求</span></a></li>
+                                    <li><a th:href="@{/updateRepairStartTime.html}"><i class="icon-paper-plane"></i><span>维修开始登记</span></a></li>
+                                    <li><a th:href="@{/updateRepairEndTime.html}"><i class="icon-paper-plane"></i><span>维修结束登记</span></a></li>
+                                    <li><a th:href="@{/repair/loadRepair}"><i class="icon-paper-plane"></i><span>维修记录查询</span></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主页面部分 -->
+    <div id="main-content">
+        <!-- 主页面顶部 -->
+        <div class="block-header">
+            <div class="row clearfix">
+                <!-- 页面导航说明 -->
+                <div class="col-md-6 col-sm-12">
+                    <h2>学生换宿</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-cube"></i></a></li>
+                            <li class="breadcrumb-item"><a th:href="@{index.html}">SAMS</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">学生换宿</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主页面主体部分 -->
+        <div class="container-fluid">
+            <div class="row clearfix">
+
+                <div class="card">
+                    <div class="header">
+                        <h2>学生换宿</h2>
+                    </div>
+                    <div class="body">
+                        <form id="basic-form" method="get" th:action="@{/dormitory/dormitoryExchange}" novalidate>
+                            <div class="form-group">
+                                <label>学生A学号</label>
+                                <input type="text" class="form-control" id="studentAId" name="studentAId" required>
+                            </div>
+                            <div class="form-group">
+                                <label>学生B学号</label>
+                                <input type="text" class="form-control" id="studentBId" name="studentBId" required>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-primary">提交</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 
 </div>
+
+
+<!-- Javascript -->
+<!-- Latest jQuery -->
+<script th:src="@{/vendor/jquery/jquery-3.3.1.min.js}"></script>
+
+<!-- Bootstrap 4x JS  -->
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+<script th:src="@{/bundles/vendorscripts.bundle.js}"></script>
+
+<script th:src="@{/bundles/datatablescripts.bundle.js}"></script>
+
+<script th:src="@{/js/common.js}"></script>
+<script th:src="@{/js/pages/tables/invoice.js}"></script>
 </body>
+
 </html>

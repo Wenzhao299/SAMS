@@ -50,6 +50,8 @@ public class StudentController {
             return "updateStudentCheckOut";
         }else if(quireType.equals("change")) {
             return "updateStudentChange";
+        }else if(quireType.equals("bysCheckOut")) {
+            return "updateBYSStudentCheckOut";
         }else {
             return "page-404";
         }
@@ -103,6 +105,13 @@ public class StudentController {
             System.out.println("退宿成功！");
             model.addAttribute("message","退宿成功！");
             return "updateStudentCheckOutQuire";
+        }else if (operateType.equals("bysCheckOut") && student.getBedStatus()!=0) {
+            check.setOperateName("退宿");
+            student.setBedStatus(0);
+            fun_updateInAndOut(student, check);
+            System.out.println("退宿成功！");
+            model.addAttribute("message","退宿成功！");
+            return "updateBYSStudentCheckOutQuire";
         }
         System.out.println("操作失败，不可重复操作！");
         model.addAttribute("message","操作失败，不可重复操作！");

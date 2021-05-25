@@ -2,7 +2,7 @@
 <html xmlns:th="https://www.thymeleaf.org">
 
 <head>
-    <title>SAMS | 学生换宿</title>
+    <title>SAMS | 毕业退宿</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,13 +24,13 @@
 
 <body class="theme-blue"></body>
 
-<!-- Page Loader -->
-<div class="page-loader-wrapper">
-    <div class="loader">
-        <div class="m-t-30"><i class="fa fa-cube font-25"></i></div>
-        <p>正在加载, 请稍等...</p>
-    </div>
-</div>
+<!--&lt;!&ndash; Page Loader &ndash;&gt;-->
+<!--<div class="page-loader-wrapper">-->
+<!--    <div class="loader">-->
+<!--        <div class="m-t-30"><i class="fa fa-cube font-25"></i></div>-->
+<!--        <p>正在加载, 请稍等...</p>-->
+<!--    </div>-->
+<!--</div>-->
 
 <!-- Overlay For Sidebars -->
 <div class="overlay"></div>
@@ -78,19 +78,19 @@
                                     <li><a th:href="@{/student/findByStudentClass}"><i class="icon-paper-plane"></i><span>按班级查看</span></a></li>
                                 </ul>
                             </li>
-                            <li class="active">
+                            <li>
                                 <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>日常调换宿</span></a>
                                 <ul>
                                     <li><a th:href="@{/updateStudentCheckInQuire.html}"><i class="icon-paper-plane"></i><span>入住</span></a></li>
                                     <li><a th:href="@{/updateStudentChangeQuire.html}"><i class="icon-paper-plane"></i><span>调宿</span></a></li>
-                                    <li class="active"><a th:href="@{/updateStudentExchange.html}"><i class="icon-paper-plane"></i><span>换宿</span></a></li>
+                                    <li><a th:href="@{/updateStudentExchange.html}"><i class="icon-paper-plane"></i><span>换宿</span></a></li>
                                     <li><a th:href="@{/updateStudentCheckOutQuire.html}"><i class="icon-paper-plane"></i><span>退宿</span></a></li>
                                 </ul>
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>毕业退宿管理</span></a>
                                 <ul>
-                                    <li><a th:href="@{/updateBYSStudentCheckOutQuire.html}"><i class="icon-paper-plane"></i><span>毕业退宿</span></a></li>
+                                    <li class="active"><a th:href="@{/updateBYSStudentCheckOutQuire.html}"><i class="icon-paper-plane"></i><span>毕业退宿</span></a></li>
                                 </ul>
                             </li>
                             <li>
@@ -140,12 +140,12 @@
             <div class="row clearfix">
                 <!-- 页面导航说明 -->
                 <div class="col-md-6 col-sm-12">
-                    <h2>学生换宿</h2>
+                    <h2>毕业退宿</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#"><i class="fa fa-cube"></i></a></li>
                             <li class="breadcrumb-item"><a th:href="@{index.html}">SAMS</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">学生换宿</li>
+                            <li class="breadcrumb-item active" aria-current="page">毕业退宿</li>
                         </ol>
                     </nav>
                 </div>
@@ -156,26 +156,112 @@
         <div class="container-fluid">
             <div class="row clearfix">
 
+                <!-- 输入学号查询学生信息 -->
                 <div class="card">
                     <div class="header">
-                        <h2>学生换宿</h2>
+                        <h2>学生信息查询</h2>
                     </div>
                     <div class="body">
-                        <form id="basic-form" method="get" th:action="@{/dormitory/dormitoryExchange}" novalidate>
+                        <form id="basic-form" method="get" th:action="@{/student/findByStudentId}" novalidate>
                             <div class="form-group">
-                                <label>学生A学号</label>
-                                <input type="text" class="form-control" id="studentAId" name="studentAId" required>
-                            </div>
-                            <div class="form-group">
-                                <label>学生B学号</label>
-                                <input type="text" class="form-control" id="studentBId" name="studentBId" required>
+                                <label>学号</label>
+                                <input type="text" class="form-control" id="studentId" name="studentId" required>
+                                <input type="hidden" class="form-control" id="quireType" name="quireType" value="bysCheckOut" required>
                             </div>
                             <br>
-                            <button type="submit" class="btn btn-primary">提交</button>
+                            <button type="submit" class="btn btn-primary">查询</button>
                         </form>
                     </div>
                 </div>
 
+                <div class="card">
+                    <!-- 展示学生详细信息的表格 -->
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-custom spacing5 mb-3">
+                                    <thead>
+                                    <tr>
+                                        <th class="hidden-sm-down text-center" style="width: 120px;">条目</th>
+                                        <th class="hidden-sm-down text-center" style="width: 120px;">数据</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">学号</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.studentId}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">姓名</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.name}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">性别</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.sex}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">班级</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.studentClass}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">学院</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.college}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">校区</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.campus}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">公寓楼号</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.departmentNumber}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">寝室号</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.dormitoryNumber}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">床位号</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.bedNumber}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">电话号码</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.telephoneNumber}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">邮箱</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.email}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">入住日期</td>
+                                        <td class="hidden-sm-down text-center" th:text="${#dates.format(student.checkInDate,'yyyy-MM-dd')}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">入住状态</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.bedStatus}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">学籍状态</td>
+                                        <td class="hidden-sm-down text-center" th:text="${student.stuStatus}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">登记时间</td>
+                                        <td class="hidden-sm-down text-center" th:text="${#dates.format(student.recordTime,'yyyy-MM-dd HH:mm:ss')}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="hidden-sm-down text-center">操作</td>
+                                        <td class="hidden-sm-down text-center">
+                                            <a th:href="@{/student/updateInAndOut(studentId=${student.studentId},operateType='bysCheckOut')}">办理毕业退宿</a>
+<!--                                            <form th:action="" method="post">-->
+<!--                                                <input type="submit" name="operateType" value="bysCheckOut">办理退宿</input>-->
+<!--                                            </form>-->
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -196,6 +282,18 @@
 
 <script th:src="@{/js/common.js}"></script>
 <script th:src="@{/js/pages/tables/invoice.js}"></script>
+
+<script th:inline="javascript">
+    var message = [[${message}]];
+    if (message != null) {
+        window.onload = function () {
+            alert(message);
+        }
+    }
+</script>
+
 </body>
 
 </html>
+
+

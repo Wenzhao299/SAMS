@@ -46,6 +46,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/updateStudentCheckOutQuire.html").setViewName("updateStudentCheckOutQuire");
         registry.addViewController("/updateStudentChange.html").setViewName("updateStudentChange");
         registry.addViewController("/updateStudentChangeQuire.html").setViewName("updateStudentChangeQuire");
+        registry.addViewController("/updateBYSStudentCheckOutQuire.html").setViewName("updateBYSStudentCheckOutQuire");
     }
 
     @Bean

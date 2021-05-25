@@ -2,12 +2,12 @@
 <html xmlns:th="https://www.thymeleaf.org">
 
 <head>
-    <title>SAMS | 维修开始登记</title>
+    <title>SAMS | 毕业退宿</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description"
-        content="Qubes Bootstrap 4x admin is super flexible, powerful, clean &amp; modern responsive admin dashboard with unlimited possibilities.">
+          content="Qubes Bootstrap 4x admin is super flexible, powerful, clean &amp; modern responsive admin dashboard with unlimited possibilities.">
     <meta name="author" content="GetBootstrap, design by: puffintheme.com">
 
     <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
@@ -24,13 +24,13 @@
 
 <body class="theme-blue"></body>
 
-<!-- Page Loader -->
-<div class="page-loader-wrapper">
-    <div class="loader">
-        <div class="m-t-30"><i class="fa fa-cube font-25"></i></div>
-        <p>正在加载, 请稍等...</p>        
-    </div>
-</div>
+<!--&lt;!&ndash; Page Loader &ndash;&gt;-->
+<!--<div class="page-loader-wrapper">-->
+<!--    <div class="loader">-->
+<!--        <div class="m-t-30"><i class="fa fa-cube font-25"></i></div>-->
+<!--        <p>正在加载, 请稍等...</p>-->
+<!--    </div>-->
+<!--</div>-->
 
 <!-- Overlay For Sidebars -->
 <div class="overlay"></div>
@@ -53,7 +53,7 @@
                 <div id="navbar-menu">
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <li><a href="page-login.html" class="icon-menu"><i class="fa fa-power-off"></i></a></li>
+                        <li><a href="page-login.html" class="icon-menu"><i class="fa fa-power-off"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                 <div class="tab-pane active" id="Home-icon">
                     <nav class="sidebar-nav sidebar-scroll">
                         <ul class="metismenu">
-                            <li><a th:href="@{index.html}"><i class="icon-speedometer"></i><span>主面板</span></a></li>
+                            <li><a th:href="@{/index.html}"><i class="icon-speedometer"></i><span>主面板</span></a></li>
                             <li class="header">用户功能</li>
                             <li>
                                 <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>综合查询</span></a>
@@ -82,15 +82,15 @@
                                 <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>日常调换宿</span></a>
                                 <ul>
                                     <li><a th:href="@{/updateStudentCheckInQuire.html}"><i class="icon-paper-plane"></i><span>入住</span></a></li>
-                                    <li><a th:href="@{/updateStudent.html}"><i class="icon-paper-plane"></i><span>调宿</span></a></li>
+                                    <li><a th:href="@{/updateStudentChangeQuire.html}"><i class="icon-paper-plane"></i><span>调宿</span></a></li>
                                     <li><a th:href="@{/updateStudentExchange.html}"><i class="icon-paper-plane"></i><span>换宿</span></a></li>
                                     <li><a th:href="@{/updateStudentCheckOutQuire.html}"><i class="icon-paper-plane"></i><span>退宿</span></a></li>
                                 </ul>
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>毕业退宿管理</span></a>
                                 <ul>
-                                    <li><a th:href="@{/updateBYSStudentCheckOutQuire.html}"><i class="icon-paper-plane"></i><span>毕业退宿</span></a></li>
+                                    <li class="active"><a th:href="@{/updateBYSStudentCheckOutQuire.html}"><i class="icon-paper-plane"></i><span>毕业退宿</span></a></li>
                                 </ul>
                             </li>
                             <li>
@@ -117,11 +117,11 @@
                                     <li><a th:href="@{/#}"><i class="icon-paper-plane"></i><span>访问寝室记录查询</span></a></li>
                                 </ul>
                             </li>
-                            <li class="active">
+                            <li>
                                 <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>宿舍维修</span></a>
                                 <ul>
                                     <li><a th:href="@{/addRepair.html}"><i class="icon-paper-plane"></i><span>添加维修请求</span></a></li>
-                                    <li class="active"><a th:href="@{/updateRepairStartTime.html}"><i class="icon-paper-plane"></i><span>维修开始登记</span></a></li>
+                                    <li><a th:href="@{/updateRepairStartTime.html}"><i class="icon-paper-plane"></i><span>维修开始登记</span></a></li>
                                     <li><a th:href="@{/updateRepairEndTime.html}"><i class="icon-paper-plane"></i><span>维修结束登记</span></a></li>
                                     <li><a th:href="@{/repair/loadRepair}"><i class="icon-paper-plane"></i><span>维修记录查询</span></a></li>
                                 </ul>
@@ -140,72 +140,37 @@
             <div class="row clearfix">
                 <!-- 页面导航说明 -->
                 <div class="col-md-6 col-sm-12">
-                    <h2>维修开始登记</h2>
+                    <h2>毕业退宿</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#"><i class="fa fa-cube"></i></a></li>
                             <li class="breadcrumb-item"><a th:href="@{index.html}">SAMS</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">维修开始登记</li>
+                            <li class="breadcrumb-item active" aria-current="page">毕业退宿</li>
                         </ol>
                     </nav>
                 </div>
             </div>
         </div>
 
-
         <!-- 主页面主体部分 -->
         <div class="container-fluid">
-            <!-- Color Pickers -->
             <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>维修开始登记 </h2>
-                            <ul class="header-dropdown dropdown">                                
-                                <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                            </ul>
-                        </div>
 
-                        <div class="body">
-                            <form th:action="@{/repair/updateRepairStartTime}" method="post">
-                            <div class="demo-masked-input">
-                                <div class="row clearfix">
-                                    <!-- 维修Id -->
-                                    <div class="col-lg-4 col-md-6">
-                                        <b>维修Id</b>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="icon-user"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control" placeholder="Ex: 2" id="repairId" name="repairId">
-                                        </div>
-                                    </div>
-                                    <!-- 维修人员工号 -->
-                                    <div class="col-lg-4 col-md-6">
-                                        <b>维修人员工号</b>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="icon-user"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control" placeholder="Ex: 2018212168" id="repairName" name="repairName">
-                                        </div>
-                                    </div>
-                                    <!-- 维修开始时间 -->
-                                    <div class="col-lg-4 col-md-6">
-                                        <b>维修开始时间</b>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="icon-clock"></i></span>
-                                            </div>
-                                            <input type="datetime-local" class="form-control" placeholder="Ex: 2020-05-20 13:14:00" id="startTime" name="startTime">
-                                        </div>
-                                    </div>
-
-                                        <button type="submit" class="btn btn-primary btn-round btn-block">提交</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                <!-- 输入学号查询学生信息 -->
+                <div class="card">
+                    <div class="header">
+                        <h2>学生信息查询</h2>
+                    </div>
+                    <div class="body">
+                        <form id="basic-form" method="get" th:action="@{/student/findByStudentId}" novalidate>
+                            <div class="form-group">
+                                <label>学号</label>
+                                <input type="text" class="form-control" id="studentId" name="studentId" required>
+                                <input type="hidden" class="form-control" id="quireType" name="quireType" value="bysCheckOut" required>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-primary">查询</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -215,19 +180,31 @@
 </div>
 
 
-    <!-- Javascript -->
-    <!-- Latest jQuery -->
-    <script th:src="@{/vendor/jquery/jquery-3.3.1.min.js}"></script>
+<!-- Javascript -->
+<!-- Latest jQuery -->
+<script th:src="@{/vendor/jquery/jquery-3.3.1.min.js}"></script>
 
-    <!-- Bootstrap 4x JS  -->
-    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- Bootstrap 4x JS  -->
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
-    <script th:src="@{/bundles/vendorscripts.bundle.js}"></script>
+<script th:src="@{/bundles/vendorscripts.bundle.js}"></script>
 
-    <script th:src="@{/bundles/datatablescripts.bundle.js}"></script>
+<script th:src="@{/bundles/datatablescripts.bundle.js}"></script>
 
-    <script th:src="@{/js/common.js}"></script>
-    <script th:src="@{/js/pages/tables/invoice.js}"></script>
+<script th:src="@{/js/common.js}"></script>
+<script th:src="@{/js/pages/tables/invoice.js}"></script>
+
+<script th:inline="javascript">
+    var message = [[${message}]];
+    if (message != null) {
+        window.onload = function () {
+            alert(message);
+        }
+    }
+</script>
+
 </body>
 
 </html>
+
+

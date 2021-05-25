@@ -73,8 +73,38 @@
                 <div class="tab-pane active" id="Home-icon">
                     <nav class="sidebar-nav sidebar-scroll">
                         <ul class="metismenu">
-                            <li><a th:href="@{/index.html}"><i class="icon-speedometer"></i><span>主面板</span></a></li>
+                            <li><a th:href="@{index.html}"><i class="icon-speedometer"></i><span>主面板</span></a></li>
                             <li class="header">用户功能</li>
+                            <li>
+                                <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>综合查询</span></a>
+                                <ul>
+                                    <li><a th:href="@{/student/findAll}"><i class="icon-paper-plane"></i><span>全部查看</span></a></li>
+                                    <li><a th:href="@{/student/findByDepartmentId}"><i class="icon-paper-plane"></i><span>按楼查看</span></a></li>
+                                    <li><a th:href="@{/student/findByCollege}"><i class="icon-paper-plane"></i><span>按学院查看</span></a></li>
+                                    <li><a th:href="@{/student/findByStudentClass}"><i class="icon-paper-plane"></i><span>按班级查看</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>日常调换宿</span></a>
+                                <ul>
+                                    <li><a th:href="@{/updateStudentCheckInQuire.html}"><i class="icon-paper-plane"></i><span>入住</span></a></li>
+                                    <li><a th:href="@{/updateStudent.html}"><i class="icon-paper-plane"></i><span>调宿</span></a></li>
+                                    <li><a th:href="@{/updateStudentExchange.html}"><i class="icon-paper-plane"></i><span>换宿</span></a></li>
+                                    <li><a th:href="@{/updateStudentCheckOutQuire.html}"><i class="icon-paper-plane"></i><span>退宿</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>毕业退宿管理</span></a>
+                                <ul>
+                                    <li><a th:href="@{/updateBYSStudentCheckOutQuire.html}"><i class="icon-paper-plane"></i><span>毕业退宿</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>新生入住管理</span></a>
+                                <ul>
+                                    <li><a th:href="@{/addStudent.html}"><i class="icon-paper-plane"></i><span>新生入住</span></a></li>
+                                </ul>
+                            </li>
                             <li>
                                 <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>日常登记</span></a>
                                 <ul>
@@ -90,7 +120,7 @@
                                     <li><a th:href="@{/addVisitorDormitory.html}"><i class="icon-paper-plane"></i><span>访问寝室</span></a></li>
                                     <li><a th:href="@{/updateVisitorDormitoryEndTimeAndStatus.html}"><i class="icon-paper-plane"></i><span>访问寝室结束</span></a></li>
                                     <li><a th:href="@{/visitor/loadVisitorStudent}"><i class="icon-paper-plane"></i><span>访问学生记录查询</span></a></li>
-                                    <li><a th:href="@{/visitor/loadVisitorDormitory}"><i class="icon-paper-plane"></i><span>访问寝室记录查询</span></a></li>
+                                    <li><a th:href="@{/#}"><i class="icon-paper-plane"></i><span>访问寝室记录查询</span></a></li>
                                 </ul>
                             </li>
                             <li class="active">

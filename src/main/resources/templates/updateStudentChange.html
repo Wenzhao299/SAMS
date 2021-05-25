@@ -83,7 +83,7 @@
                                 <ul>
                                     <li><a th:href="@{/updateStudentCheckInQuire.html}"><i class="icon-paper-plane"></i><span>入住</span></a></li>
                                     <li class="active"><a th:href="@{/updateStudent.html}"><i class="icon-paper-plane"></i><span>调宿</span></a></li>
-                                    <li><a th:href="@{/templates/updateStudentExchange.html}"><i class="icon-paper-plane"></i><span>换宿</span></a></li>
+                                    <li><a th:href="@{/updateStudentExchange.html}"><i class="icon-paper-plane"></i><span>换宿</span></a></li>
                                     <li><a th:href="@{/updateStudentCheckOutQuire.html}"><i class="icon-paper-plane"></i><span>退宿</span></a></li>
                                 </ul>
                             </li>
@@ -274,12 +274,12 @@
                                         <tr>
                                             <td class="hidden-sm-down text-center">入住状态</td>
                                             <td class="hidden-sm-down text-center" th:text="${student.bedStatus}"></td>
-                                            <input type="hidden" name="bedStatus" th:value="${student.bedStatus}"/>-->
+                                            <input type="hidden" name="bedStatus" th:value="${student.bedStatus}"/>
                                         </tr>
                                         <tr>
                                             <td class="hidden-sm-down text-center">学籍状态</td>
                                             <td class="hidden-sm-down text-center" th:text="${student.stuStatus}"></td>
-                                            <input type="hidden" name="stuStatus" th:value="${student.stuStatus}"/>-->
+                                            <input type="hidden" name="stuStatus" th:value="${student.stuStatus}"/>
                                         </tr>
                                         <tr>
                                             <td class="hidden-sm-down text-center">登记时间</td>

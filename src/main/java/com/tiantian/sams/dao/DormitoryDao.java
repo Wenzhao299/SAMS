@@ -25,6 +25,14 @@ public interface DormitoryDao {
     @Select("select dormitoryId from dormitory")
     public List<Integer> selectDormitoryId();
 
+    /**
+     * 查询所有的 Dormitory 中 dormitoryId（寝室id）和 dormitoryName 信息
+     * @author tiantian152
+     * @return DormitoryInformationList
+     */
+    @Select("select dormitoryId,departmentId,dormitoryNumber from dormitory")
+    public List<DormitoryInformation> selectDormitoryInformation();
+
     //入住、退宿
     @Insert("insert into dormitoryCheckInAndOut values(#{operateId},#{operateName},#{studentId},#{departmentId},#{dormitoryId},#{bedNumber},#{inAndOutDate},#{recordTime},#{remarks})")
     void dormitoryCheckInAndOut(DormitoryCheckInAndOut check);

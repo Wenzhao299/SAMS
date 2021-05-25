@@ -1,5 +1,7 @@
 package com.tiantian.sams.controller;
 
+import com.tiantian.sams.dao.DepartmentDao;
+import com.tiantian.sams.dao.DormitoryDao;
 import com.tiantian.sams.model.*;
 import com.tiantian.sams.service.RepairService;
 import com.tiantian.sams.service.impl.RepairServiceImpl;
@@ -21,6 +23,12 @@ public class RepairController {
 
     @Autowired
     private final RepairService repairService = new RepairServiceImpl();
+
+    @Autowired
+    private DepartmentDao departmentDao;
+
+    @Autowired
+    private DormitoryDao dormitoryDao;
 
     /**
      * 添加维修
@@ -78,6 +86,24 @@ public class RepairController {
             model.addAttribute("msg", "状态不正确");
         }
         return "redirect:loadRepair";
+    }
+
+    @RequestMapping("/loadAddRepairPage")
+    public String loadAddRepairPage(Model model) {
+        System.out.println("==================读取添加维修所需信息开始==================");
+
+        // 查询公寓表
+        List<DepartmentInformation> departmentInformationList = departmentDao.selectDepartmentInformation();
+        System.out.println("departmentInformationList="+departmentInformationList);
+        model.addAttribute("departmentInformationList",departmentInformationList);
+
+        // 查询宿舍表
+        List<DormitoryInformation> dormitoryInformationList = dormitoryDao.selectDormitoryInformation();
+        System.out.println("dormitoryInformationList="+dormitoryInformationList);
+        model.addAttribute("dormitoryInformationList",dormitoryInformationList);
+
+        System.out.println("==================读取添加日常登记所需信息结束==================");
+        return "addRepair";
     }
 
     /**

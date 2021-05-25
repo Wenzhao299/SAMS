@@ -24,6 +24,8 @@
 
 <body class="theme-blue"></body>
 
+
+
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
     <div class="loader">
@@ -120,7 +122,7 @@
                             <li>
                                 <a href="#Pages" class="has-arrow"><i class="icon-lock"></i><span>宿舍维修</span></a>
                                 <ul>
-                                    <li><a th:href="@{/addRepair.html}"><i class="icon-paper-plane"></i><span>添加维修请求</span></a></li>
+                                    <li><a th:href="@{/repair/loadAddRepairPage}"><i class="icon-paper-plane"></i><span>添加维修请求</span></a></li>
                                     <li><a th:href="@{/updateRepairStartTime.html}"><i class="icon-paper-plane"></i><span>维修开始登记</span></a></li>
                                     <li><a th:href="@{/updateRepairEndTime.html}"><i class="icon-paper-plane"></i><span>维修结束登记</span></a></li>
                                     <li><a th:href="@{/repair/loadRepair}"><i class="icon-paper-plane"></i><span>维修记录查询</span></a></li>
@@ -203,6 +205,13 @@
                                                 <input type="text" class="form-control" placeholder="Ex: 2018212168" id="studentId" name="studentId">
                                             </div>
                                         </div>
+                                        <script>
+                                            $()
+                                            var val = $('#departmentId option:selected').val()
+                                            function getVal() {
+                                                return val;
+                                            }
+                                        </script>
                                         <!-- 填写公寓楼号，获取公寓id -->
                                         <div class="col-lg-4 col-md-6">
                                             <b>公寓楼号</b>
@@ -210,8 +219,7 @@
                                                 <span class="input-group-text"><i class="fa fa-building-o"></i></span>
                                                 <select class="form-control" id="departmentId" name="departmentId">
                                                     <option value="">-- 公寓楼号 --</option>
-                                                    <option value="3">翡翠湖校区3号楼</option>
-                                                    <option value="7">翡翠湖校区7号楼</option>
+                                                    <option th:each="departmentInformation:${departmentInformationList}" th:value="${departmentInformation.departmentId}">[[${departmentInformation.departmentNumber}]]</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -222,8 +230,7 @@
                                                 <span class="input-group-text"><i class="icon-home"></i></span>
                                                 <select class="form-control" id="dormitoryId" name="dormitoryId">
                                                     <option value="">-- 寝室号 --</option>
-                                                    <option value="3">3N#312</option>
-                                                    <option value="7">7S#624</option>
+                                                    <option th:each="dormitoryInformation:${dormitoryInformationList}" th:value="${dormitoryInformation.dormitoryId}">[[${dormitoryInformation.dormitoryNumber}]]</option>
                                                 </select>
                                             </div>
                                         </div>

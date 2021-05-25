@@ -1,5 +1,6 @@
 package com.tiantian.sams.dao;
 
+import com.tiantian.sams.model.DepartmentInformation;
 import com.tiantian.sams.model.Visitor;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -22,5 +23,13 @@ public interface DepartmentDao {
      */
     @Select("select departmentId from department")
     public List<Integer> selectDepartmentId();
+
+    /**
+     * 查询所有的 Department 中 departmentId（公寓楼号） 信息
+     * @author tiantian152
+     * @return departmentIdList
+     */
+    @Select("select departmentId,departmentNumber from department")
+    public List<DepartmentInformation> selectDepartmentInformation();
 
 }

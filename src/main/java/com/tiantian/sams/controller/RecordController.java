@@ -2,6 +2,8 @@ package com.tiantian.sams.controller;
 
 import com.tiantian.sams.dao.DepartmentDao;
 import com.tiantian.sams.dao.DormitoryDao;
+import com.tiantian.sams.model.DepartmentInformation;
+import com.tiantian.sams.model.DormitoryInformation;
 import com.tiantian.sams.model.Record;
 import com.tiantian.sams.model.RecordView;
 import com.tiantian.sams.service.RecordService;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -42,14 +45,14 @@ public class RecordController {
 
         System.out.println("==================读取添加日常登记所需信息开始==================");
         // 查询公寓表
-        List<Integer> departmentIdList = departmentDao.selectDepartmentId();
-        System.out.println("departmentIdList="+departmentIdList);
-        model.addAttribute("departmentIdList",departmentIdList);
+        List<DepartmentInformation> departmentInformationList = departmentDao.selectDepartmentInformation();
+        System.out.println("departmentInformationList="+departmentInformationList);
+        model.addAttribute("departmentInformationList",departmentInformationList);
 
         // 查询宿舍表
-        List<Integer> dormitoryIdList = dormitoryDao.selectDormitoryId();
-        System.out.println("dormitoryIdList="+dormitoryIdList);
-        model.addAttribute("dormitoryIdList",dormitoryIdList);
+        List<DormitoryInformation> dormitoryInformationList = dormitoryDao.selectDormitoryInformation();
+        System.out.println("dormitoryInformationList="+dormitoryInformationList);
+        model.addAttribute("dormitoryInformationList",dormitoryInformationList);
 
         System.out.println("==================读取添加日常登记所需信息结束==================");
         return "addRecord";

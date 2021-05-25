@@ -108,6 +108,7 @@ public class StudentController {
         }else if (operateType.equals("bysCheckOut") && student.getBedStatus()!=0) {
             check.setOperateName("退宿");
             student.setBedStatus(0);
+            student.setStuStatus(0);
             fun_updateInAndOut(student, check);
             System.out.println("退宿成功！");
             model.addAttribute("message","退宿成功！");
@@ -173,22 +174,26 @@ public class StudentController {
                 if (dormitoryService.findBed1ByDormitoryId(student.getDormitoryId())==1){
                     model.addAttribute("message","当前床位有人，入住失败！");
                     System.out.println("当前床位有人，入住失败！");
-                } return "addStudent";
+                    return "addStudent";
+                } break;
             case 2:
                 if (dormitoryService.findBed2ByDormitoryId(student.getDormitoryId())==1){
                     model.addAttribute("message","当前床位有人，入住失败！");
                     System.out.println("当前床位有人，入住失败！");
-                } return "addStudent";
+                    return "addStudent";
+                } break;
             case 3:
                 if (dormitoryService.findBed3ByDormitoryId(student.getDormitoryId())==1){
                     model.addAttribute("message","当前床位有人，入住失败！");
                     System.out.println("当前床位有人，入住失败！");
-                } return "addStudent";
+                    return "addStudent";
+                } break;
             case 4:
                 if (dormitoryService.findBed4ByDormitoryId(student.getDormitoryId())==1){
                     model.addAttribute("message","当前床位有人，入住失败！");
                     System.out.println("当前床位有人，入住失败！");
-                } return "addStudent";
+                    return "addStudent";
+                } break;
         }
         student.setRecordTime(new Date());
         studentService.addStudent(student);

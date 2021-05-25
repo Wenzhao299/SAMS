@@ -16,9 +16,9 @@ public class LoginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession();
         String url = request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/"));
-        System.out.println(url);
+//        System.out.println(url);
         Object obj = session.getAttribute("username");
-        System.out.println("obj="+obj);
+//        System.out.println("obj="+obj);
         if(url.equals("/toLogin") || url.equals("/adminLogin") || url.equals("/adminRegister") || url.endsWith(".css") || url.endsWith(".js") || url.endsWith(".png") || url.endsWith(".jpg")) {
             filterChain.doFilter(servletRequest, servletResponse);
         }else{

@@ -10,7 +10,7 @@ spring:
     username: custom
     password: 2018212194
     #?serverTimezone=UTC解决时区的报错
-    url: jdbc:mysql://101.132.138.214:3306/SAMS?serverTimezone=GMT&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://101.132.138.214:3306/sams?serverTimezone=GMT&useSSL=false&useUnicode=true&characterEncoding=UTF-8
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource # 自定义数据源
     #Spring Boot 默认是不注入这些属性值的，需要自己绑定

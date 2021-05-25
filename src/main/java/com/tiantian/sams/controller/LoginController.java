@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class LoginController {
 
@@ -17,12 +19,14 @@ public class LoginController {
     @RequestMapping("/adminLogin")
     public String login(@RequestParam("username") String username,
                         @RequestParam("password") String password,
+                        HttpSession session,
                         Model model) {
         System.out.println("==================用户登录开始==================");
         Admin loginAdmin = adminDao.selectAdminByAdminIdAndPassword(username, password);
         if (loginAdmin != null) {
             // 如果用户存在
             System.out.println("用户登录成功！！！");
+            session.setAttribute("username", username);
             System.out.println("==================用户登录成功==================");
             return "index";
         } else {
@@ -30,5 +34,10 @@ public class LoginController {
             System.out.println("==================用户登录失败==================");
             return "page-login";
         }
+    }
+
+    @RequestMapping("toLogin")
+    public String toLogin() {
+        return "page-login";
     }
 }
